@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { getPing } from 'apollo-rn-redux-helper/src/actions';
 
-class HomePage extends Component {
+class LoginPage extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.welcome}>Welcome to Rea asdasd ct Native redux!</Text>
-				<Text style={styles.instructions}>To get started, edit App.js</Text>
-				{/* <Text style={styles.instructions}>{this.props.ping === null ? this.props.ping.Message : 'bos'}</Text> */}
+				<Text style={styles.welcome}>Login Page</Text>
+				<Button title="Giriş Yap" onPress={() => this.props.navigation.navigate('home')} />
 			</View>
 		);
 	}
@@ -39,4 +38,4 @@ const mapStateToProps = state => {
 	return { isLoading, ping, error };
 };
 
-export default HomePage;
+export default LoginPage;
