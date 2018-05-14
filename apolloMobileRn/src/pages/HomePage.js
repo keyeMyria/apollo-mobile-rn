@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 import { connect } from 'react-redux';
-import { getPing } from 'apollo-rn-redux-helper/src/actions';
+import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 
 class HomePage extends Component {
+	componentDidMount() {
+		this.props.fetchCampaignSummary('portus', new Date(2018, 5, 1), new Date(2018, 5, 10));
+	}
+
+	renderCampaigns() {
+		if (this.props.isCampaignSummaryLoading) {
+			return <ActivityIndicator size={40} color="black" />;
+		}
+		if (this.props.campaignSummary) {
+			return this.props.campaignSummary.map((item, index) => {
+				return <Text key={index}>{item.Name}</Text>;
+			});
+		}
+	}
+
 	render() {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.welcome}>Welcome to Rea asdasd ct Native redux!</Text>
-				<Text style={styles.instructions}>To get started, edit App.js</Text>
-				{/* <Text style={styles.instructions}>{this.props.ping === null ? this.props.ping.Message : 'bos'}</Text> */}
-			</View>
-		);
+		if (this.props.campaignSummaryError) {
+			Alert.alert(null, 'kampanyalar çekilemedi');
+		}
+		return <View style={styles.container}>{this.renderCampaigns()}</View>;
 	}
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
 		backgroundColor: '#F5FCFF'
 	},
 	welcome: {
@@ -35,8 +45,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-	const { isLoading, ping, error } = state.ping;
-	return { isLoading, ping, error };
+	const { isCampaignSummaryLoading, campaignSummary, campaignSummaryError } = state.report;
+	return { isCampaignSummaryLoading, campaignSummary, campaignSummaryError };
 };
 
-export default HomePage;
+export default connect(mapStateToProps, { fetchCampaignSummary })(HomePage);

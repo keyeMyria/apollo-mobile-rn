@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, ActivityIndicator, Alert } from 'react-native';
 import { connect } from 'react-redux';
-import { getPing } from 'apollo-rn-redux-helper/src/actions';
+import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
 
 class LoginPage extends Component {
+	renderLoading() {
+		if (this.props.isTokenLoading) {
+			return <ActivityIndicator size={30} color="black" />;
+		}
+		return null;
+	}
+
+	componentWillReceiveProps(newProps) {
+		if (newProps.token !== this.props.token) {
+			this.props.navigation.navigate('home');
+		}
+	}
+
 	render() {
+		if (this.props.tokenError) {
+			Alert.alert('Bir hata oluştu');
+		}
 		return (
 			<View style={styles.container}>
 				<Text style={styles.welcome}>Login Page</Text>
-				<Button title="Giriş Yap" onPress={() => this.props.navigation.navigate('home')} />
+				<Button title="Giriş Yap" onPress={() => this.props.fetchToken('omg.erkan', 'erkan123', 'portus')} />
+				{this.renderLoading()}
 			</View>
 		);
 	}
@@ -34,8 +51,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-	const { isLoading, ping, error } = state.ping;
-	return { isLoading, ping, error };
+	const { isTokenLoading, token, tokenError } = state.token;
+	return { isTokenLoading, token, tokenError };
 };
 
-export default LoginPage;
+export default connect(mapStateToProps, { fetchToken })(LoginPage);
