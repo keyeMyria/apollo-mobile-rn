@@ -5,7 +5,6 @@ import myReducer from 'apollo-rn-redux-helper/src/reducers';
 import thunk from 'redux-thunk';
 import HomePage from './src/pages/HomePage';
 import MainNavigationPage from './src/pages/MainNavigationPage';
-
 export default class App extends Component {
 	render() {
 		console.log(myReducer);
