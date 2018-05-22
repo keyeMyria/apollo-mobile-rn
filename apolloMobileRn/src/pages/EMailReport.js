@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Button, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
 import { Page } from './../components/common/Page';
 import Icons from '../helpers/Icons';
 import { Divider } from './../components/common/Divider';
 import { FontSizes, Paddings, Margins } from './../helpers/Constants';
 import { widthPercentageToDP } from '../helpers/Responsive';
+import { Button } from 'react-native-paper';
 var imageWidth = widthPercentageToDP('3%');
 var imageHeight = widthPercentageToDP('5%');
 
@@ -48,10 +49,9 @@ class EMailReport extends Component {
 						</TouchableOpacity>
 						<Divider style={{ marginHorizontal: 20 }} />
 					</View>
-
-					<TouchableOpacity style={styles.button}>
-						<Text style={styles.reportText}>Rapor Al</Text>
-					</TouchableOpacity>
+					<Button raised onPress={() => {}}>
+						Rapor Al
+					</Button>
 				</View>
 			</Page>
 		);
