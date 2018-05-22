@@ -3,25 +3,36 @@ import { createSwitchNavigator, createDrawerNavigator, StackNavigator } from 're
 import HomePage from './HomePage';
 import BestOfPage from './BestOfPage';
 import LoginPage from './LoginPage';
+import EMailReport from './EMailReport';
 
 const SwitchNavigation = createSwitchNavigator({
 	app: {
-		screen: createDrawerNavigator({
-			home: {
-				screen: StackNavigator({
-					innerHome: {
-						screen: HomePage
-					}
-				})
+		screen: createDrawerNavigator(
+			{
+				home: {
+					screen: StackNavigator({
+						innerHome: {
+							screen: HomePage
+						}
+					})
+				},
+				bestOf: {
+					screen: StackNavigator({
+						innerBestOf: {
+							screen: BestOfPage
+						}
+					})
+				},
+				eMailReport: {
+					screen: StackNavigator({
+						innerBestOf: {
+							screen: EMailReport
+						}
+					})
+				}
 			},
-			bestOf: {
-				screen: StackNavigator({
-					innerBestOf: {
-						screen: BestOfPage
-					}
-				})
-			}
-		})
+			{ initialRouteName: 'eMailReport' }
+		)
 	},
 	login: {
 		screen: LoginPage
