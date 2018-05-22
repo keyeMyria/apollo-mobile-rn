@@ -5,9 +5,6 @@ import BestOfPage from './BestOfPage';
 import LoginPage from './LoginPage';
 
 const SwitchNavigation = createSwitchNavigator({
-	login: {
-		screen: LoginPage
-	},
 	app: {
 		screen: createDrawerNavigator({
 			home: {
@@ -25,6 +22,9 @@ const SwitchNavigation = createSwitchNavigator({
 				})
 			}
 		})
+	},
+	login: {
+		screen: LoginPage
 	}
 });
 

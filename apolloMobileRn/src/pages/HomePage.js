@@ -5,7 +5,7 @@ import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 
 class HomePage extends Component {
 	componentDidMount() {
-		this.props.fetchCampaignSummary('portus', new Date(2018, 5, 1), new Date(2018, 5, 10));
+		// this.props.fetchCampaignSummary('portus', new Date(2018, 5, 1), new Date(2018, 5, 10));
 	}
 
 	renderCampaigns() {
