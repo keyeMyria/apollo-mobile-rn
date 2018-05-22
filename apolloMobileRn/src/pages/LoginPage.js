@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, ActivityIndicator, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
+import { Page } from './../components/common/Page';
 
 class LoginPage extends Component {
 	renderLoading() {
@@ -22,11 +23,11 @@ class LoginPage extends Component {
 			Alert.alert('Bir hata oluştu');
 		}
 		return (
-			<View style={styles.container}>
+			<Page style={styles.container}>
 				<Text style={styles.welcome}>Login Page</Text>
 				<Button title="Giriş Yap" onPress={() => this.props.fetchToken('omg.erkan', 'erkan123', 'portus')} />
 				{this.renderLoading()}
-			</View>
+			</Page>
 		);
 	}
 }
@@ -35,8 +36,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF'
+		alignItems: 'center'
 	},
 	welcome: {
 		fontSize: 20,
