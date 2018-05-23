@@ -4,6 +4,7 @@ import HomePage from './HomePage';
 import BestOfPage from './BestOfPage';
 import LoginPage from './LoginPage';
 import EMailReport from './EMailReport';
+import SideMenu from './SideMenu';
 
 const SwitchNavigation = createSwitchNavigator({
 	app: {
@@ -31,7 +32,10 @@ const SwitchNavigation = createSwitchNavigator({
 					})
 				}
 			},
-			{ initialRouteName: 'eMailReport' }
+			{
+				initialRouteName: 'eMailReport',
+				contentComponent: SideMenu
+			}
 		)
 	},
 	login: {

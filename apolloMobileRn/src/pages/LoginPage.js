@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, Button, ActivityIndicator, Alert, Image } from 
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from './../components/common/Page';
-import Colors from '../helpers/Colors';
-import Icons from '../helpers/Icons';
+import { Colors } from '../helpers/Colors';
+import { Icons } from '../helpers/Icons';
 
 class LoginPage extends Component {
 	renderLoading() {
