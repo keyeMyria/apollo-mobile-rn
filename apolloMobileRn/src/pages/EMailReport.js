@@ -25,27 +25,32 @@ class EMailReport extends Component {
 							<Text style={styles.dateTitle}>Başlangıç Tarihi</Text>
 
 							<TouchableOpacity style={styles.selection}>
-								<Icons name="calendar" size={30} color="#4F8EF7" />
+								<Icons name="date-range" size={25} color="#BCBCBC" />
 								<Text style={styles.day}>22 Mayıs 2018</Text>
 							</TouchableOpacity>
-							<Divider style={{ marginHorizontal: 20 }} />
+							<Divider style={{ marginHorizontal: 35 }} />
 						</View>
 						<View style={styles.date}>
 							<Text style={styles.dateTitle}>Bitiş Tarihi</Text>
 
 							<TouchableOpacity style={styles.selection}>
-								<Icons name="calendar" size={30} color="#4F8EF7" />
+								<Icons name="date-range" size={25} color="#BCBCBC" />
 								<Text style={styles.day}>22 Mayıs 2018</Text>
 							</TouchableOpacity>
-							<Divider style={{ marginHorizontal: 20 }} />
+							<Divider style={{ marginHorizontal: 35 }} />
 						</View>
 						<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-							<Icons name="mail" size={30} color="#4F8EF7" />
+							<Icons name="mail" size={25} color="#BCBCBC" style={{ marginLeft: 20 }} />
 							<TextInput
 								label="E-Posta Adresleri"
 								onChangeText={text => this.setState({ text })}
 								underlineColor="#0000"
-								style={{ flex: 1 }}
+								style={{
+									flex: 1,
+									marginRight: 45,
+									marginLeft: 10,
+									alignSelf: 'center'
+								}}
 								// style={styles.dateTitle}
 								theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }}
 							/>
@@ -72,14 +77,15 @@ const styles = StyleSheet.create({
 		marginBottom: Margins.DateItemBottomMargin
 	},
 	dateTitle: {
-		marginLeft: imageWidth + 20
+		marginLeft: 35,
+		color: '#BCBCBC'
 	},
 	selection: {
 		flexDirection: 'row'
 	},
 	day: {
 		color: '#FBFBFB',
-		marginLeft: 20
+		marginLeft: 10
 	},
 	button: {
 		justifyContent: 'center',

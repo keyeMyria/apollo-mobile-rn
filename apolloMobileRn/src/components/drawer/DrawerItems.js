@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import { Icons } from '../../helpers/Icons';
+// import { Icons } from '../../helpers/Icons';
 import { Paddings } from '../../helpers/Constants';
 import { Margins } from '../../helpers/Constants';
 import { TouchableRipple } from 'react-native-paper';
 import { widthPercentageToDP } from '../../helpers/Responsive';
+import Icons from 'react-native-vector-icons/MaterialIcons';
+import { Colors } from './../../helpers/Colors';
 
-var imageWidth = widthPercentageToDP('3%');
-var imageHeight = widthPercentageToDP('5%');
-
-export const DrawerItems = ({ textTitle }) => {
+export const DrawerItems = ({ textTitle, iconName }) => {
 	return (
 		<TouchableRipple onPress={() => console.log('Pressed')} rippleColor="#BF360C">
 			<View
@@ -20,8 +19,8 @@ export const DrawerItems = ({ textTitle }) => {
 					marginBottom: Margins.ListItemBottomMargin
 				}}
 			>
-				<Image source={Icons.LıstItemRightIcon} style={{ width: imageWidth, height: imageHeight }} />
-				<Text style={{ color: '#C1C1C1', paddingLeft: 20 }}> {textTitle}</Text>
+				<Icons name={iconName} size={30} color="#FFB91D" />
+				<Text style={{ color: '#C1C1C1', paddingLeft: 20, fontSize: 13 }}> {textTitle}</Text>
 			</View>
 		</TouchableRipple>
 	);
