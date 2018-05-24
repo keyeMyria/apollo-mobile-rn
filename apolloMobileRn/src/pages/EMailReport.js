@@ -18,7 +18,7 @@ class EMailReport extends Component {
 	};
 	render() {
 		return (
-			<Page style={styles.container}>
+			<Page style={styles.container} navigation={this.props.navigation}>
 				<View style={{ justifyContent: 'center', alignItems: 'center' }}>
 					<View style={{ alignSelf: 'stretch' }}>
 						<View style={styles.date}>

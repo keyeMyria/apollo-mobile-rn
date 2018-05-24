@@ -4,7 +4,7 @@ import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, Image, StyleSheet } from 'react-native';
 import { Paddings } from '../helpers/Constants';
 import { Margins } from '../helpers/Constants';
-import { widthPercentageToDP } from '../helpers/Responsive';
+import { widthPercentageToDP, heightPercentageToDP } from '../helpers/Responsive';
 import { TouchableRipple } from 'react-native-paper';
 import { DrawerItems } from '../components/drawer/DrawerItems';
 import { Images } from '../helpers/Images';
@@ -27,11 +27,13 @@ class SideMenu extends Component {
 	};
 	render() {
 		return (
-			<View style={{ flex: 1, flexDirection: 'column' }}>
-				<View style={{ flex: 1 }}>
-					<Image source={Images.DrawerPicIcon} />
-				</View>
-				<View style={{ backgroundColor: Colors.AppBackgroundColor, flex: 3 }}>
+			<View style={{ flex: 1, backgroundColor: Colors.AppBackgroundColor, flexDirection: 'column' }}>
+				<Image
+					source={Images.DrawerImage}
+					style={{ height: heightPercentageToDP('25%'), width: null }}
+					resizeMode="contain"
+				/>
+				<ScrollView>
 					<DrawerItems textTitle="Kokpit" iconName="restore" />
 
 					<DrawerItems textTitle="Yönetici Özet" iconName="gps-fixed" />
@@ -49,7 +51,7 @@ class SideMenu extends Component {
 					<DrawerItems textTitle="E Mail Raporu İste" iconName="email" />
 
 					<DrawerItems textTitle="Oturumu Kapat" iconName="exit-to-app" />
-				</View>
+				</ScrollView>
 			</View>
 		);
 	}

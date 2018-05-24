@@ -20,7 +20,9 @@ export const DrawerItems = ({ textTitle, iconName }) => {
 				}}
 			>
 				<Icons name={iconName} size={30} color="#FFB91D" />
-				<Text style={{ color: '#C1C1C1', paddingLeft: 20, fontSize: 13 }}> {textTitle}</Text>
+				<Text style={{ textAlignVertical: 'center', color: '#C1C1C1', paddingLeft: 20, fontSize: 13 }}>
+					{textTitle}
+				</Text>
 			</View>
 		</TouchableRipple>
 	);

@@ -11,25 +11,13 @@ const SwitchNavigation = createSwitchNavigator({
 		screen: createDrawerNavigator(
 			{
 				home: {
-					screen: StackNavigator({
-						innerHome: {
-							screen: HomePage
-						}
-					})
+					screen: HomePage
 				},
 				bestOf: {
-					screen: StackNavigator({
-						innerBestOf: {
-							screen: BestOfPage
-						}
-					})
+					screen: BestOfPage
 				},
 				eMailReport: {
-					screen: StackNavigator({
-						innerBestOf: {
-							screen: EMailReport
-						}
-					})
+					screen: EMailReport
 				}
 			},
 			{

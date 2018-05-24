@@ -1,3 +1,3 @@
 export const Images = {
-	DrawerPicIcon: require('../../assets/apollodrawerpic.jpg')
+	DrawerImage: require('../../assets/drawerImage.png')
 };
