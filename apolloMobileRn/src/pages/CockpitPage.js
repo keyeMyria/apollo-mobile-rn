@@ -16,6 +16,7 @@ import { EditView } from '../components/cockpit/EditView';
 import CockpitView from '../components/cockpit/CockpitView';
 import DijitalClock from '../components/cockpit/DijitalClock';
 import CockpitViewAnim from '../components/cockpit/CockpitViewAnim';
+import Constant, { Margins } from '../helpers/Constants';
 
 const { width, height } = Dimensions.get('window');
 const data = [
@@ -117,17 +118,21 @@ export default class CockpitPage extends React.Component {
 						/>
 					</Animated.View>
 				</Modal>
-				<View
-					style={{ flex: 1, borderTopLeftRadius: 30, borderTopRightRadius: 30, backgroundColor: '#f194b4' }}
-				>
+				<View style={{ flex: 1, backgroundColor: '#f194b4' }}>
 					<View
 						style={{
 							flexDirection: 'column',
-							height: 200,
+							flex: 3,
 							justifyContent: 'space-around'
 						}}
 					>
-						<View style={{ flexDirection: 'row', marginLeft: 25 }}>
+						<View
+							style={{
+								flexDirection: 'row',
+								alignItems: 'center',
+								marginHorizontal: Margins.CockpitScreenTopItemHorizontalMargin
+							}}
+						>
 							<EditView imageSource={require('../../assets/menuicon.png')} />
 							<Text
 								style={{
@@ -145,9 +150,9 @@ export default class CockpitPage extends React.Component {
 							<TouchableOpacity>
 								<Text
 									style={{
-										color: 'white',
-										marginTop: 18,
-										marginRight: 20
+										color: 'white'
+										// marginTop: 18,
+										// marginRight: 20
 									}}
 								>
 									AVM Seç

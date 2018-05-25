@@ -1,19 +1,20 @@
 import React from 'react';
 import { TouchableOpacity, Image } from 'react-native';
+import { widthPercentageToDP } from '../.././helpers/Responsive';
+var imageWidth = widthPercentageToDP('5%');
+var imageHeight = widthPercentageToDP('5%');
 export const EditView = ({ onPress, imageSource, myStyle }) => {
 	return (
 		<TouchableOpacity
 			onPress={onPress}
 			style={[
 				{
-					flexDirection: 'row',
-					marginLeft: 15,
-					marginTop: 15
+					flexDirection: 'row'
 				},
 				myStyle
 			]}
 		>
-			<Image source={imageSource} style={{ width: 20, height: 20 }} />
+			<Image source={imageSource} style={{ width: imageWidth, height: imageHeight }} />
 		</TouchableOpacity>
 	);
 };

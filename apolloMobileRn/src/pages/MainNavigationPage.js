@@ -25,7 +25,7 @@ const SwitchNavigation = createSwitchNavigator({
 				}
 			},
 			{
-				initialRouteName: 'eMailReport',
+				initialRouteName: 'cockpit',
 				contentComponent: SideMenu
 			}
 		)
