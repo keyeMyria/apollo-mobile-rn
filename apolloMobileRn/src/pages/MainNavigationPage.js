@@ -5,6 +5,7 @@ import BestOfPage from './BestOfPage';
 import LoginPage from './LoginPage';
 import EMailReport from './EMailReport';
 import SideMenu from './SideMenu';
+import CockpitPage from './CockpitPage';
 
 const SwitchNavigation = createSwitchNavigator({
 	app: {
@@ -18,6 +19,9 @@ const SwitchNavigation = createSwitchNavigator({
 				},
 				eMailReport: {
 					screen: EMailReport
+				},
+				cockpit: {
+					screen: CockpitPage
 				}
 			},
 			{

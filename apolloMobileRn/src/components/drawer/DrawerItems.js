@@ -8,9 +8,14 @@ import { widthPercentageToDP } from '../../helpers/Responsive';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from './../../helpers/Colors';
 
-export const DrawerItems = ({ textTitle, iconName }) => {
+export const DrawerItems = ({ textTitle, iconName, onPress }) => {
 	return (
-		<TouchableRipple onPress={() => console.log('Pressed')} rippleColor="#BF360C">
+		<TouchableRipple
+			onPress={() => {
+				onPress();
+			}}
+			rippleColor="#BF360C"
+		>
 			<View
 				style={{
 					flexDirection: 'row',

@@ -16,15 +16,18 @@ var imageWidth = widthPercentageToDP('3%');
 var imageHeight = widthPercentageToDP('5%');
 
 class SideMenu extends Component {
-	navigateToScreen = route => () => {
+	navigateToScreen(route) {
+		console.log(route);
 		const navigateAction = NavigationActions.navigate({
 			routeName: route
 		});
 		this.props.navigation.dispatch(navigateAction);
-	};
+	}
+
 	state = {
 		active: 'First Item'
 	};
+
 	render() {
 		return (
 			<View style={{ flex: 1, backgroundColor: Colors.AppBackgroundColor, flexDirection: 'column' }}>
@@ -34,7 +37,13 @@ class SideMenu extends Component {
 					resizeMode="contain"
 				/>
 				<ScrollView>
-					<DrawerItems textTitle="Kokpit" iconName="restore" />
+					<DrawerItems
+						textTitle="Kokpit"
+						iconName="restore"
+						onPress={() => {
+							this.navigateToScreen('cockpit');
+						}}
+					/>
 
 					<DrawerItems textTitle="Yönetici Özet" iconName="gps-fixed" />
 
