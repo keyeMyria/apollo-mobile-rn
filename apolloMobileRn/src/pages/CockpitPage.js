@@ -56,6 +56,7 @@ const data = [
 		graphImage: require('../../assets/2.jpg')
 	}
 ];
+
 export default class CockpitPage extends React.Component {
 	state = {
 		modalIsVisible: false,
@@ -118,8 +119,6 @@ export default class CockpitPage extends React.Component {
 				</Modal>
 				<View
 					style={{ flex: 1, borderTopLeftRadius: 30, borderTopRightRadius: 30, backgroundColor: '#f194b4' }}
-					start={{ x: 0, y: 1 }}
-					end={{ x: 1, y: 1 }}
 				>
 					<View
 						style={{
