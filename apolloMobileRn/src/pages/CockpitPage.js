@@ -11,7 +11,7 @@ import {
 	Animated,
 	Easing
 } from 'react-native';
-// import { LinearGradient } from 'expo';
+import { connect } from 'react-redux';
 import CockpitDataRow from '../components/cockpit/CockpitDataRow';
 import DijitalClock from '../components/cockpit/DijitalClock';
 import Constant, { Margins } from '../helpers/Constants';
@@ -20,10 +20,10 @@ import { Colors } from './../helpers/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import CockpitHeader from './../components/cockpit/CockpitHeader';
 import { CockpitData } from './../helpers/DummyData';
-
+import { fetchDailySummary } from 'apollo-rn-redux-helper/src/actions';
 const { width, height } = Dimensions.get('window');
 
-export default class CockpitPage extends React.Component {
+class CockpitPage extends React.Component {
 	state = {
 		modalIsVisible: false,
 		yPos: 0,
@@ -31,6 +31,10 @@ export default class CockpitPage extends React.Component {
 		modalColor: new Animated.Value(0),
 		scrollPositionChangedCounter: 0
 	};
+
+	componentDidMount() {
+		// this.props.fetchDailySummary('portus', new Date(2018, 5, 27, 22, 0, 0), 15, 30, true, true);
+	}
 
 	animateModal() {
 		this.state.modalColor.setValue(0);
@@ -61,6 +65,20 @@ export default class CockpitPage extends React.Component {
 		});
 
 		const data = CockpitData;
+		if (this.props.dailySummary === null) {
+			return <View style={{ flex: 1, backgroundColor: 'red' }} />;
+		}
+		if (this.props.dailySummary) {
+			console.log(this.props.dailySummary);
+			var cockpitNowData = this.props.dailySummary[0];
+			data[0].value = cockpitNowData.NumberOfNewMembers;
+			data[1].value = cockpitNowData.NumberOfReceipts;
+			data[2].value = cockpitNowData.TotalRecordedReceiptAmount;
+			data[3].value = cockpitNowData.NumberOfCoupons;
+			data[4].value = cockpitNowData.NumberOfMembers;
+			data[5].value = cockpitNowData.NumberOfShoppers;
+		}
+
 		return (
 			<View
 				style={{
@@ -188,3 +206,10 @@ export default class CockpitPage extends React.Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	const { isDailySummaryLoading, dailySummary, dailySummaryError } = state.report;
+	return { isDailySummaryLoading, dailySummary, dailySummaryError };
+};
+
+export default connect(mapStateToProps, { fetchDailySummary })(CockpitPage);

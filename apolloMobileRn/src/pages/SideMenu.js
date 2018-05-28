@@ -39,7 +39,7 @@ class SideMenu extends Component {
 					}}
 					resizeMode="contain"
 				/>
-				<ScrollView>
+				<ScrollView showsVerticalScrollIndicator={false}>
 					<DrawerItems
 						textTitle="Kokpit"
 						iconName="restore"
