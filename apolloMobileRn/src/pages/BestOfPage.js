@@ -2,33 +2,33 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { getPing } from 'apollo-rn-redux-helper/src/actions';
+import LinearGradient from 'react-native-linear-gradient';
 
 class BestOfPage extends Component {
 	render() {
 		return (
-			<View style={styles.container}>
-				<Text style={styles.welcome}>best of page</Text>
+			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+				<LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+					<Text style={styles.buttonText}>Sign in with Facebook</Text>
+				</LinearGradient>
 			</View>
 		);
 	}
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF'
+var styles = StyleSheet.create({
+	linearGradient: {
+		paddingLeft: 15,
+		paddingRight: 15,
+		borderRadius: 5
 	},
-	welcome: {
-		fontSize: 20,
+	buttonText: {
+		fontSize: 18,
+		fontFamily: 'Gill Sans',
 		textAlign: 'center',
-		margin: 10
-	},
-	instructions: {
-		textAlign: 'center',
-		color: '#333333',
-		marginBottom: 5
+		margin: 10,
+		color: '#ffffff',
+		backgroundColor: 'transparent'
 	}
 });
 
