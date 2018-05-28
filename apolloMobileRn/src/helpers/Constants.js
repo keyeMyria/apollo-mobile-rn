@@ -13,7 +13,8 @@ export const Margins = {
 	ButtonTopMargin: widthPercentageToDP('5%'),
 	DateItemBottomMargin: widthPercentageToDP('5%'),
 	DateItemHorizontalMargin: widthPercentageToDP('5%'),
-	CockpitScreenTopItemHorizontalMargin: widthPercentageToDP('5%')
+	CockpitScreenItemsHorizontalMargin: widthPercentageToDP('5%'),
+	CockpitScreenItemsBottomMargin: widthPercentageToDP('5%')
 };
 
 export const Paddings = {

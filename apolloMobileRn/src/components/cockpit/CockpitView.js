@@ -1,5 +1,11 @@
 import React from 'react';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
+import { Margins } from '../../helpers/Constants';
+import { widthPercentageToDP } from '../../helpers/Responsive';
+var imageHeight = widthPercentageToDP('10%');
+var imageWidth = widthPercentageToDP('10%');
+var graphImageWidth = widthPercentageToDP('15%');
+var graphImageHeight = widthPercentageToDP('15%');
 
 export default class CockpitView extends React.Component {
 	state = {
@@ -46,14 +52,12 @@ export default class CockpitView extends React.Component {
 						backgroundColor: '#616788',
 						alignItems: 'center',
 						borderRadius: 20,
-						marginLeft: 20,
-						marginRight: 20,
-						marginBottom: 10,
-						height: 60
+						marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin,
+						marginBottom: Margins.CockpitScreenItemsBottomMargin
 					}}
 				>
 					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-						<Image source={icon} style={{ width: 50, height: 50 }} />
+						<Image source={icon} style={{ width: imageWidth, height: imageHeight }} />
 						<Text style={{ color: 'white', textAlign: 'left' }}> {title}</Text>
 					</View>
 					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -62,9 +66,9 @@ export default class CockpitView extends React.Component {
 						<Image
 							source={graphImage}
 							style={{
-								width: 60,
-								height: 60,
-								right: 0,
+								width: graphImageWidth,
+								height: graphImageHeight,
+								// right: 0,
 								borderTopRightRadius: 20,
 								borderBottomRightRadius: 20
 							}}
