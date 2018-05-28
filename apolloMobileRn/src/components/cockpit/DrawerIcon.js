@@ -3,7 +3,7 @@ import { TouchableOpacity, Image } from 'react-native';
 import { widthPercentageToDP } from '../.././helpers/Responsive';
 var imageWidth = widthPercentageToDP('5%');
 var imageHeight = widthPercentageToDP('5%');
-export const EditView = ({ onPress, imageSource, myStyle }) => {
+export const DrawerIcon = ({ onPress, imageSource, myStyle }) => {
 	return (
 		<TouchableOpacity
 			onPress={onPress}

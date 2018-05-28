@@ -11,15 +11,14 @@ import {
 	Animated,
 	Easing
 } from 'react-native';
-import { EditView } from '../components/cockpit/EditView';
 // import { LinearGradient } from 'expo';
 import CockpitDataRow from '../components/cockpit/CockpitDataRow';
 import DijitalClock from '../components/cockpit/DijitalClock';
 import Constant, { Margins } from '../helpers/Constants';
 import CockpitDataRowAnimatable from './../components/cockpit/CockpitDataRowAnimatable';
-import CockpitDataView from './../components/cockpit/CockpitDataView';
 import { Colors } from './../helpers/Colors';
-import { LinearGradient } from 'react-native-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
+import CockpitHeader from './../components/cockpit/CockpitHeader';
 import { CockpitData } from './../helpers/DummyData';
 
 const { width, height } = Dimensions.get('window');
@@ -85,28 +84,8 @@ export default class CockpitPage extends React.Component {
 						/>
 					</Animated.View>
 				</Modal>
-				<CockpitDataView />
+				<CockpitHeader />
 
-				<View
-					style={{
-						height: 12,
-						backgroundColor: '#b66da8',
-						opacity: 0.5,
-						borderBottomLeftRadius: 10,
-						borderBottomRightRadius: 10
-					}}
-				/>
-				<View
-					style={{
-						height: 9,
-						backgroundColor: '#875a7e',
-						opacity: 0.3,
-						borderBottomLeftRadius: 10,
-						borderBottomRightRadius: 10,
-						marginLeft: 15,
-						marginRight: 15
-					}}
-				/>
 				<View style={{ flex: 3, backgroundColor: Colors.CockpitPageBackgroundColor }}>
 					<ScrollView onScrollEndDrag={() => this.onScrollEndDrag()}>
 						<View
@@ -165,13 +144,27 @@ export default class CockpitPage extends React.Component {
 							<View style={{ height: 100 }} />
 						</View>
 					</ScrollView>
-
-					<View
+					<LinearGradient
+						colors={[
+							'#0000',
+							// '#0001',
+							// '#0002',
+							'#0003',
+							// '#0004',
+							'#0005',
+							// '#0006',
+							'#0007',
+							// '#0008',
+							'#0009',
+							'#000a',
+							'#000b',
+							'#000c',
+							'#000d',
+							'#000e',
+							'#000'
+						]}
 						style={{
 							position: 'absolute',
-							flexDirection: 'row',
-							justifyContent: 'center',
-							backgroundColor: 'transparent',
 							bottom: 0,
 							left: 0,
 							right: 0
@@ -189,7 +182,7 @@ export default class CockpitPage extends React.Component {
 								<DijitalClock />
 							</View>
 						</TouchableOpacity>
-					</View>
+					</LinearGradient>
 				</View>
 			</View>
 		);
