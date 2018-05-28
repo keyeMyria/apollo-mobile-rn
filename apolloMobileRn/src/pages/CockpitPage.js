@@ -130,19 +130,17 @@ export default class CockpitPage extends React.Component {
 							style={{
 								flexDirection: 'row',
 								alignItems: 'center',
-								marginHorizontal: Margins.CockpitScreenTopItemHorizontalMargin
+								marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin
 							}}
 						>
 							<EditView imageSource={require('../../assets/menuicon.png')} />
 							<Text
 								style={{
 									flex: 1,
-									marginLeft: 110,
-									marginTop: 20,
-									height: 30,
 									fontWeight: 'bold',
 									fontSize: 12,
-									color: 'white'
+									color: 'white',
+									textAlign: 'center'
 								}}
 							>
 								APOLLO
@@ -151,8 +149,6 @@ export default class CockpitPage extends React.Component {
 								<Text
 									style={{
 										color: 'white'
-										// marginTop: 18,
-										// marginRight: 20
 									}}
 								>
 									AVM Seç
@@ -161,19 +157,20 @@ export default class CockpitPage extends React.Component {
 						</View>
 						<View
 							style={{
-								alignSelf: 'center',
-								width: 150,
-								height: 80,
-								marginBottom: 20
+								alignSelf: 'center'
 							}}
 						>
-							<View style={{ flexDirection: 'row', marginBottom: 0, alignItems: 'flex-end' }}>
+							<View
+								style={{
+									flexDirection: 'row',
+									alignItems: 'flex-end'
+								}}
+							>
 								<Text
 									style={{
 										color: 'white',
 										fontSize: 30,
-										textAlignVertical: 'bottom',
-										marginLeft: 10
+										textAlignVertical: 'bottom'
 									}}
 								>
 									48693
@@ -181,17 +178,16 @@ export default class CockpitPage extends React.Component {
 								<Text
 									style={{
 										color: 'white',
-										textAlignVertical: 'bottom',
 										marginBottom: 7
 									}}
 								>
 									.21 TL
 								</Text>
 							</View>
-							<Text style={{ color: 'white', fontSize: 12, marginLeft: 15 }}>5326 TL (+20.3%)</Text>
+							<Text style={{ color: 'white', fontSize: 12, textAlign: 'center' }}>5326 TL (+20.3%)</Text>
 						</View>
 					</View>
-					<View
+					{/* <View
 						style={{
 							height: 10,
 							backgroundColor: 'transparent',
@@ -199,7 +195,7 @@ export default class CockpitPage extends React.Component {
 							borderBottomLeftRadius: 10,
 							borderBottomRightRadius: 10
 						}}
-					/>
+					/> */}
 				</View>
 
 				<View
@@ -224,7 +220,13 @@ export default class CockpitPage extends React.Component {
 				/>
 				<View style={{ flex: 3, backgroundColor: '#4a5178' }}>
 					<ScrollView onScrollEndDrag={() => this.onScrollEndDrag()}>
-						<View style={{ flexDirection: 'column', justifyContent: 'space-around', marginTop: 30 }}>
+						<View
+							style={{
+								flexDirection: 'column',
+								justifyContent: 'space-around',
+								marginTop: Margins.ButtonTopMargin
+							}}
+						>
 							<CockpitView
 								data={data[0]}
 								onPress={yPos => {
@@ -271,24 +273,23 @@ export default class CockpitPage extends React.Component {
 								}}
 								scrollPositionChangedCounter={this.state.scrollPositionChangedCounter}
 							/>
-							<View style={{ height: 100 }} />
+							{/* <View style={{ height: 100 }} /> */}
 						</View>
 					</ScrollView>
-					<View style={{ backgroundColor: 'red' }}>
-						<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-							<TouchableOpacity onPress={() => {}}>
-								<View
-									style={{
-										flexDirection: 'row',
-										justifyContent: 'center',
-										alignItems: 'center',
-										height: 100
-									}}
-								>
-									<DijitalClock />
-								</View>
-							</TouchableOpacity>
-						</View>
+
+					<View style={{ flexDirection: 'row', justifyContent: 'center', backgroundColor: 'transparent' }}>
+						<TouchableOpacity onPress={() => {}}>
+							<View
+								style={{
+									flexDirection: 'row',
+									justifyContent: 'center',
+									alignItems: 'center',
+									height: 100
+								}}
+							>
+								<DijitalClock />
+							</View>
+						</TouchableOpacity>
 					</View>
 				</View>
 			</View>
