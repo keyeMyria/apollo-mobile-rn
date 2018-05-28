@@ -16,7 +16,7 @@ class LoginPage extends Component {
 
 	componentWillReceiveProps(newProps) {
 		if (newProps.token !== this.props.token) {
-			this.props.navigation.navigate('home');
+			this.props.navigation.navigate('app');
 		}
 	}
 
