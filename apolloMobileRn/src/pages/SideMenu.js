@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, Image, StyleSheet } from 'react-native';
-import { Paddings } from '../helpers/Constants';
+import { Paddings, Sizes } from '../helpers/Constants';
 import { Margins } from '../helpers/Constants';
 import { widthPercentageToDP, heightPercentageToDP } from '../helpers/Responsive';
 import { TouchableRipple } from 'react-native-paper';
@@ -33,7 +33,10 @@ class SideMenu extends Component {
 			<View style={{ flex: 1, backgroundColor: Colors.AppBackgroundColor, flexDirection: 'column' }}>
 				<Image
 					source={Images.DrawerImage}
-					style={{ height: heightPercentageToDP('25%'), width: null }}
+					style={{
+						width: Sizes.DrawerWidth,
+						height: Sizes.DrawerWidth * 0.5628
+					}}
 					resizeMode="contain"
 				/>
 				<ScrollView>

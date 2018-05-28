@@ -27,5 +27,6 @@ export const Paddings = {
 
 export const Sizes = {
 	DrawerIconWidth: widthPercentageToDP('5%'),
-	DrawerIconHeight: widthPercentageToDP('5%')
+	DrawerIconHeight: widthPercentageToDP('5%'),
+	DrawerWidth: widthPercentageToDP('80%')
 };
