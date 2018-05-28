@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text, Image, View, TouchableOpacity, Animated, Easing, Dimensions } from 'react-native';
+import { Colors } from './../../helpers/Colors';
 
 const { width, height } = Dimensions.get('window');
 
-export default class CockpitViewAnim extends React.Component {
+export default class CockpitDataRowAnimatable extends React.Component {
 	state = {
 		animVal: new Animated.Value(0)
 	};
@@ -50,7 +51,7 @@ export default class CockpitViewAnim extends React.Component {
 				style={{
 					flexDirection: 'row',
 					justifyContent: 'space-between',
-					backgroundColor: '#616788',
+					backgroundColor: Colors.CockpitDataRowAnimatableBackgroundColor,
 					borderRadius: 20,
 					alignItems: 'flex-start',
 					alignContent: 'flex-start',

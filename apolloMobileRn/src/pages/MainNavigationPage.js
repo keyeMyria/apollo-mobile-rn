@@ -25,7 +25,7 @@ const SwitchNavigation = createSwitchNavigator({
 				}
 			},
 			{
-				initialRouteName: 'bestOf',
+				initialRouteName: 'cockpit',
 				contentComponent: SideMenu
 			}
 		)

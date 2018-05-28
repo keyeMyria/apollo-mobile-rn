@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { View, Text, StyleSheet } from 'react-native';
+import { Colors } from './../../helpers/Colors';
 
 class DigitalClock extends Component {
 	constructor(props) {
@@ -44,7 +45,7 @@ class DigitalClock extends Component {
 
 const styles = StyleSheet.create({
 	clockText: {
-		color: '#e7cbe8',
+		color: Colors.DijitalClockTextColor,
 		fontSize: 18,
 		fontWeight: '500'
 	}

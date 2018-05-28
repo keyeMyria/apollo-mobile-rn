@@ -13,10 +13,13 @@ import {
 } from 'react-native';
 import { EditView } from '../components/cockpit/EditView';
 // import { LinearGradient } from 'expo';
-import CockpitView from '../components/cockpit/CockpitView';
+import CockpitDataRow from '../components/cockpit/CockpitDataRow';
 import DijitalClock from '../components/cockpit/DijitalClock';
-import CockpitViewAnim from '../components/cockpit/CockpitViewAnim';
 import Constant, { Margins } from '../helpers/Constants';
+import CockpitDataRowAnimatable from './../components/cockpit/CockpitDataRowAnimatable';
+import CockpitDataView from './../components/cockpit/CockpitDataView';
+import { Colors } from './../helpers/Colors';
+import { LinearGradient } from 'react-native-linear-gradient';
 
 const { width, height } = Dimensions.get('window');
 const data = [
@@ -99,7 +102,7 @@ export default class CockpitPage extends React.Component {
 			<View
 				style={{
 					flex: 1,
-					backgroundColor: '#4a5178'
+					backgroundColor: Colors.CockpitPageBackgroundColor
 				}}
 			>
 				<Modal
@@ -111,92 +114,14 @@ export default class CockpitPage extends React.Component {
 					}}
 				>
 					<Animated.View style={{ backgroundColor: bgColor, flex: 1 }}>
-						<CockpitViewAnim
+						<CockpitDataRowAnimatable
 							data={data[this.state.selectedItemIndex]}
 							yPos={this.state.yPos}
 							onPress={() => this.setState({ modalIsVisible: false })}
 						/>
 					</Animated.View>
 				</Modal>
-				<View style={{ flex: 1, backgroundColor: '#f194b4' }}>
-					<View
-						style={{
-							flexDirection: 'column',
-							flex: 3,
-							justifyContent: 'space-around'
-						}}
-					>
-						<View
-							style={{
-								flexDirection: 'row',
-								alignItems: 'center',
-								marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin
-							}}
-						>
-							<EditView imageSource={require('../../assets/menuicon.png')} />
-							<Text
-								style={{
-									flex: 1,
-									fontWeight: 'bold',
-									fontSize: 12,
-									color: 'white',
-									textAlign: 'center'
-								}}
-							>
-								APOLLO
-							</Text>
-							<TouchableOpacity>
-								<Text
-									style={{
-										color: 'white'
-									}}
-								>
-									AVM Seç
-								</Text>
-							</TouchableOpacity>
-						</View>
-						<View
-							style={{
-								alignSelf: 'center'
-							}}
-						>
-							<View
-								style={{
-									flexDirection: 'row',
-									alignItems: 'flex-end'
-								}}
-							>
-								<Text
-									style={{
-										color: 'white',
-										fontSize: 30,
-										textAlignVertical: 'bottom'
-									}}
-								>
-									48693
-								</Text>
-								<Text
-									style={{
-										color: 'white',
-										marginBottom: 7
-									}}
-								>
-									.21 TL
-								</Text>
-							</View>
-							<Text style={{ color: 'white', fontSize: 12, textAlign: 'center' }}>5326 TL (+20.3%)</Text>
-						</View>
-					</View>
-					{/* <View
-						style={{
-							height: 10,
-							backgroundColor: 'transparent',
-							opacity: 0.5,
-							borderBottomLeftRadius: 10,
-							borderBottomRightRadius: 10
-						}}
-					/> */}
-				</View>
+				<CockpitDataView />
 
 				<View
 					style={{
@@ -218,7 +143,7 @@ export default class CockpitPage extends React.Component {
 						marginRight: 15
 					}}
 				/>
-				<View style={{ flex: 3, backgroundColor: '#4a5178' }}>
+				<View style={{ flex: 3, backgroundColor: Colors.CockpitPageBackgroundColor }}>
 					<ScrollView onScrollEndDrag={() => this.onScrollEndDrag()}>
 						<View
 							style={{
@@ -227,7 +152,7 @@ export default class CockpitPage extends React.Component {
 								marginTop: Margins.ButtonTopMargin
 							}}
 						>
-							<CockpitView
+							<CockpitDataRow
 								data={data[0]}
 								onPress={yPos => {
 									this.handleOnPress(yPos, 0);
@@ -235,7 +160,7 @@ export default class CockpitPage extends React.Component {
 								scrollPositionChangedCounter={this.state.scrollPositionChangedCounter}
 							/>
 
-							<CockpitView
+							<CockpitDataRow
 								data={data[1]}
 								onPress={yPos => {
 									this.handleOnPress(yPos, 1);
@@ -243,7 +168,7 @@ export default class CockpitPage extends React.Component {
 								scrollPositionChangedCounter={this.state.scrollPositionChangedCounter}
 							/>
 
-							<CockpitView
+							<CockpitDataRow
 								data={data[2]}
 								onPress={yPos => {
 									this.handleOnPress(yPos, 2);
@@ -251,14 +176,14 @@ export default class CockpitPage extends React.Component {
 								scrollPositionChangedCounter={this.state.scrollPositionChangedCounter}
 							/>
 
-							<CockpitView
+							<CockpitDataRow
 								data={data[3]}
 								onPress={yPos => {
 									this.handleOnPress(yPos, 3);
 								}}
 								scrollPositionChangedCounter={this.state.scrollPositionChangedCounter}
 							/>
-							<CockpitView
+							<CockpitDataRow
 								data={data[4]}
 								onPress={yPos => {
 									this.handleOnPress(yPos, 4);
@@ -266,18 +191,28 @@ export default class CockpitPage extends React.Component {
 								scrollPositionChangedCounter={this.state.scrollPositionChangedCounter}
 							/>
 
-							<CockpitView
+							<CockpitDataRow
 								data={data[5]}
 								onPress={yPos => {
 									this.handleOnPress(yPos, 5);
 								}}
 								scrollPositionChangedCounter={this.state.scrollPositionChangedCounter}
 							/>
-							{/* <View style={{ height: 100 }} /> */}
+							<View style={{ height: 100 }} />
 						</View>
 					</ScrollView>
 
-					<View style={{ flexDirection: 'row', justifyContent: 'center', backgroundColor: 'transparent' }}>
+					<View
+						style={{
+							position: 'absolute',
+							flexDirection: 'row',
+							justifyContent: 'center',
+							backgroundColor: 'transparent',
+							bottom: 0,
+							left: 0,
+							right: 0
+						}}
+					>
 						<TouchableOpacity onPress={() => {}}>
 							<View
 								style={{
