@@ -19,6 +19,7 @@ import CockpitDataRowAnimatable from './../components/cockpit/CockpitDataRowAnim
 import { Colors } from './../helpers/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import CockpitHeader from './../components/cockpit/CockpitHeader';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 const { width, height } = Dimensions.get('window');
 const data = [
