@@ -44,7 +44,10 @@ export default class CockpitDataRow extends React.Component {
 				onPress={() => {
 					onPress(this.y);
 				}}
-				// onLayout={this.handleLayout}
+				style={{
+					marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin,
+					marginBottom: Margins.CockpitScreenItemsBottomMargin
+				}}
 			>
 				<View
 					style={{
@@ -52,9 +55,7 @@ export default class CockpitDataRow extends React.Component {
 						justifyContent: 'space-between',
 						backgroundColor: Colors.CockpitDataRowBackgroundColor,
 						alignItems: 'center',
-						borderRadius: 20,
-						marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin,
-						marginBottom: Margins.CockpitScreenItemsBottomMargin
+						borderRadius: 20
 					}}
 				>
 					<View style={{ flexDirection: 'row', alignItems: 'center' }}>

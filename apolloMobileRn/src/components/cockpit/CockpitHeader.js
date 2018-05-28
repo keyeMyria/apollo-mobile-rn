@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Image, Text, View } from 'react-native';
 import Constant, { Margins } from '../../helpers/Constants';
-import { EditView } from './EditView';
+
 import { Colors } from './../../helpers/Colors';
 import LinearGradient from 'react-native-linear-gradient';
+import { DrawerIcon } from './DrawerIcon';
 
-class CockpitDataView extends Component {
+class CockpitHeader extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1 }}>
-				<LinearGradient colors={['#4c669f', '#98553d', '#586329']} style={{ flex: 1 }}>
+				<LinearGradient
+					start={{ x: 0.0, y: 0.0 }}
+					end={{ x: 1.0, y: 1.0 }}
+					colors={[
+						'#957FEE',
+						'#A67DE3',
+						'#BC7BD9',
+						'#C07BD4',
+						'#CD7ACC',
+						'#D578C9',
+						'#E278C2',
+						'#EB76BC',
+						'#EF5FA7',
+						'#F25FA6'
+					]}
+					style={{ flex: 1 }}
+				>
 					<View
 						style={{
 							flexDirection: 'column',
@@ -24,7 +41,7 @@ class CockpitDataView extends Component {
 								marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin
 							}}
 						>
-							<EditView imageSource={require('../../../assets/menuicon.png')} />
+							<DrawerIcon imageSource={require('../../../assets/menuicon.png')} />
 							<Text
 								style={{
 									flex: 1,
@@ -79,8 +96,29 @@ class CockpitDataView extends Component {
 						</View>
 					</View>
 				</LinearGradient>
+				<View
+					style={{
+						height: 12,
+						backgroundColor: '#b66da8',
+						opacity: 0.5,
+						borderBottomLeftRadius: 10,
+						borderBottomRightRadius: 10
+					}}
+				/>
+
+				<View
+					style={{
+						height: 9,
+						backgroundColor: '#875a7e',
+						opacity: 0.3,
+						borderBottomLeftRadius: 10,
+						borderBottomRightRadius: 10,
+						marginLeft: 15,
+						marginRight: 15
+					}}
+				/>
 			</View>
 		);
 	}
 }
-export default CockpitDataView;
+export default CockpitHeader;
