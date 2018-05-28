@@ -6,6 +6,8 @@ import LoginPage from './LoginPage';
 import EMailReport from './EMailReport';
 import SideMenu from './SideMenu';
 import CockpitPage from './CockpitPage';
+import { widthPercentageToDP } from '../helpers/Responsive';
+import { Sizes } from '../helpers/Constants';
 
 const SwitchNavigation = createSwitchNavigator({
 	app: {
@@ -26,7 +28,8 @@ const SwitchNavigation = createSwitchNavigator({
 			},
 			{
 				initialRouteName: 'cockpit',
-				contentComponent: SideMenu
+				contentComponent: SideMenu,
+				drawerWidth: Sizes.DrawerWidth
 			}
 		)
 	},
