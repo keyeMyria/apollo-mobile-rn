@@ -1,9 +1,10 @@
 import React from 'react';
 import { TouchableOpacity, Image } from 'react-native';
-import { widthPercentageToDP } from '../.././helpers/Responsive';
+import { widthPercentageToDP } from '../.././helpers';
 var imageWidth = widthPercentageToDP('5%');
 var imageHeight = widthPercentageToDP('5%');
-export const DrawerIcon = ({ onPress, imageSource, myStyle }) => {
+
+const DrawerIcon = ({ onPress, imageSource, myStyle }) => {
 	return (
 		<TouchableOpacity
 			onPress={onPress}
@@ -18,3 +19,5 @@ export const DrawerIcon = ({ onPress, imageSource, myStyle }) => {
 		</TouchableOpacity>
 	);
 };
+
+export { DrawerIcon };

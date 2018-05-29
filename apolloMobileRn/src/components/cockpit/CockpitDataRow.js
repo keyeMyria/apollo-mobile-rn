@@ -1,14 +1,13 @@
 import React from 'react';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
-import { Margins } from '../../helpers/Constants';
-import { widthPercentageToDP } from '../../helpers/Responsive';
-import { Colors } from './../../helpers/Colors';
+import { Margins, Colors, widthPercentageToDP } from '../../helpers';
+
 var imageHeight = widthPercentageToDP('10%');
 var imageWidth = widthPercentageToDP('10%');
 var graphImageWidth = widthPercentageToDP('15%');
 var graphImageHeight = widthPercentageToDP('15%');
 
-export default class CockpitDataRow extends React.Component {
+class CockpitDataRow extends React.Component {
 	state = {
 		yPos: 0
 	};
@@ -81,3 +80,4 @@ export default class CockpitDataRow extends React.Component {
 		);
 	}
 }
+export { CockpitDataRow };

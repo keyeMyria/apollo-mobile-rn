@@ -1,4 +1,4 @@
-export const Colors = {
+const Colors = {
 	AppBackgroundColor: '#303030',
 	PageTitleColor: '#00f',
 	DividerColor: '#fff',
@@ -11,3 +11,4 @@ export const Colors = {
 	EmailReportIconColor: '#BCBCBC',
 	CockpitPageBackgroundColor: '#4a5178'
 };
+export { Colors };

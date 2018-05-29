@@ -1,3 +1,4 @@
-export const Images = {
+const Images = {
 	DrawerImage: require('../../assets/drawerImage.png')
 };
+export { Images };

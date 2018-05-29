@@ -12,15 +12,12 @@ import {
 	Easing
 } from 'react-native';
 import { connect } from 'react-redux';
-import CockpitDataRow from '../components/cockpit/CockpitDataRow';
-import DijitalClock from '../components/cockpit/DijitalClock';
-import Constant, { Margins } from '../helpers/Constants';
-import CockpitDataRowAnimatable from './../components/cockpit/CockpitDataRowAnimatable';
-import { Colors } from './../helpers/Colors';
+import { DigitalClock, CockpitDataRow, CockpitDataRowAnimatable, CockpitHeader } from '../components/cockpit';
+import { Margins, Colors } from '../helpers';
 import LinearGradient from 'react-native-linear-gradient';
-import CockpitHeader from './../components/cockpit/CockpitHeader';
 import { CockpitData } from './../helpers/DummyData';
 import { fetchDailySummary } from 'apollo-rn-redux-helper/src/actions';
+
 const { width, height } = Dimensions.get('window');
 
 class CockpitPage extends React.Component {
@@ -33,7 +30,7 @@ class CockpitPage extends React.Component {
 	};
 
 	componentDidMount() {
-		// this.props.fetchDailySummary('portus', new Date(2018, 5, 27, 22, 0, 0), 15, 30, true, true);
+		this.props.fetchDailySummary('portus', new Date(2018, 5, 27, 22, 0, 0), 15, 30, true, true);
 	}
 
 	animateModal() {
@@ -197,7 +194,7 @@ class CockpitPage extends React.Component {
 									height: 100
 								}}
 							>
-								<DijitalClock />
+								<DigitalClock />
 							</View>
 						</TouchableOpacity>
 					</LinearGradient>

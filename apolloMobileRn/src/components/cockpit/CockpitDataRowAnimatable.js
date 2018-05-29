@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, Image, View, TouchableOpacity, Animated, Easing, Dimensions } from 'react-native';
-import { Colors } from './../../helpers/Colors';
+import { Colors } from './../../helpers';
 
 const { width, height } = Dimensions.get('window');
 
-export default class CockpitDataRowAnimatable extends React.Component {
+class CockpitDataRowAnimatable extends React.Component {
 	state = {
 		animVal: new Animated.Value(0)
 	};
@@ -97,3 +97,4 @@ export default class CockpitDataRowAnimatable extends React.Component {
 		);
 	}
 }
+export { CockpitDataRowAnimatable };

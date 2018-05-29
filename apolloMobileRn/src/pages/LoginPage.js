@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, ActivityIndicator, Alert, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
-import { Page } from './../components/common/Page';
-import { Colors } from '../helpers/Colors';
-import { Icons } from '../helpers/Icons';
+import { Page } from './../components/common';
+import { Colors, Icons } from '../helpers';
 
 class LoginPage extends Component {
 	renderLoading() {
