@@ -14,7 +14,8 @@ const Margins = {
 	DateItemBottomMargin: widthPercentageToDP('5%'),
 	DateItemHorizontalMargin: widthPercentageToDP('5%'),
 	CockpitScreenItemsHorizontalMargin: widthPercentageToDP('5%'),
-	CockpitScreenItemsBottomMargin: widthPercentageToDP('5%')
+	CockpitScreenItemsBottomMargin: widthPercentageToDP('5%'),
+	LoginItemsBottomMargin: widthPercentageToDP('5%')
 };
 
 const Paddings = {

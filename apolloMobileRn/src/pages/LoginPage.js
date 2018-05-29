@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, Alert, Image, TextInput } from 'react-native';
+import {
+	View,
+	Text,
+	StyleSheet,
+	ActivityIndicator,
+	Alert,
+	Image,
+	ImageBackground,
+	TouchableOpacity
+} from 'react-native';
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from './../components/common';
-import { Colors, Icons, Paddings, widthPercentageToDP, Margins } from '../helpers';
-import LinearGradient from 'react-native-linear-gradient';
-import { Button } from 'react-native-paper';
+import { Colors, Icons, Paddings, widthPercentageToDP, Margins, Images } from '.././helpers';
+// import LinearGradient from 'react-native-linear-gradient';
+import { Button, TextInput, Checkbox } from 'react-native-paper';
 
 class LoginPage extends Component {
+	state = {
+		checked: false
+	};
 	renderLoading() {
 		if (this.props.isTokenLoading) {
 			return <ActivityIndicator size={30} color="black" />;
@@ -25,26 +37,42 @@ class LoginPage extends Component {
 		if (this.props.tokenError) {
 			Alert.alert('Bir hata oluştu');
 		}
+		const { checked } = this.state;
 		return (
-			<LinearGradient
-				colors={[
-					'#957FEE',
-					'#A67DE3',
-					'#BC7BD9',
-					'#C07BD4',
-					'#CD7ACC',
-					'#D578C9',
-					'#E278C2',
-					'#EB76BC',
-					'#EF5FA7',
-					'#F25FA6'
-				]}
-				style={styles.container}
-			>
-				<Image source={Icons.LıstItemRightIcon} style={{ width: 30, height: 30, alignSelf: 'center' }} />
+			<ImageBackground source={Images.LoginBackground} style={styles.container}>
+				<Image
+					source={require('../../assets/apolloLogo.png')}
+					style={{ width: widthPercentageToDP('90%'), height: 100 }}
+					resizeMode="contain"
+				/>
 				<View style={styles.welcome}>
-					<TextInput placeholder="Username" placeholderTextColor="#4a5178" />
-					<TextInput placeholder="Password" placeholderTextColor="#4a5178" />
+					<TextInput
+						label="AVM Kodu"
+						placeholder="portus"
+						theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }}
+					/>
+
+					<TextInput
+						label="Kullanıcı Adı"
+						placeholder="omg.abc"
+						theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }}
+					/>
+
+					<TextInput label="Parola " theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }} />
+
+					<View style={{ flexDirection: 'row' }}>
+						<Checkbox
+							onPress={() => {
+								this.setState({ checked: !checked });
+							}}
+							checked={checked}
+							color="#FFFFFF"
+							uncheckedColor="#FFFFFF"
+						/>
+						<Text style={{ color: '#FFFFFF', textAlignVertical: 'center', paddingLeft: 15 }}>
+							Beni Hatırla
+						</Text>
+					</View>
 				</View>
 				<Button
 					style={{
@@ -57,19 +85,23 @@ class LoginPage extends Component {
 					color="#4a5178"
 					onPress={() => this.props.fetchToken('omg.erkan', 'erkan123', 'portus')}
 				>
-					Login
+					Giriş Yap
 				</Button>
+				<TouchableOpacity onPress={() => {}}>
+					<Text style={{ color: '#FFFFFF', textAlign: 'center' }}>Parolamı Unuttum</Text>
+				</TouchableOpacity>
 				{this.renderLoading()}
-			</LinearGradient>
+			</ImageBackground>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center'
+		flex: 1
+		// marginBottom:Margins.
+		// justifyContent: 'center',
+		// alignItems: 'center'
 	},
 	welcome: {
 		alignSelf: 'stretch',
