@@ -3,7 +3,9 @@ import { View, Text, StyleSheet, ActivityIndicator, Alert, Image, TextInput } fr
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from './../components/common';
-import { Colors, Icons } from '../helpers';
+import { Colors, Icons, Paddings, widthPercentageToDP, Margins } from '../helpers';
+import LinearGradient from 'react-native-linear-gradient';
+import { Button } from 'react-native-paper';
 
 class LoginPage extends Component {
 	renderLoading() {
