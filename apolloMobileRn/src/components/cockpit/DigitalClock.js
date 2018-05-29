@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
 import { View, Text, StyleSheet } from 'react-native';
-import { Colors } from './../../helpers/Colors';
+import { Colors } from './../../helpers';
 
 class DigitalClock extends Component {
 	constructor(props) {
@@ -56,4 +55,4 @@ DigitalClock.propTypes = Object.assign({}, Component.propTypes, {
 	clockStyles: Text.propTypes.style
 });
 
-export default DigitalClock;
+export { DigitalClock };

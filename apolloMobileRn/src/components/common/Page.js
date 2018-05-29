@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Colors } from './../../helpers/Colors';
+import { Colors } from './../../helpers';
 import { Toolbar, ToolbarBackAction, ToolbarContent, ToolbarAction } from 'react-native-paper';
 
-export const Page = ({ navigation, children, style }) => {
+const Page = ({ navigation, children, style }) => {
 	return (
 		<View style={{ flex: 1, backgroundColor: Colors.AppBackgroundColor }}>
 			<Toolbar>
@@ -20,3 +20,4 @@ export const Page = ({ navigation, children, style }) => {
 		</View>
 	);
 };
+export { Page };

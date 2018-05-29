@@ -1,13 +1,13 @@
 import { widthPercentageToDP } from './Responsive';
 
-export const FontSizes = {
+const FontSizes = {
 	TitleFontSize: widthPercentageToDP('4%'),
 	SubTitleFontSize: widthPercentageToDP('3%'),
 	DetailFontSize: widthPercentageToDP('2%'),
 	ButtonFontSize: widthPercentageToDP('3%')
 };
 
-export const Margins = {
+const Margins = {
 	CardMargin: widthPercentageToDP('3%'),
 	ListItemBottomMargin: widthPercentageToDP('2%'),
 	ButtonTopMargin: widthPercentageToDP('5%'),
@@ -17,7 +17,7 @@ export const Margins = {
 	CockpitScreenItemsBottomMargin: widthPercentageToDP('5%')
 };
 
-export const Paddings = {
+const Paddings = {
 	PageHorizontalPadding: widthPercentageToDP('3%'),
 	PageVerticalPadding: widthPercentageToDP('3%'),
 	ListItemHorizontalPadding: widthPercentageToDP('2%'),
@@ -26,8 +26,10 @@ export const Paddings = {
 	ButtonVerticalPadding: widthPercentageToDP('1%')
 };
 
-export const Sizes = {
+const Sizes = {
 	DrawerIconWidth: widthPercentageToDP('5%'),
 	DrawerIconHeight: widthPercentageToDP('5%'),
 	DrawerWidth: widthPercentageToDP('80%')
 };
+
+export { FontSizes, Margins, Paddings, Sizes };

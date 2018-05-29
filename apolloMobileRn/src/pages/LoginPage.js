@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, Alert, Image, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
-import { Page } from './../components/common/Page';
-import { Colors } from '../helpers/Colors';
-import { Icons } from '../helpers/Icons';
-import { Button } from 'react-native-paper';
-
-import LinearGradient from 'react-native-linear-gradient';
-import { Paddings, Margins } from './../helpers/Constants';
-import { widthPercentageToDP } from '../helpers/Responsive';
+import { Page } from './../components/common';
+import { Colors, Icons } from '../helpers';
 
 class LoginPage extends Component {
 	renderLoading() {

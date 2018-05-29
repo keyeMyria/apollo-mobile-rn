@@ -2,14 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, Image, StyleSheet } from 'react-native';
-import { Paddings, Sizes } from '../helpers/Constants';
-import { Margins } from '../helpers/Constants';
-import { widthPercentageToDP, heightPercentageToDP } from '../helpers/Responsive';
 import { TouchableRipple } from 'react-native-paper';
 import { DrawerItems } from '../components/drawer/DrawerItems';
-import { Images } from '../helpers/Images';
-// import { Icons } from '../helpers/Icons';
-import { Colors } from './../helpers/Colors';
+import { Colors, Images, Paddings, Sizes, Margins, widthPercentageToDP, heightPercentageToDP } from './../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 
 var imageWidth = widthPercentageToDP('3%');

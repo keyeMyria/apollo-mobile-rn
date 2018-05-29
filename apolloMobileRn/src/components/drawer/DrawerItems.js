@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-// import { Icons } from '../../helpers/Icons';
-import { Paddings } from '../../helpers/Constants';
-import { Margins } from '../../helpers/Constants';
+import { Paddings, Margins, Colors, widthPercentageToDP } from '../../helpers';
 import { TouchableRipple } from 'react-native-paper';
-import { widthPercentageToDP } from '../../helpers/Responsive';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { Colors } from './../../helpers/Colors';
 
 export const DrawerItems = ({ textTitle, iconName, onPress }) => {
 	return (

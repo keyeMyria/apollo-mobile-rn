@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Image, Text, View } from 'react-native';
-import Constant, { Margins } from '../../helpers/Constants';
-
-import { Colors } from './../../helpers/Colors';
+import { Margins, Colors } from '../../helpers';
 import LinearGradient from 'react-native-linear-gradient';
 import { DrawerIcon } from './DrawerIcon';
 
@@ -121,4 +119,4 @@ class CockpitHeader extends Component {
 		);
 	}
 }
-export default CockpitHeader;
+export { CockpitHeader };

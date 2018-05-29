@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Page } from './../components/common/Page';
-// import { Icons } from '../helpers/Icons';
-import { Divider } from './../components/common/Divider';
-import { FontSizes, Paddings, Margins } from './../helpers/Constants';
-import { widthPercentageToDP } from '../helpers/Responsive';
+import { Divider, Page } from './../components/common';
+import { FontSizes, Paddings, Margins, Colors, widthPercentageToDP } from '../helpers';
 import { Button, TextInput } from 'react-native-paper';
-import { Colors } from './../helpers/Colors';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 
 var imageWidth = widthPercentageToDP('3%');

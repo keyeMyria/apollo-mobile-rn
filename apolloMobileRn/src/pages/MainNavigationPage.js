@@ -6,8 +6,7 @@ import LoginPage from './LoginPage';
 import EMailReport from './EMailReport';
 import SideMenu from './SideMenu';
 import CockpitPage from './CockpitPage';
-import { widthPercentageToDP } from '../helpers/Responsive';
-import { Sizes } from '../helpers/Constants';
+import { Sizes, widthPercentageToDP } from '../helpers';
 
 const SwitchNavigation = createSwitchNavigator({
 	login: {
