@@ -33,7 +33,7 @@ class CockpitPage extends React.Component {
 	};
 
 	componentDidMount() {
-		// this.props.fetchDailySummary('portus', new Date(2018, 5, 27, 22, 0, 0), 15, 30, true, true);
+		this.props.fetchDailySummary('portus', new Date(2018, 5, 27, 22, 0, 0), 15, 30, true, true);
 	}
 
 	animateModal() {

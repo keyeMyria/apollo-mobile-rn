@@ -10,6 +10,9 @@ import { widthPercentageToDP } from '../helpers/Responsive';
 import { Sizes } from '../helpers/Constants';
 
 const SwitchNavigation = createSwitchNavigator({
+	login: {
+		screen: LoginPage
+	},
 	app: {
 		screen: createDrawerNavigator(
 			{
@@ -32,9 +35,6 @@ const SwitchNavigation = createSwitchNavigator({
 				drawerWidth: Sizes.DrawerWidth
 			}
 		)
-	},
-	login: {
-		screen: LoginPage
 	}
 });
 
