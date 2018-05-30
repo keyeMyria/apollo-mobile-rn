@@ -7,7 +7,8 @@ import {
 	Alert,
 	Image,
 	ImageBackground,
-	TouchableOpacity
+	TouchableOpacity,
+	AsyncStorage
 } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
@@ -17,9 +18,17 @@ import { Colors, Icons, Paddings, widthPercentageToDP, Margins, Images } from '.
 import { Button, TextInput, Checkbox } from 'react-native-paper';
 
 class LoginPage extends Component {
-	state = {
-		checked: false
-	};
+	username = 'omg.erkan';
+	password = 'erkan123';
+	mallCode = 'portus';
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			rememberMe: false
+		};
+	}
+
 	renderLoading() {
 		if (this.props.isTokenLoading) {
 			return <ActivityIndicator size={30} color="black" />;
@@ -29,15 +38,26 @@ class LoginPage extends Component {
 
 	componentWillReceiveProps(newProps) {
 		if (newProps.token !== this.props.token) {
+			if (this.state.rememberMe) {
+				saveUserCredentials();
+			}
 			this.props.navigation.navigate('app');
 		}
+	}
+
+	async saveUserCredentials() {
+		await AsyncStorage.multiSet([
+			['username', this.username],
+			['password', this.password],
+			['mallCode', this.mallCode]
+		]);
 	}
 
 	render() {
 		if (this.props.tokenError) {
 			Alert.alert('Bir hata oluştu');
 		}
-		const { checked } = this.state;
+		const { rememberMe } = this.state;
 		return (
 			<ImageBackground source={Images.LoginBackground} style={styles.container}>
 				<Image
@@ -48,31 +68,42 @@ class LoginPage extends Component {
 				<View style={styles.welcome}>
 					<TextInput
 						label="AVM Kodu"
-						placeholder="portus"
+						onChangeText={text => {
+							this.mallCode = text;
+						}}
+						style={{ backgroundColor: 'transparent' }}
 						theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }}
 					/>
 
 					<TextInput
 						label="Kullanıcı Adı"
-						placeholder="omg.abc"
+						onChangeText={text => {
+							this.username = text;
+						}}
+						style={{ backgroundColor: 'transparent' }}
 						theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }}
 					/>
 
-					<TextInput label="Parola " theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }} />
+					<TextInput
+						label="Parola"
+						onChangeText={text => {
+							this.password = text;
+						}}
+						style={{ backgroundColor: 'transparent' }}
+						theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }}
+					/>
 
-					<View style={{ flexDirection: 'row' }}>
-						<Checkbox
-							onPress={() => {
-								this.setState({ checked: !checked });
-							}}
-							checked={checked}
-							color="#FFFFFF"
-							uncheckedColor="#FFFFFF"
-						/>
+					<TouchableOpacity
+						style={{ flexDirection: 'row' }}
+						onPress={() => {
+							this.setState({ rememberMe: !this.state.rememberMe });
+						}}
+					>
+						<Checkbox checked={this.state.rememberMe} color="#4a5178" uncheckedColor="#FFFFFF" />
 						<Text style={{ color: '#FFFFFF', textAlignVertical: 'center', paddingLeft: 15 }}>
 							Beni Hatırla
 						</Text>
-					</View>
+					</TouchableOpacity>
 				</View>
 				<Button
 					style={{
@@ -83,7 +114,7 @@ class LoginPage extends Component {
 					}}
 					raised
 					color="#4a5178"
-					onPress={() => this.props.fetchToken('omg.erkan', 'erkan123', 'portus')}
+					onPress={() => this.logUserIn(this.username, this.password, this.mallCode, rememberMe)}
 				>
 					Giriş Yap
 				</Button>
@@ -93,6 +124,10 @@ class LoginPage extends Component {
 				{this.renderLoading()}
 			</ImageBackground>
 		);
+	}
+
+	logUserIn(username, password, mallCode, rememberMe) {
+		this.props.fetchToken(username, password, mallCode);
 	}
 }
 
