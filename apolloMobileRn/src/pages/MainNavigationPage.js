@@ -30,7 +30,7 @@ const SwitchNavigation = createSwitchNavigator({
 				}
 			},
 			{
-				initialRouteName: 'comparison',
+				initialRouteName: 'cockpit',
 				contentComponent: SideMenu,
 				drawerWidth: Sizes.DrawerWidth
 			}
