@@ -102,14 +102,7 @@ class ComparisonPage extends Component {
 					</View>
 				</ScrollView>
 
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'space-around',
-						alignItems: 'center',
-						paddingBottom: widthPercentageToDP('5%')
-					}}
-				>
+				<View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
 					<TouchableOpacity>
 						<Text style={{ color: '#FBFBFB' }}>Excel Raporu Al</Text>
 					</TouchableOpacity>

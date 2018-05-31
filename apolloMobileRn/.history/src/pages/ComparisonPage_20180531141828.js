@@ -102,22 +102,15 @@ class ComparisonPage extends Component {
 					</View>
 				</ScrollView>
 
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'space-around',
-						alignItems: 'center',
-						paddingBottom: widthPercentageToDP('5%')
-					}}
-				>
+				<View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
 					<TouchableOpacity>
-						<Text style={{ color: '#FBFBFB' }}>Excel Raporu Al</Text>
+						<Text style={{ color: '#FBFBFB', paddingTop: widthPercentageToDP('4%') }}>Excel Raporu Al</Text>
 					</TouchableOpacity>
 					<Button
 						raised
 						onPress={() => {}}
 						dark={true}
-						style={{ backgroundColor: Colors.DrawerItemRippleColor }}
+						style={{ backgroundColor: Colors.DrawerItemRippleColor, marginTop: widthPercentageToDP('2%') }}
 					>
 						Kıyasla
 					</Button>
