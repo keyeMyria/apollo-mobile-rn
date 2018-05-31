@@ -45,13 +45,21 @@ class LoginPage extends Component {
 	}
 
 	saveUserCredentials() {
-		AsyncStorage.multiSet([['username', this.username], ['password', this.password], ['mallCode', this.mallCode]]);
+		AsyncStorage.multiSet([
+			['username', this.username],
+			['password', this.password],
+			['mallCode', this.mallCode]
+		]).catch(err => console.log('multi set error :', err));
+	}
+
+	logUserIn(username, password, mallCode) {
+		this.props.fetchToken(username, password, mallCode);
 	}
 
 	render() {
 		const { rememberMe } = this.state;
 
-		console.log('login page ');
+		console.log('login page ', this.props);
 		if (this.props.tokenError) {
 			Alert.alert('Bir hata oluştu');
 		}
@@ -122,10 +130,6 @@ class LoginPage extends Component {
 				{this.renderLoading()}
 			</ImageBackground>
 		);
-	}
-
-	logUserIn(username, password, mallCode) {
-		this.props.fetchToken(username, password, mallCode);
 	}
 }
 

@@ -8,19 +8,13 @@ import { Button } from 'react-native-paper';
 class CockpitPage extends Component {
 	render() {
 		return (
-			<Page>
+			<Page navigation={this.props.navigation}>
 				<View>
 					<Text>asdasdasd</Text>
 					<Button onPress={() => this.deleteCredential()}>Çıkış Yap</Button>
 				</View>
 			</Page>
 		);
-	}
-
-	deleteCredential() {
-		AsyncStorage.multiRemove(['username', 'password', 'mallCode'])
-			.then(() => console.log('silindi'))
-			.catch(err => console.log('silinemedi : ', err));
 	}
 }
 

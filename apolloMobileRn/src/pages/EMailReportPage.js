@@ -8,7 +8,7 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 var imageWidth = widthPercentageToDP('3%');
 var imageHeight = widthPercentageToDP('5%');
 
-class EMailReport extends Component {
+class EMailReportPage extends Component {
 	state = {
 		text: ''
 	};
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default EMailReport;
+export default EMailReportPage;

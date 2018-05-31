@@ -1,27 +1,38 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { ScrollView, Text, View, Image, StyleSheet } from 'react-native';
+import { ScrollView, Text, View, Image, StyleSheet, AsyncStorage } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import { DrawerItems } from '../components/drawer/DrawerItems';
 import { Colors, Images, Paddings, Sizes, Margins, widthPercentageToDP, heightPercentageToDP } from './../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import { logOut } from 'apollo-rn-redux-helper/src/actions';
+import { connect } from 'react-redux';
 
 var imageWidth = widthPercentageToDP('3%');
 var imageHeight = widthPercentageToDP('5%');
 
 class SideMenu extends Component {
 	navigateToScreen(route) {
-		console.log(route);
-		const navigateAction = NavigationActions.navigate({
-			routeName: route
-		});
-		this.props.navigation.dispatch(navigateAction);
+		setTimeout(() => {
+			this.props.navigation.navigate(route);
+		}, 150);
 	}
 
 	state = {
 		active: 'First Item'
 	};
+
+	logUserOut() {
+		console.log('çıkış yapılıyor');
+		AsyncStorage.multiRemove(['username', 'password', 'mallCode'])
+			.then(() => {
+				logOut();
+				// this.props.navigation.navigate('login');
+				console.log('silindi');
+			})
+			.catch(err => console.log('silinemedi : ', err));
+	}
 
 	render() {
 		return (
@@ -43,13 +54,37 @@ class SideMenu extends Component {
 						}}
 					/>
 
-					<DrawerItems textTitle="Yönetici Özet" iconName="gps-fixed" />
+					<DrawerItems
+						textTitle="Yönetici Özet"
+						iconName="gps-fixed"
+						onPress={() => {
+							this.navigateToScreen('managerSummary');
+						}}
+					/>
 
-					<DrawerItems textTitle="Kampanya Detay" iconName="local-play" />
+					<DrawerItems
+						textTitle="Kampanya Detay"
+						iconName="local-play"
+						onPress={() => {
+							this.navigateToScreen('campaignDetails');
+						}}
+					/>
 
-					<DrawerItems textTitle="En İyiler" iconName="thumb-up" />
+					<DrawerItems
+						textTitle="En İyiler"
+						iconName="thumb-up"
+						onPress={() => {
+							this.navigateToScreen('bestOf');
+						}}
+					/>
 
-					<DrawerItems textTitle="Hediye Stok" iconName="redeem" />
+					<DrawerItems
+						textTitle="Hediye Stok"
+						iconName="redeem"
+						onPress={() => {
+							this.navigateToScreen('giftStock');
+						}}
+					/>
 
 					<DrawerItems
 						textTitle="Kıyasla"
@@ -59,11 +94,29 @@ class SideMenu extends Component {
 						}}
 					/>
 
-					<DrawerItems textTitle="Müşteri Değer Piramidi" iconName="landscape" />
+					<DrawerItems
+						textTitle="Müşteri Değer Piramidi"
+						iconName="landscape"
+						onPress={() => {
+							this.navigateToScreen('customerValuePyramid');
+						}}
+					/>
 
-					<DrawerItems textTitle="E Mail Raporu İste" iconName="email" />
+					<DrawerItems
+						textTitle="E-Posta Raporu İste"
+						iconName="email"
+						onPress={() => {
+							this.navigateToScreen('eMailReport');
+						}}
+					/>
 
-					<DrawerItems textTitle="Oturumu Kapat" iconName="exit-to-app" />
+					<DrawerItems
+						textTitle="Oturumu Kapat"
+						iconName="exit-to-app"
+						onPress={() => {
+							this.logUserOut();
+						}}
+					/>
 				</ScrollView>
 			</View>
 		);

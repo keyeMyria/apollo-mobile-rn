@@ -3,32 +3,45 @@ import { createSwitchNavigator, createDrawerNavigator } from 'react-navigation';
 import HomePage from './HomePage';
 import BestOfPage from './BestOfPage';
 import LoginPage from './LoginPage';
-import EMailReport from './EMailReport';
+import EMailReportPage from './EMailReportPage';
 import SideMenu from './SideMenu';
 import CockpitPage from './CockpitPage';
 import { Sizes } from '../helpers';
 import ComparisonPage from './ComparisonPage';
 import SplashPage from './SplashPage';
+import ManagerSummaryPage from './ManagerSummaryPage';
+import CampaignDetailsPage from './CampaignDetailsPage';
+import GiftStockPage from './GiftStockPage';
+import CustomerValuePyramidPage from './CustomerValuePyramidPage';
 
 const SwitchNavigation = createSwitchNavigator(
 	{
 		app: {
 			screen: createDrawerNavigator(
 				{
-					home: {
-						screen: HomePage
+					cockpit: {
+						screen: CockpitPage
+					},
+					managerSummary: {
+						screen: ManagerSummaryPage
+					},
+					campaignDetails: {
+						screen: CampaignDetailsPage
 					},
 					bestOf: {
 						screen: BestOfPage
 					},
-					eMailReport: {
-						screen: EMailReport
-					},
-					cockpit: {
-						screen: CockpitPage
+					giftStock: {
+						screen: GiftStockPage
 					},
 					comparison: {
 						screen: ComparisonPage
+					},
+					customerValuePyramid: {
+						screen: CustomerValuePyramidPage
+					},
+					eMailReport: {
+						screen: EMailReportPage
 					}
 				},
 				{
@@ -46,7 +59,7 @@ const SwitchNavigation = createSwitchNavigator(
 		}
 	},
 	{
-		initialRouteName: 'splash'
+		initialRouteName: 'login'
 	}
 );
 
