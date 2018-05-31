@@ -12,6 +12,7 @@ import {
 import { Colors, Margins, widthPercentageToDP } from '../../../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Divider } from '../../common';
+import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 class CampaignSelection extends Component {
 	state = {
 		visible: false,

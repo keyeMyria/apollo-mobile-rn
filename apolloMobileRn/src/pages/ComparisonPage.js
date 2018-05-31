@@ -78,7 +78,8 @@ class ComparisonPage extends Component {
 					horizontal={true}
 					ref="myScrollView"
 					showsHorizontalScrollIndicator={false}
-					pagingEnabled={false}
+					scrollEnabled={false}
+					pagingEnabled={true}
 				>
 					<View style={{ width: width, height: height }}>
 						<CampaignSelection sectionNumber="1" />
