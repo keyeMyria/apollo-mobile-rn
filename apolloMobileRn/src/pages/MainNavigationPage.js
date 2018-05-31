@@ -7,11 +7,9 @@ import EMailReport from './EMailReport';
 import SideMenu from './SideMenu';
 import CockpitPage from './CockpitPage';
 import { Sizes, widthPercentageToDP } from '../helpers';
+import ComparisonPage from './ComparisonPage';
 
 const SwitchNavigation = createSwitchNavigator({
-	login: {
-		screen: LoginPage
-	},
 	app: {
 		screen: createDrawerNavigator(
 			{
@@ -26,14 +24,20 @@ const SwitchNavigation = createSwitchNavigator({
 				},
 				cockpit: {
 					screen: CockpitPage
+				},
+				comparison: {
+					screen: ComparisonPage
 				}
 			},
 			{
-				initialRouteName: 'cockpit',
+				initialRouteName: 'comparison',
 				contentComponent: SideMenu,
 				drawerWidth: Sizes.DrawerWidth
 			}
 		)
+	},
+	login: {
+		screen: LoginPage
 	}
 });
 

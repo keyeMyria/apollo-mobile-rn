@@ -51,7 +51,13 @@ class SideMenu extends Component {
 
 					<DrawerItems textTitle="Hediye Stok" iconName="redeem" />
 
-					<DrawerItems textTitle="Kıyasla" iconName="swap-horiz" />
+					<DrawerItems
+						textTitle="Kıyasla"
+						iconName="swap-horiz"
+						onPress={() => {
+							this.navigateToScreen('comparison');
+						}}
+					/>
 
 					<DrawerItems textTitle="Müşteri Değer Piramidi" iconName="landscape" />
 
