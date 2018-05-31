@@ -55,7 +55,7 @@ class ComparisonPage extends Component {
 							}}
 							onPress={() => {
 								this.setState({ value: 'second', viewComparison: 'date' });
-								this.refs.myScrollView.scrollTo({ x: width, y: 0, animated: true });
+								this.refs.myScrollView.scrollTo({ x: 768, y: 0, animated: true });
 							}}
 						>
 							<RadioButton value="second" uncheckedColor="#BCBCBC" color="#BF360C" />
@@ -78,7 +78,6 @@ class ComparisonPage extends Component {
 					horizontal={true}
 					ref="myScrollView"
 					showsHorizontalScrollIndicator={false}
-					scrollEnabled={false}
 					pagingEnabled={true}
 				>
 					<View style={{ width: width, height: height }}>
@@ -103,22 +102,15 @@ class ComparisonPage extends Component {
 					</View>
 				</ScrollView>
 
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'space-around',
-						alignItems: 'center',
-						paddingBottom: widthPercentageToDP('5%')
-					}}
-				>
+				<View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
 					<TouchableOpacity>
-						<Text style={{ color: '#FBFBFB' }}>Excel Raporu Al</Text>
+						<Text style={{ color: '#FBFBFB', paddingTop: widthPercentageToDP('4%') }}>Excel Raporu Al</Text>
 					</TouchableOpacity>
 					<Button
 						raised
 						onPress={() => {}}
 						dark={true}
-						style={{ backgroundColor: Colors.DrawerItemRippleColor }}
+						style={{ backgroundColor: Colors.DrawerItemRippleColor, marginTop: widthPercentageToDP('2%') }}
 					>
 						Kıyasla
 					</Button>

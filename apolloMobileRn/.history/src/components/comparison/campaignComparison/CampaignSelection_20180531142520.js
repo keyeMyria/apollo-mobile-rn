@@ -12,7 +12,6 @@ import {
 import { Colors, Margins, widthPercentageToDP } from '../../../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Divider } from '../../common';
-import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 class CampaignSelection extends Component {
 	state = {
 		visible: false,
@@ -80,38 +79,36 @@ class CampaignSelection extends Component {
 								</DialogScrollArea>
 							</Dialog>
 						</View>
-						<View>
-							<Dialog
-								style={{ padding: 0 }}
-								visible={this.state.visible}
-								onDismiss={() => this.setState({ visible: false })}
-							>
-								<DialogScrollArea style={{ padding: 0 }}>
-									<ScrollView contentContainerStyle={{ paddingHorizontal: 24 }}>
-										<TouchableOpacity
-											campaign={this.state.campaign}
-											onPress={() => this.setState({ campaign: 'Hediye', visible: false })}
-										>
-											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>Hediye</Text>
-										</TouchableOpacity>
-										<TouchableOpacity
-											onPress={() =>
-												this.setState({ campaign: 'Tek Seferde Ve Üzeri', visible: false })}
-										>
-											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>
-												Tek Seferde Ve Üzeri
-											</Text>
-										</TouchableOpacity>
-										<TouchableOpacity
-											onPress={() => this.setState({ campaign: 'Aynı Gün', visible: false })}
-										>
-											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>Aynı Gün</Text>
-										</TouchableOpacity>
-									</ScrollView>
-								</DialogScrollArea>
-							</Dialog>
-						</View>
 
+						<Dialog
+							style={{ padding: 0 }}
+							visible={this.state.visible}
+							onDismiss={() => this.setState({ visible: false })}
+						>
+							<DialogScrollArea style={{ padding: 0 }}>
+								<ScrollView contentContainerStyle={{ paddingHorizontal: 24 }}>
+									<TouchableOpacity
+										campaign={this.state.campaign}
+										onPress={() => this.setState({ campaign: 'Hediye', visible: false })}
+									>
+										<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>Hediye</Text>
+									</TouchableOpacity>
+									<TouchableOpacity
+										onPress={() =>
+											this.setState({ campaign: 'Tek Seferde Ve Üzeri', visible: false })}
+									>
+										<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>
+											Tek Seferde Ve Üzeri
+										</Text>
+									</TouchableOpacity>
+									<TouchableOpacity
+										onPress={() => this.setState({ campaign: 'Aynı Gün', visible: false })}
+									>
+										<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>Aynı Gün</Text>
+									</TouchableOpacity>
+								</ScrollView>
+							</DialogScrollArea>
+						</Dialog>
 						<View style={{ flex: 1, justifyContent: 'center' }}>
 							<TouchableOpacity
 								onPress={() => this.setState({ visible: true })}

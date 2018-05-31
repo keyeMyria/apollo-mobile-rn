@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { RadioButton, RadioButtonGroup, Button } from 'react-native-paper';
 import { Colors, Margins, widthPercentageToDP } from '../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Divider, Page } from './../components/common';
 import { Selection } from '../components/comparison/dateComparison/Selection';
 import { CampaignSelection } from '../components/comparison/campaignComparison/CampaignSelection';
-const { width, height } = Dimensions.get('window');
 class ComparisonPage extends Component {
 	state = {
 		value: 'first',
@@ -31,8 +30,9 @@ class ComparisonPage extends Component {
 						<TouchableOpacity
 							style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('9%') }}
 							onPress={() => {
-								this.setState({ value: 'first', viewComparison: 'campaign' });
-
+								{
+									this.setCampaignComparison();
+								}
 								this.refs.myScrollView.scrollTo({ x: 0, y: 0, animated: true });
 							}}
 						>
@@ -54,8 +54,10 @@ class ComparisonPage extends Component {
 								paddingLeft: widthPercentageToDP('9%')
 							}}
 							onPress={() => {
-								this.setState({ value: 'second', viewComparison: 'date' });
-								this.refs.myScrollView.scrollTo({ x: width, y: 0, animated: true });
+								{
+									this.setDateComparison();
+								}
+								this.refs.myScrollView.scrollTo({ x: 768, y: 0, animated: true });
 							}}
 						>
 							<RadioButton value="second" uncheckedColor="#BCBCBC" color="#BF360C" />
@@ -73,19 +75,44 @@ class ComparisonPage extends Component {
 						</TouchableOpacity>
 					</RadioButtonGroup>
 				</View>
-				{/* {this.showComparison()} */}
-				<ScrollView
-					horizontal={true}
-					ref="myScrollView"
-					showsHorizontalScrollIndicator={false}
-					scrollEnabled={false}
-					pagingEnabled={true}
-				>
-					<View style={{ width: width, height: height }}>
+				{this.showComparison()}
+
+				<View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+					<TouchableOpacity>
+						<Text style={{ color: '#FBFBFB', paddingTop: widthPercentageToDP('4%') }}>Excel Raporu Al</Text>
+					</TouchableOpacity>
+					<Button
+						raised
+						onPress={() => {}}
+						dark={true}
+						style={{ backgroundColor: Colors.DrawerItemRippleColor, marginTop: widthPercentageToDP('2%') }}
+					>
+						Kıyasla
+					</Button>
+				</View>
+			</Page>
+		);
+	}
+	setDateComparison() {
+		this.setState({ value: 'second', viewComparison: 'date' });
+	}
+	setCampaignComparison() {
+		this.setState({ value: 'first', viewComparison: 'campaign' });
+	}
+	showComparison() {
+		if (this.state.viewComparison === 'campaign') {
+			return (
+				<ScrollView horizontal={true} ref="myScrollView" showsHorizontalScrollIndicator={true}>
+					<View style={{ flexDirection: 'column' }}>
 						<CampaignSelection sectionNumber="1" />
 						<CampaignSelection sectionNumber="2" />
 					</View>
-					<View style={{ width: width, height: height }}>
+				</ScrollView>
+			);
+		} else {
+			return (
+				<ScrollView horizontal={true} ref="myScrollView" showsHorizontalScrollIndicator={true}>
+					<View>
 						<Selection
 							sectionNumber="1"
 							dateTitle1="İlk Dönem Başlangıç Tarihi"
@@ -102,64 +129,8 @@ class ComparisonPage extends Component {
 						/>
 					</View>
 				</ScrollView>
-
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'space-around',
-						alignItems: 'center',
-						paddingBottom: widthPercentageToDP('5%')
-					}}
-				>
-					<TouchableOpacity>
-						<Text style={{ color: '#FBFBFB' }}>Excel Raporu Al</Text>
-					</TouchableOpacity>
-					<Button
-						raised
-						onPress={() => {}}
-						dark={true}
-						style={{ backgroundColor: Colors.DrawerItemRippleColor }}
-					>
-						Kıyasla
-					</Button>
-				</View>
-			</Page>
-		);
+			);
+		}
 	}
-	// setDateComparison() {
-	// 	this.setState({ value: 'second', viewComparison: 'date' });
-	// }
-	// setCampaignComparison() {
-	// 	this.setState({ value: 'first', viewComparison: 'campaign' });
-	// }
-	// showComparison() {
-	// 	if (this.state.viewComparison === 'campaign') {
-	// 		return (
-	// 			<View>
-	// 				<CampaignSelection sectionNumber="1" />
-	// 				<CampaignSelection sectionNumber="2" />
-	// 			</View>
-	// 		);
-	// 	} else {
-	// 		return (
-	// 			<View>
-	// 				<Selection
-	// 					sectionNumber="1"
-	// 					dateTitle1="İlk Dönem Başlangıç Tarihi"
-	// 					date1="31 Mayıs 2018"
-	// 					dateTitle2="İlk Dönem Bitiş Tarihi"
-	// 					date2="31 Mayıs 2018"
-	// 				/>
-	// 				<Selection
-	// 					sectionNumber="2"
-	// 					dateTitle1="İkinci Dönem Başlangıç Tarihi"
-	// 					date1="31 Mayıs 2018"
-	// 					dateTitle2="İkinci Dönem Bitiş Tarihi"
-	// 					date2="31 Mayıs 2018"
-	// 				/>
-	// 			</View>
-	// 		);
-	// 	}
-	// }
 }
 export default ComparisonPage;
