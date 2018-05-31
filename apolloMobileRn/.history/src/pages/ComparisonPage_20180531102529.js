@@ -27,7 +27,7 @@ class ComparisonPage extends Component {
 					<RadioButtonGroup onValueChange={value => this.setState({ value })} value={this.state.value}>
 						<TouchableOpacity
 							style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('9%') }}
-							onPress={() => this.setState({ value: 'first' })}
+							onPress={() => this.setState({ value: first })}
 						>
 							<RadioButton value="first" uncheckedColor="#BCBCBC" color="#BF360C" />
 							<Text
@@ -46,7 +46,6 @@ class ComparisonPage extends Component {
 								flexDirection: 'row',
 								paddingLeft: widthPercentageToDP('9%')
 							}}
-							onPress={() => this.setState({ value: 'second' })}
 						>
 							<RadioButton value="second" uncheckedColor="#BCBCBC" color="#BF360C" />
 							<Text

@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { RadioButton, RadioButtonGroup, Button } from 'react-native-paper';
 import { Colors, Margins, widthPercentageToDP } from '../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { Divider, Page } from './../components/common';
+import { Divider } from './../components/common';
 import { Selection } from '../components/comparison/dateComparison/Selection';
 class ComparisonPage extends Component {
 	state = {
@@ -12,54 +12,25 @@ class ComparisonPage extends Component {
 
 	render() {
 		return (
-			<Page style={{ backgroundColor: Colors.AppBackgroundColor, flex: 1 }}>
-				<View style={{ backgroundColor: '#333333', height: widthPercentageToDP('32%') }}>
+			<View style={{ backgroundColor: Colors.AppBackgroundColor, flex: 1 }}>
+				<View style={{ backgroundColor: '#333333' }}>
 					<Text
 						style={{
 							color: '#BCBCBC',
 							paddingLeft: widthPercentageToDP('7%'),
-							paddingTop: widthPercentageToDP('3%'),
-							paddingBottom: widthPercentageToDP('3%')
+							paddingTop: widthPercentageToDP('5%')
 						}}
 					>
 						Kıyaslama Methodu
 					</Text>
 					<RadioButtonGroup onValueChange={value => this.setState({ value })} value={this.state.value}>
-						<TouchableOpacity
-							style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('9%') }}
-							onPress={() => this.setState({ value: 'first' })}
-						>
+						<TouchableOpacity style={{ flexDirection: 'row' }}>
 							<RadioButton value="first" uncheckedColor="#BCBCBC" color="#BF360C" />
-							<Text
-								style={{
-									textAlignVertical: 'center',
-									color: '#BCBCBC',
-									paddingLeft: widthPercentageToDP('3%'),
-									fontSize: 12
-								}}
-							>
-								Kampanya Kıyaslama
-							</Text>
+							<Text style={{ textAlignVertical: 'center', color: '#BCBCBC' }}>Kampanya Kıyaslama</Text>
 						</TouchableOpacity>
-						<TouchableOpacity
-							style={{
-								flexDirection: 'row',
-								paddingLeft: widthPercentageToDP('9%')
-							}}
-							onPress={() => this.setState({ value: 'second' })}
-						>
+						<TouchableOpacity style={{ flexDirection: 'row' }}>
 							<RadioButton value="second" uncheckedColor="#BCBCBC" color="#BF360C" />
-							<Text
-								style={{
-									textAlignVertical: 'center',
-									color: '#BCBCBC',
-									paddingLeft: widthPercentageToDP('3%'),
-
-									fontSize: 12
-								}}
-							>
-								Tarih Kiyaslama
-							</Text>
+							<Text style={{ textAlignVertical: 'center', color: '#BCBCBC' }}>Tarih Kiyaslama</Text>
 						</TouchableOpacity>
 					</RadioButtonGroup>
 				</View>
@@ -78,20 +49,20 @@ class ComparisonPage extends Component {
 					date2="31 Mayıs 2018"
 				/>
 
-				<View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+				<View style={{ flexDirection: 'row' }}>
 					<TouchableOpacity>
-						<Text style={{ color: '#FBFBFB', paddingTop: widthPercentageToDP('4%') }}>Excel Raporu Al</Text>
+						<Text>Excel Raporu Al</Text>
 					</TouchableOpacity>
 					<Button
 						raised
 						onPress={() => {}}
 						dark={true}
-						style={{ backgroundColor: Colors.DrawerItemRippleColor, marginTop: widthPercentageToDP('2%') }}
+						style={{ backgroundColor: Colors.DrawerItemRippleColor }}
 					>
-						Kıyasla
+						Rapor Al
 					</Button>
 				</View>
-			</Page>
+			</View>
 		);
 	}
 }

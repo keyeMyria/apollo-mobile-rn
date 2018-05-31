@@ -13,7 +13,7 @@ class ComparisonPage extends Component {
 	render() {
 		return (
 			<Page style={{ backgroundColor: Colors.AppBackgroundColor, flex: 1 }}>
-				<View style={{ backgroundColor: '#333333', height: widthPercentageToDP('32%') }}>
+				<View style={{ backgroundColor: '#333333', height: widthPercentageToDP('31%') }}>
 					<Text
 						style={{
 							color: '#BCBCBC',
@@ -25,10 +25,7 @@ class ComparisonPage extends Component {
 						Kıyaslama Methodu
 					</Text>
 					<RadioButtonGroup onValueChange={value => this.setState({ value })} value={this.state.value}>
-						<TouchableOpacity
-							style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('9%') }}
-							onPress={() => this.setState({ value: 'first' })}
-						>
+						<TouchableOpacity style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('9%') }}>
 							<RadioButton value="first" uncheckedColor="#BCBCBC" color="#BF360C" />
 							<Text
 								style={{
@@ -41,20 +38,13 @@ class ComparisonPage extends Component {
 								Kampanya Kıyaslama
 							</Text>
 						</TouchableOpacity>
-						<TouchableOpacity
-							style={{
-								flexDirection: 'row',
-								paddingLeft: widthPercentageToDP('9%')
-							}}
-							onPress={() => this.setState({ value: 'second' })}
-						>
+						<TouchableOpacity style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('9%') }}>
 							<RadioButton value="second" uncheckedColor="#BCBCBC" color="#BF360C" />
 							<Text
 								style={{
 									textAlignVertical: 'center',
 									color: '#BCBCBC',
 									paddingLeft: widthPercentageToDP('3%'),
-
 									fontSize: 12
 								}}
 							>
@@ -78,17 +68,17 @@ class ComparisonPage extends Component {
 					date2="31 Mayıs 2018"
 				/>
 
-				<View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+				<View style={{ flexDirection: 'row' }}>
 					<TouchableOpacity>
-						<Text style={{ color: '#FBFBFB', paddingTop: widthPercentageToDP('4%') }}>Excel Raporu Al</Text>
+						<Text>Excel Raporu Al</Text>
 					</TouchableOpacity>
 					<Button
 						raised
 						onPress={() => {}}
 						dark={true}
-						style={{ backgroundColor: Colors.DrawerItemRippleColor, marginTop: widthPercentageToDP('2%') }}
+						style={{ backgroundColor: Colors.DrawerItemRippleColor }}
 					>
-						Kıyasla
+						Rapor Al
 					</Button>
 				</View>
 			</Page>

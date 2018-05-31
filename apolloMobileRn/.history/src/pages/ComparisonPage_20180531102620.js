@@ -46,7 +46,7 @@ class ComparisonPage extends Component {
 								flexDirection: 'row',
 								paddingLeft: widthPercentageToDP('9%')
 							}}
-							onPress={() => this.setState({ value: 'second' })}
+							onPress={() => this.setState({ value: 'first' })}
 						>
 							<RadioButton value="second" uncheckedColor="#BCBCBC" color="#BF360C" />
 							<Text
