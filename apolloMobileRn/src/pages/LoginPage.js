@@ -51,6 +51,7 @@ class LoginPage extends Component {
 	render() {
 		const { rememberMe } = this.state;
 
+		console.log('login page ');
 		if (this.props.tokenError) {
 			Alert.alert('Bir hata oluştu');
 		}

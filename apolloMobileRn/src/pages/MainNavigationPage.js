@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { createSwitchNavigator, createDrawerNavigator, StackNavigator } from 'react-navigation';
+import { createSwitchNavigator, createDrawerNavigator } from 'react-navigation';
 import HomePage from './HomePage';
 import BestOfPage from './BestOfPage';
 import LoginPage from './LoginPage';
 import EMailReport from './EMailReport';
 import SideMenu from './SideMenu';
 import CockpitPage from './CockpitPage';
-import { Sizes, widthPercentageToDP } from '../helpers';
+import { Sizes } from '../helpers';
 import ComparisonPage from './ComparisonPage';
+import SplashPage from './SplashPage';
 
 const SwitchNavigation = createSwitchNavigator(
 	{
@@ -39,10 +40,13 @@ const SwitchNavigation = createSwitchNavigator(
 		},
 		login: {
 			screen: LoginPage
+		},
+		splash: {
+			screen: SplashPage
 		}
 	},
 	{
-		initialRouteName: 'login'
+		initialRouteName: 'splash'
 	}
 );
 
