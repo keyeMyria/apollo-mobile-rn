@@ -14,7 +14,6 @@ import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from './../components/common';
 import { Colors, Icons, Paddings, widthPercentageToDP, Margins, Images } from '.././helpers';
-// import LinearGradient from 'react-native-linear-gradient';
 import { Button, TextInput, Checkbox } from 'react-native-paper';
 
 class LoginPage extends Component {
@@ -25,7 +24,7 @@ class LoginPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rememberMe: false
+			rememberMe: true
 		};
 	}
 
@@ -39,25 +38,23 @@ class LoginPage extends Component {
 	componentWillReceiveProps(newProps) {
 		if (newProps.token !== this.props.token) {
 			if (this.state.rememberMe) {
-				saveUserCredentials();
+				this.saveUserCredentials();
 			}
 			this.props.navigation.navigate('app');
 		}
 	}
 
-	async saveUserCredentials() {
-		await AsyncStorage.multiSet([
-			['username', this.username],
-			['password', this.password],
-			['mallCode', this.mallCode]
-		]);
+	saveUserCredentials() {
+		AsyncStorage.multiSet([['username', this.username], ['password', this.password], ['mallCode', this.mallCode]]);
 	}
 
 	render() {
+		const { rememberMe } = this.state;
+
 		if (this.props.tokenError) {
 			Alert.alert('Bir hata oluştu');
 		}
-		const { rememberMe } = this.state;
+
 		return (
 			<ImageBackground source={Images.LoginBackground} style={styles.container}>
 				<Image
@@ -114,7 +111,7 @@ class LoginPage extends Component {
 					}}
 					raised
 					color="#4a5178"
-					onPress={() => this.logUserIn(this.username, this.password, this.mallCode, rememberMe)}
+					onPress={() => this.logUserIn(this.username, this.password, this.mallCode)}
 				>
 					Giriş Yap
 				</Button>
@@ -126,7 +123,7 @@ class LoginPage extends Component {
 		);
 	}
 
-	logUserIn(username, password, mallCode, rememberMe) {
+	logUserIn(username, password, mallCode) {
 		this.props.fetchToken(username, password, mallCode);
 	}
 }
@@ -134,9 +131,6 @@ class LoginPage extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1
-		// marginBottom:Margins.
-		// justifyContent: 'center',
-		// alignItems: 'center'
 	},
 	welcome: {
 		alignSelf: 'stretch',
@@ -144,10 +138,6 @@ const styles = StyleSheet.create({
 		paddingVertical: Paddings.PageVerticalPadding
 	},
 	button: {
-		// textAlign: 'center',
-		// color: '#333333',
-		// marginBottom: 5
-		// justifyContent: 'center',
 		alignItems: 'stretch',
 		width: widthPercentageToDP('50'),
 		marginRight: widthPercentageToDP('25%'),
