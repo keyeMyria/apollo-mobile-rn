@@ -9,37 +9,42 @@ import CockpitPage from './CockpitPage';
 import { Sizes, widthPercentageToDP } from '../helpers';
 import ComparisonPage from './ComparisonPage';
 
-const SwitchNavigation = createSwitchNavigator({
-	app: {
-		screen: createDrawerNavigator(
-			{
-				home: {
-					screen: HomePage
+const SwitchNavigation = createSwitchNavigator(
+	{
+		app: {
+			screen: createDrawerNavigator(
+				{
+					home: {
+						screen: HomePage
+					},
+					bestOf: {
+						screen: BestOfPage
+					},
+					eMailReport: {
+						screen: EMailReport
+					},
+					cockpit: {
+						screen: CockpitPage
+					},
+					comparison: {
+						screen: ComparisonPage
+					}
 				},
-				bestOf: {
-					screen: BestOfPage
-				},
-				eMailReport: {
-					screen: EMailReport
-				},
-				cockpit: {
-					screen: CockpitPage
-				},
-				comparison: {
-					screen: ComparisonPage
+				{
+					initialRouteName: 'cockpit',
+					contentComponent: SideMenu,
+					drawerWidth: Sizes.DrawerWidth
 				}
-			},
-			{
-				initialRouteName: 'comparison',
-				contentComponent: SideMenu,
-				drawerWidth: Sizes.DrawerWidth
-			}
-		)
+			)
+		},
+		login: {
+			screen: LoginPage
+		}
 	},
-	login: {
-		screen: LoginPage
+	{
+		initialRouteName: 'login'
 	}
-});
+);
 
 class MainNavigationPage extends Component {
 	render() {
