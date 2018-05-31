@@ -32,7 +32,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'cockpit',
+					initialRouteName: 'comparison',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
@@ -46,7 +46,7 @@ const SwitchNavigation = createSwitchNavigator(
 		}
 	},
 	{
-		initialRouteName: 'splash'
+		initialRouteName: 'app'
 	}
 );
 

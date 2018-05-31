@@ -15,9 +15,10 @@ import { Divider } from '../../common';
 import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 class CampaignSelection extends Component {
 	state = {
-		visible: false,
 		mallCode: 'Portus Bey',
-		campaign: 'xxKota Kampanya'
+		campaign: 'xxKota Kampanya',
+		isMallCodeModalVisible: false,
+		isCampaignModalVisible: false
 	};
 
 	render() {
@@ -30,17 +31,15 @@ class CampaignSelection extends Component {
 					<View>
 						<View>
 							<Dialog
-								style={{ padding: 0 }}
-								visible={this.state.visible}
-								onDismiss={() => this.setState({ visible: false })}
+								visible={this.state.isMallCodeModalVisible}
+								onDismiss={() => this.setState({ isMallCodeModalVisible: false })}
 							>
-								<DialogScrollArea style={{ padding: 0 }}>
-									<ScrollView contentContainerStyle={{ paddingHorizontal: 24 }}>
+								<DialogScrollArea>
+									<ScrollView>
 										<View
 											style={{
 												flexDirection: 'row',
 												flex: 1,
-												paddingHorizontal: 0,
 
 												height: widthPercentageToDP('10%')
 											}}
@@ -57,20 +56,25 @@ class CampaignSelection extends Component {
 												Avm Seç
 											</Text>
 										</View>
-										<Divider style={{ backgroundColor: '#BCBCBC', paddingHorizontal: 0 }} />
+										<Divider style={{ backgroundColor: '#BCBCBC' }} />
 										<TouchableOpacity
-											mallCode={this.state.mallCode}
-											onPress={() => this.setState({ mallCode: '14Burda', visible: false })}
+											onPress={() =>
+												this.setState({ mallCode: '14Burda', isMallCodeModalVisible: false })}
 										>
 											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>14Burda</Text>
 										</TouchableOpacity>
 										<TouchableOpacity
-											onPress={() => this.setState({ mallCode: 'Acity', visible: false })}
+											onPress={() =>
+												this.setState({ mallCode: 'Acity', isMallCodeModalVisible: false })}
 										>
 											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>Acity</Text>
 										</TouchableOpacity>
 										<TouchableOpacity
-											onPress={() => this.setState({ mallCode: 'Park Bornova', visible: false })}
+											onPress={() =>
+												this.setState({
+													mallCode: 'Park Bornova',
+													isMallCodeModalVisible: false
+												})}
 										>
 											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>
 												Park Bornova
@@ -82,28 +86,32 @@ class CampaignSelection extends Component {
 						</View>
 						<View>
 							<Dialog
-								style={{ padding: 0 }}
-								visible={this.state.visible}
-								onDismiss={() => this.setState({ visible: false })}
+								visible={this.state.isCampaignModalVisible}
+								onDismiss={() => this.setState({ isCampaignModalVisible: false })}
 							>
-								<DialogScrollArea style={{ padding: 0 }}>
-									<ScrollView contentContainerStyle={{ paddingHorizontal: 24 }}>
+								<DialogScrollArea>
+									<ScrollView>
 										<TouchableOpacity
 											campaign={this.state.campaign}
-											onPress={() => this.setState({ campaign: 'Hediye', visible: false })}
+											onPress={() =>
+												this.setState({ campaign: 'Hediye', isCampaignModalVisible: false })}
 										>
 											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>Hediye</Text>
 										</TouchableOpacity>
 										<TouchableOpacity
 											onPress={() =>
-												this.setState({ campaign: 'Tek Seferde Ve Üzeri', visible: false })}
+												this.setState({
+													campaign: 'Tek Seferde Ve Üzeri',
+													isCampaignModalVisible: false
+												})}
 										>
 											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>
 												Tek Seferde Ve Üzeri
 											</Text>
 										</TouchableOpacity>
 										<TouchableOpacity
-											onPress={() => this.setState({ campaign: 'Aynı Gün', visible: false })}
+											onPress={() =>
+												this.setState({ campaign: 'Aynı Gün', isCampaignModalVisible: false })}
 										>
 											<Text style={{ paddingVertical: widthPercentageToDP('3%') }}>Aynı Gün</Text>
 										</TouchableOpacity>
@@ -114,35 +122,39 @@ class CampaignSelection extends Component {
 
 						<View style={{ flex: 1, justifyContent: 'center' }}>
 							<TouchableOpacity
-								onPress={() => this.setState({ visible: true })}
+								onPress={() => this.setState({ isMallCodeModalVisible: true })}
 								style={{
 									flexDirection: 'row',
-									paddingLeft: widthPercentageToDP('5%'),
-									paddingVertical: widthPercentageToDP('2%'),
-									paddingTop: widthPercentageToDP('3%')
+									// paddingLeft: widthPercentageToDP('5%'),
+									// paddingVertical: widthPercentageToDP('2%'),
+									// paddingTop: widthPercentageToDP('3%'),
+									justifyContent: 'space-between'
 								}}
 							>
-								<Icons name="store" size={25} color="#BCBCBC" />
-								<Text
-									style={{
-										color: '#BCBCBC',
-										paddingHorizontal: widthPercentageToDP('2%'),
-										textAlignVertical: 'center'
-									}}
-								>
-									{this.state.mallCode}
-								</Text>
-								<Icons name="arrow-drop-down" size={25} color="#BCBCBC" />
+								<View style={{ flexDirection: 'row' }}>
+									<Icons name="store" size={widthPercentageToDP('8%')} color="#BCBCBC" />
+									<Text
+										style={{
+											color: '#BCBCBC',
+											paddingHorizontal: widthPercentageToDP('2%'),
+											textAlignVertical: 'center'
+										}}
+									>
+										{this.state.mallCode}
+									</Text>
+								</View>
+								<Icons name="arrow-drop-down" size={widthPercentageToDP('8%')} color="#BCBCBC" />
 							</TouchableOpacity>
 							<TouchableOpacity
-								onPress={() => this.setState({ visible: true })}
+								onPress={() => this.setState({ isCampaignModalVisible: true })}
 								style={{
-									flexDirection: 'row',
-									paddingLeft: widthPercentageToDP('5%'),
-									paddingVertical: widthPercentageToDP('2%')
+									flexDirection: 'row'
+									// paddingLeft: widthPercentageToDP('5%'),
+									// paddingVertical: widthPercentageToDP('2%'),
+									// paddingTop: widthPercentageToDP('3%')
 								}}
 							>
-								<Icons name="local-play" size={25} color="#BCBCBC" />
+								<Icons name="local-play" size={widthPercentageToDP('8%')} color="#BCBCBC" />
 								<Text
 									style={{
 										color: '#BCBCBC',
@@ -152,7 +164,7 @@ class CampaignSelection extends Component {
 								>
 									{this.state.campaign}
 								</Text>
-								<Icons name="arrow-drop-down" size={25} color="#BCBCBC" />
+								<Icons name="arrow-drop-down" size={widthPercentageToDP('8%')} color="#BCBCBC" />
 							</TouchableOpacity>
 						</View>
 					</View>
@@ -169,7 +181,7 @@ const styles = StyleSheet.create({
 		height: widthPercentageToDP('38%')
 	},
 	sectionText: {
-		fontSize: widthPercentageToDP('18%'),
+		fontSize: widthPercentageToDP('23%'),
 		color: '#363636',
 		marginTop: widthPercentageToDP('5%'),
 		marginBottom: widthPercentageToDP('5%'),
