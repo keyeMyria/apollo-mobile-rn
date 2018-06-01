@@ -48,7 +48,6 @@ class SplashPage extends Component {
 				this.props.fetchToken(username, password, mallCode);
 			} else {
 				this.setState({ hasCredentialInfo: false });
-				// this.props.navigation.navigate('login');
 			}
 		} else {
 			this.setState({ hasCredentialInfo: false });

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { createSwitchNavigator, createDrawerNavigator } from 'react-navigation';
+import { createSwitchNavigator, createDrawerNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import HomePage from './HomePage';
-import BestOfPage from './BestOfPage';
+import { BestOfPage } from './BestOfPage';
 import LoginPage from './LoginPage';
 import EMailReportPage from './EMailReportPage';
 import SideMenu from './SideMenu';
@@ -13,6 +13,9 @@ import ManagerSummaryPage from './ManagerSummaryPage';
 import CampaignDetailsPage from './CampaignDetailsPage';
 import GiftStockPage from './GiftStockPage';
 import CustomerValuePyramidPage from './CustomerValuePyramidPage';
+import BestShopsPage from './bestOfTabPages/BestShopsPage';
+import BestCountiesPage from './bestOfTabPages/BestCountiesPage';
+import BestCitiesPage from './bestOfTabPages/BestCitiesPage';
 
 const SwitchNavigation = createSwitchNavigator(
 	{
@@ -45,7 +48,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'comparison',
+					initialRouteName: 'bestOf',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
@@ -59,7 +62,7 @@ const SwitchNavigation = createSwitchNavigator(
 		}
 	},
 	{
-		initialRouteName: 'splash'
+		initialRouteName: 'app'
 	}
 );
 
