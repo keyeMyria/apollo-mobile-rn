@@ -19,7 +19,6 @@ const theme = {
 
 export default class App extends Component {
 	render() {
-		console.log(myReducer);
 		return (
 			<PaperProvider theme={theme}>
 				<Provider store={createStore(myReducer, {}, applyMiddleware(thunk))}>

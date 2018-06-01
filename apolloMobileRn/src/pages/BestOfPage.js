@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { getPing } from 'apollo-rn-redux-helper/src/actions';
+import { getPing, fetchReportTop } from 'apollo-rn-redux-helper/src/actions';
 import LinearGradient from 'react-native-linear-gradient';
 
 class BestOfPage extends Component {
@@ -37,4 +37,4 @@ const mapStateToProps = state => {
 	return { isLoading, ping, error };
 };
 
-export default BestOfPage;
+export default connect(mapStateToProps, { fetchReportTop })(BestOfPage);
