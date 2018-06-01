@@ -38,18 +38,24 @@ class LoginPage extends Component {
 	componentWillReceiveProps(newProps) {
 		if (newProps.token !== this.props.token) {
 			if (this.state.rememberMe) {
-				this.saveUserCredentials();
+				this.saveUserCredentials(this.props.navigation.navigate('app'), this.props.navigation.navigate('app'));
 			}
-			this.props.navigation.navigate('app');
 		}
 	}
 
-	saveUserCredentials() {
-		AsyncStorage.multiSet([
-			['username', this.username],
-			['password', this.password],
-			['mallCode', this.mallCode]
-		]).catch(err => console.log('multi set error :', err));
+	saveUserCredentials(successCallback, errorCallback) {
+		AsyncStorage.multiSet([['username', this.username], ['password', this.password], ['mallCode', this.mallCode]])
+			.then(() => {
+				if (successCallback) {
+					successCallback();
+				}
+			})
+			.catch(err => {
+				console.log('multi set error :', err);
+				if (errorCallback) {
+					errorCallback();
+				}
+			});
 	}
 
 	logUserIn(username, password, mallCode) {

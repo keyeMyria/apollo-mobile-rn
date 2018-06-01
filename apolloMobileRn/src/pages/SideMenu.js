@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, Image, StyleSheet, AsyncStorage } from 'react-native';
-import { TouchableRipple } from 'react-native-paper';
+import { TouchableRipple, Dialog, DialogContent, DialogActions, Button } from 'react-native-paper';
 import { DrawerItems } from '../components/drawer/DrawerItems';
 import { Colors, Images, Paddings, Sizes, Margins, widthPercentageToDP, heightPercentageToDP } from './../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
@@ -16,27 +16,44 @@ class SideMenu extends Component {
 	navigateToScreen(route) {
 		setTimeout(() => {
 			this.props.navigation.navigate(route);
-		}, 150);
+		}, 100);
 	}
 
 	state = {
-		active: 'First Item'
+		active: 'First Item',
+		visible: false
 	};
 
 	logUserOut() {
 		console.log('çıkış yapılıyor');
 		AsyncStorage.multiRemove(['username', 'password', 'mallCode'])
 			.then(() => {
-				logOut();
-				// this.props.navigation.navigate('login');
+				this.props.logOut();
+				this.props.navigation.navigate('login');
 				console.log('silindi');
 			})
 			.catch(err => console.log('silinemedi : ', err));
 	}
 
+	hideDialog() {
+		this.setState({ visible: false });
+	}
 	render() {
 		return (
 			<View style={{ flex: 1, backgroundColor: Colors.AppBackgroundColor, flexDirection: 'column' }}>
+				<Dialog visible={this.state.visible} onDismiss={() => this.hideDialog()}>
+					<DialogContent>
+						<Text>Çıkış yapılıyor devam edilsin mi?</Text>
+					</DialogContent>
+					<View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+						<DialogActions>
+							<Button onPress={() => this.hideDialog()}>Vazgeç</Button>
+						</DialogActions>
+						<DialogActions>
+							<Button onPress={() => this.logUserOut()}>Çıkış yap</Button>
+						</DialogActions>
+					</View>
+				</Dialog>
 				<Image
 					source={Images.DrawerImage}
 					style={{
@@ -114,7 +131,7 @@ class SideMenu extends Component {
 						textTitle="Oturumu Kapat"
 						iconName="exit-to-app"
 						onPress={() => {
-							this.logUserOut();
+							this.setState({ visible: true });
 						}}
 					/>
 				</ScrollView>
@@ -129,5 +146,8 @@ SideMenu.propTypes = {
 const styles = StyleSheet.create({
 	container: {}
 });
+const mapStateToProps = state => {
+	return {};
+};
 
-export default SideMenu;
+export default connect(mapStateToProps, { logOut })(SideMenu);

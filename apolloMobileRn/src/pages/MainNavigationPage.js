@@ -59,7 +59,7 @@ const SwitchNavigation = createSwitchNavigator(
 		}
 	},
 	{
-		initialRouteName: 'login'
+		initialRouteName: 'splash'
 	}
 );
 
