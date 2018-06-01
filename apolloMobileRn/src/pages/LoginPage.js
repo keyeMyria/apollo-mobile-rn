@@ -10,10 +10,20 @@ import {
 	TouchableOpacity,
 	AsyncStorage
 } from 'react-native';
+import {
+	Colors,
+	Icons,
+	Paddings,
+	widthPercentageToDP,
+	Margins,
+	Images,
+	USERNAME,
+	PASSWORD,
+	MALLCODE
+} from '.././helpers';
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from './../components/common';
-import { Colors, Icons, Paddings, widthPercentageToDP, Margins, Images } from '.././helpers';
 import { Button, TextInput, Checkbox } from 'react-native-paper';
 
 class LoginPage extends Component {
@@ -44,7 +54,7 @@ class LoginPage extends Component {
 	}
 
 	saveUserCredentials(successCallback, errorCallback) {
-		AsyncStorage.multiSet([['username', this.username], ['password', this.password], ['mallCode', this.mallCode]])
+		AsyncStorage.multiSet([[USERNAME, this.username], [PASSWORD, this.password], [MALLCODE, this.mallCode]])
 			.then(() => {
 				if (successCallback) {
 					successCallback();

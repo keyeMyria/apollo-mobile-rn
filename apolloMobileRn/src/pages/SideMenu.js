@@ -4,7 +4,18 @@ import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, Image, StyleSheet, AsyncStorage } from 'react-native';
 import { TouchableRipple, Dialog, DialogContent, DialogActions, Button } from 'react-native-paper';
 import { DrawerItems } from '../components/drawer/DrawerItems';
-import { Colors, Images, Paddings, Sizes, Margins, widthPercentageToDP, heightPercentageToDP } from './../helpers';
+import {
+	Colors,
+	Images,
+	Paddings,
+	Sizes,
+	Margins,
+	widthPercentageToDP,
+	heightPercentageToDP,
+	USERNAME,
+	PASSWORD,
+	MALLCODE
+} from './../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { logOut } from 'apollo-rn-redux-helper/src/actions';
 import { connect } from 'react-redux';
@@ -14,9 +25,7 @@ var imageHeight = widthPercentageToDP('5%');
 
 class SideMenu extends Component {
 	navigateToScreen(route) {
-		setTimeout(() => {
-			this.props.navigation.navigate(route);
-		}, 100);
+		this.props.navigation.navigate(route);
 	}
 
 	state = {
@@ -26,7 +35,7 @@ class SideMenu extends Component {
 
 	logUserOut() {
 		console.log('çıkış yapılıyor');
-		AsyncStorage.multiRemove(['username', 'password', 'mallCode'])
+		AsyncStorage.multiRemove([USERNAME, PASSWORD, MALLCODE])
 			.then(() => {
 				this.props.logOut();
 				this.props.navigation.navigate('login');
@@ -38,6 +47,7 @@ class SideMenu extends Component {
 	hideDialog() {
 		this.setState({ visible: false });
 	}
+
 	render() {
 		return (
 			<View style={{ flex: 1, backgroundColor: Colors.AppBackgroundColor, flexDirection: 'column' }}>

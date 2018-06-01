@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Page } from '../components/common';
 import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
@@ -11,7 +11,6 @@ class CockpitPage extends Component {
 			<Page navigation={this.props.navigation}>
 				<View>
 					<Text>asdasdasd</Text>
-					<Button onPress={() => this.deleteCredential()}>Çıkış Yap</Button>
 				</View>
 			</Page>
 		);
