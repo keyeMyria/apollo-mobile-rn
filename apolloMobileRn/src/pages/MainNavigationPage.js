@@ -32,7 +32,7 @@ const SwitchNavigation = createSwitchNavigator(
 						screen: CampaignDetailsPage
 					},
 					bestOf: {
-						screen: BestOfPage
+						screen: props => <BestOfPage {...props} />
 					},
 					giftStock: {
 						screen: GiftStockPage
