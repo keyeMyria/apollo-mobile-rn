@@ -6,14 +6,15 @@ import thunk from 'redux-thunk';
 import HomePage from './src/pages/HomePage';
 import MainNavigationPage from './src/pages/MainNavigationPage';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import { Colors } from './src/helpers';
 
 const theme = {
 	...DefaultTheme,
 	roundness: 2,
 	colors: {
 		...DefaultTheme.colors,
-		primary: '#D74315',
-		accent: '#f1c40f'
+		primary: Colors.PrimaryColor,
+		accent: Colors.AccentColor
 	}
 };
 

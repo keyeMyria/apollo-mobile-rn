@@ -15,50 +15,87 @@ import BestGendersPage from './bestOfTabPages/BestGendersPage';
 import BestHoursPage from './bestOfTabPages/BestHoursPage';
 import BestSectorsPage from './bestOfTabPages/BestSectorsPage';
 import BestVisitFrequenciesPage from './bestOfTabPages/BestVisitFrequenciesPage';
+import { heightPercentageToDP, Colors, widthPercentageToDP } from '../helpers';
 
 const BestOfTabPages = createMaterialTopTabNavigator(
 	{
-		bestAgeIntervals: {
-			screen: BestAgeIntervalsPage
-		},
-		bestCities: {
-			screen: BestCitiesPage
-		},
-		bestCounties: {
-			screen: BestCountiesPage
-		},
-		bestDays: {
-			screen: BestDaysPage
-		},
-		bestDistricts: {
-			screen: BestDistrictsPage
-		},
-		bestGenders: {
-			screen: BestGendersPage
-		},
-		bestHours: {
-			screen: BestHoursPage
+		bestShops: {
+			screen: BestShopsPage,
+			navigationOptions: {
+				title: 'Mağazalar'
+			}
 		},
 		bestSectors: {
-			screen: BestSectorsPage
+			screen: BestSectorsPage,
+			navigationOptions: {
+				title: 'Sektörler'
+			}
 		},
-		bestShops: {
-			screen: BestShopsPage
+		bestCities: {
+			screen: BestCitiesPage,
+			navigationOptions: {
+				title: 'Şehirler'
+			}
+		},
+		bestCounties: {
+			screen: BestCountiesPage,
+			navigationOptions: {
+				title: 'İlçeler'
+			}
+		},
+		bestDistricts: {
+			screen: BestDistrictsPage,
+			navigationOptions: {
+				title: 'Semtler'
+			}
+		},
+		bestGenders: {
+			screen: BestGendersPage,
+			navigationOptions: {
+				title: 'Cinsiyetler'
+			}
+		},
+		bestDays: {
+			screen: BestDaysPage,
+			navigationOptions: {
+				title: 'Günler'
+			}
+		},
+		bestHours: {
+			screen: BestHoursPage,
+			navigationOptions: {
+				title: 'Saatler'
+			}
+		},
+		bestAgeIntervals: {
+			screen: BestAgeIntervalsPage,
+			navigationOptions: {
+				title: 'Yaş Aralıkları'
+			}
 		},
 		bestVisitFrequencies: {
-			screen: BestVisitFrequenciesPage
+			screen: BestVisitFrequenciesPage,
+			navigationOptions: {
+				title: 'Ziyaret Frekansları'
+			}
 		}
 	},
 	{
 		tabBarOptions: {
-			scrollEnabled: true
+			scrollEnabled: true,
+			tabStyle: { height: heightPercentageToDP('7%') },
+			style: { backgroundColor: Colors.PrimaryColor },
+			upperCaseLabel: false,
+			activeTintColor: 'white',
+			indicatorStyle: { backgroundColor: 'white' },
+			labelStyle: { fontSize: widthPercentageToDP('3%') }
 		}
 	}
 );
 
-export const BestOfPage = () => {
+export const BestOfPage = ({ navigation }) => {
 	return (
-		<Page>
+		<Page navigation={navigation}>
 			<BestOfTabPages />
 		</Page>
 	);
