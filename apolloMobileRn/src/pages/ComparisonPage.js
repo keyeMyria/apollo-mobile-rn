@@ -15,7 +15,7 @@ class ComparisonPage extends Component {
 
 	render() {
 		return (
-			<Page style={{ backgroundColor: Colors.AppBackgroundColor, flex: 1 }}>
+			<Page navigation={this.props.navigation} style={{ backgroundColor: Colors.AppBackgroundColor, flex: 1 }}>
 				<View style={{ backgroundColor: '#333333', height: widthPercentageToDP('32%') }}>
 					<Text
 						style={{

@@ -10,10 +10,20 @@ import {
 	TouchableOpacity,
 	AsyncStorage
 } from 'react-native';
+import {
+	Colors,
+	Icons,
+	Paddings,
+	widthPercentageToDP,
+	Margins,
+	Images,
+	USERNAME,
+	PASSWORD,
+	MALLCODE
+} from '.././helpers';
 import { connect } from 'react-redux';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from './../components/common';
-import { Colors, Icons, Paddings, widthPercentageToDP, Margins, Images } from '.././helpers';
 import { Button, TextInput, Checkbox } from 'react-native-paper';
 
 class LoginPage extends Component {
@@ -38,20 +48,34 @@ class LoginPage extends Component {
 	componentWillReceiveProps(newProps) {
 		if (newProps.token !== this.props.token) {
 			if (this.state.rememberMe) {
-				this.saveUserCredentials();
+				this.saveUserCredentials(this.props.navigation.navigate('app'), this.props.navigation.navigate('app'));
 			}
-			this.props.navigation.navigate('app');
 		}
 	}
 
-	saveUserCredentials() {
-		AsyncStorage.multiSet([['username', this.username], ['password', this.password], ['mallCode', this.mallCode]]);
+	saveUserCredentials(successCallback, errorCallback) {
+		AsyncStorage.multiSet([[USERNAME, this.username], [PASSWORD, this.password], [MALLCODE, this.mallCode]])
+			.then(() => {
+				if (successCallback) {
+					successCallback();
+				}
+			})
+			.catch(err => {
+				console.log('multi set error :', err);
+				if (errorCallback) {
+					errorCallback();
+				}
+			});
+	}
+
+	logUserIn(username, password, mallCode) {
+		this.props.fetchToken(username, password, mallCode);
 	}
 
 	render() {
 		const { rememberMe } = this.state;
 
-		console.log('login page ');
+		console.log('login page ', this.props);
 		if (this.props.tokenError) {
 			Alert.alert('Bir hata oluştu');
 		}
@@ -122,10 +146,6 @@ class LoginPage extends Component {
 				{this.renderLoading()}
 			</ImageBackground>
 		);
-	}
-
-	logUserIn(username, password, mallCode) {
-		this.props.fetchToken(username, password, mallCode);
 	}
 }
 

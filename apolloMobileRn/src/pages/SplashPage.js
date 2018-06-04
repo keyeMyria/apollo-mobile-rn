@@ -3,15 +3,18 @@ import { View, Text, AsyncStorage, Image, Dimensions, ImageBackground, Animated,
 import { connect } from 'react-redux';
 import { Page } from '../components/common';
 import { fetchToken } from 'apollo-rn-redux-helper/src/actions';
-import { Colors, Images } from '../helpers';
+import { Colors, Images, USERNAME, PASSWORD, MALLCODE } from '../helpers';
 
 const { width, height } = Dimensions.get('window');
+const animationDelay = 4000;
 
 class SplashPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			animateValue: new Animated.Value(0)
+			animateValue: new Animated.Value(0),
+			isAnimationFinish: false,
+			hasCredentialInfo: null
 		};
 	}
 
@@ -24,27 +27,42 @@ class SplashPage extends Component {
 		}).start(() => this.animateLogo());
 	}
 
+	startAnimationDelay() {
+		setTimeout(() => {
+			this.setState({ isAnimationFinish: true });
+		}, animationDelay);
+	}
+
 	async componentDidMount() {
+		this.startAnimationDelay();
 		this.animateLogo();
 
-		var credentialInfo = await AsyncStorage.multiGet(['username', 'password', 'mallCode']);
-		var username = credentialInfo[0][1];
-		var password = credentialInfo[1][1];
-		var mallCode = credentialInfo[2][1];
-		if (mallCode && password && mallCode) {
-			console.log(username, password, mallCode);
-			this.props.fetchToken(username, password, mallCode);
+		var credentialInfo = await AsyncStorage.multiGet([USERNAME, PASSWORD, MALLCODE]);
+		if (credentialInfo != null && credentialInfo.length === 3) {
+			var username = credentialInfo[0][1];
+			var password = credentialInfo[1][1];
+			var mallCode = credentialInfo[2][1];
+
+			if (mallCode && password && mallCode) {
+				console.log(username, password, mallCode);
+				this.props.fetchToken(username, password, mallCode);
+			} else {
+				this.setState({ hasCredentialInfo: false });
+			}
 		} else {
-			this.props.navigation.navigate('login');
+			this.setState({ hasCredentialInfo: false });
 		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.token !== null) {
-			this.props.navigation.navigate('app');
-		}
-		if (this.props.tokenError) {
-			this.props.navigation.navigate('login');
+		if (this.state.isAnimationFinish) {
+			if (this.props.token !== null) {
+				this.props.navigation.navigate('app');
+			} else if (this.props.tokenError) {
+				this.props.navigation.navigate('login');
+			} else if (!this.state.hasCredentialInfo) {
+				this.props.navigation.navigate('login');
+			}
 		}
 	}
 
@@ -83,4 +101,5 @@ const mapStateToProps = state => {
 	const { isTokenLoading, token, tokenError } = state.token;
 	return { isTokenLoading, token, tokenError };
 };
+
 export default connect(mapStateToProps, { fetchToken })(SplashPage);

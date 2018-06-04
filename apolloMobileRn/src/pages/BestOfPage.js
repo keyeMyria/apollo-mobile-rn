@@ -1,40 +1,65 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { getPing } from 'apollo-rn-redux-helper/src/actions';
+import { getPing, fetchReportTop } from 'apollo-rn-redux-helper/src/actions';
 import LinearGradient from 'react-native-linear-gradient';
+import { createMaterialTopTabNavigator } from 'react-navigation';
+import BestShopsPage from './bestOfTabPages/BestShopsPage';
+import BestCitiesPage from './bestOfTabPages/BestCitiesPage';
+import BestCountiesPage from './bestOfTabPages/BestCountiesPage';
+import { Page } from '../components/common';
+import BestAgeIntervalsPage from './bestOfTabPages/BestAgeIntervalsPage';
+import BestDaysPage from './bestOfTabPages/BestDaysPage';
+import BestDistrictsPage from './bestOfTabPages/BestDistrictsPage';
+import BestGendersPage from './bestOfTabPages/BestGendersPage';
+import BestHoursPage from './bestOfTabPages/BestHoursPage';
+import BestSectorsPage from './bestOfTabPages/BestSectorsPage';
+import BestVisitFrequenciesPage from './bestOfTabPages/BestVisitFrequenciesPage';
 
-class BestOfPage extends Component {
-	render() {
-		return (
-			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-				<LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-					<Text style={styles.buttonText}>Sign in with Facebook</Text>
-				</LinearGradient>
-			</View>
-		);
-	}
-}
-
-var styles = StyleSheet.create({
-	linearGradient: {
-		paddingLeft: 15,
-		paddingRight: 15,
-		borderRadius: 5
+const BestOfTabPages = createMaterialTopTabNavigator(
+	{
+		bestAgeIntervals: {
+			screen: BestAgeIntervalsPage
+		},
+		bestCities: {
+			screen: BestCitiesPage
+		},
+		bestCounties: {
+			screen: BestCountiesPage
+		},
+		bestDays: {
+			screen: BestDaysPage
+		},
+		bestDistricts: {
+			screen: BestDistrictsPage
+		},
+		bestGenders: {
+			screen: BestGendersPage
+		},
+		bestHours: {
+			screen: BestHoursPage
+		},
+		bestSectors: {
+			screen: BestSectorsPage
+		},
+		bestShops: {
+			screen: BestShopsPage
+		},
+		bestVisitFrequencies: {
+			screen: BestVisitFrequenciesPage
+		}
 	},
-	buttonText: {
-		fontSize: 18,
-		fontFamily: 'Gill Sans',
-		textAlign: 'center',
-		margin: 10,
-		color: '#ffffff',
-		backgroundColor: 'transparent'
+	{
+		tabBarOptions: {
+			scrollEnabled: true
+		}
 	}
-});
+);
 
-const mapStateToProps = state => {
-	const { isLoading, ping, error } = state.ping;
-	return { isLoading, ping, error };
+export const BestOfPage = () => {
+	return (
+		<Page>
+			<BestOfTabPages />
+		</Page>
+	);
 };
-
-export default BestOfPage;
