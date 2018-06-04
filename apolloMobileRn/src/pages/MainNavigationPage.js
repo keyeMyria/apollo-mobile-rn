@@ -17,7 +17,6 @@ import CustomerValuePyramidPage from './CustomerValuePyramidPage';
 import BestShopsPage from './bestOfTabPages/BestShopsPage';
 import BestCountiesPage from './bestOfTabPages/BestCountiesPage';
 import BestCitiesPage from './bestOfTabPages/BestCitiesPage';
-import { localizedText } from '../helpers/Localization';
 
 const SwitchNavigation = createSwitchNavigator(
 	{
@@ -50,7 +49,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'bestOf',
+					initialRouteName: 'managerSummary',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}

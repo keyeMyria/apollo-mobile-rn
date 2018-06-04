@@ -8,7 +8,7 @@ import HomePage from './src/pages/HomePage';
 import MainNavigationPage from './src/pages/MainNavigationPage';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Colors } from './src/helpers';
-import { setLocalization } from './src/helpers/Localization';
+import { setLocalization } from './src/helpers/Localization/Localization';
 
 const theme = {
 	...DefaultTheme,
@@ -32,8 +32,11 @@ export default class App extends Component {
 		return languageCode;
 	}
 
-	render() {
+	componentDidMount() {
 		setLocalization(this.getLanguageCode());
+	}
+
+	render() {
 		return (
 			<PaperProvider theme={theme}>
 				<Provider store={createStore(myReducer, {}, applyMiddleware(thunk))}>
