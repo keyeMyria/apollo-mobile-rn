@@ -21,34 +21,52 @@ class EMailReportPage extends Component {
 							<Text style={styles.dateTitle}>Başlangıç Tarihi</Text>
 
 							<TouchableOpacity style={styles.selection}>
-								<Icons name="date-range" size={25} color={Colors.BasicTitleColor} />
+								<Icons
+									name="date-range"
+									size={widthPercentageToDP('7%')}
+									color={Colors.BasicTitleColor}
+								/>
 								<Text style={styles.day}>22 Mayıs 2018</Text>
 							</TouchableOpacity>
-							<Divider style={{ marginHorizontal: 35 }} />
+							<Divider style={{ marginHorizontal: widthPercentageToDP('10%') }} />
 						</View>
 						<View style={styles.date}>
 							<Text style={styles.dateTitle}>Bitiş Tarihi</Text>
 
 							<TouchableOpacity style={styles.selection}>
-								<Icons name="date-range" size={25} color={Colors.BasicTitleColor} />
+								<Icons
+									name="date-range"
+									size={widthPercentageToDP('7%')}
+									color={Colors.BasicTitleColor}
+								/>
 								<Text style={styles.day}>22 Mayıs 2018</Text>
 							</TouchableOpacity>
-							<Divider style={{ marginHorizontal: 35 }} />
+							<Divider style={{ marginHorizontal: widthPercentageToDP('10%') }} />
 						</View>
 						<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-							<Icons name="mail" size={25} color={Colors.BasicTitleColor} style={{ marginLeft: 20 }} />
+							<Icons
+								name="mail"
+								size={widthPercentageToDP('7%')}
+								color={Colors.BasicTitleColor}
+								style={{ marginLeft: widthPercentageToDP('6%') }}
+							/>
 							<TextInput
 								label="E-Posta Adresleri"
 								onChangeText={text => this.setState({ text })}
-								underlineColor="#0000"
+								underlineColor={Colors.SecondaryTitleColor}
 								style={{
 									flex: 1,
-									marginRight: 45,
-									marginLeft: 10,
+									marginRight: widthPercentageToDP('7%'),
+									marginLeft: widthPercentageToDP('3%'),
 									alignSelf: 'center'
 								}}
 								// style={styles.dateTitle}
-								theme={{ colors: { primary: '#FFFFFF', disabled: '#FBFBFB' } }}
+								theme={{
+									colors: {
+										primary: Colors.SecondaryTitleColor,
+										disabled: Colors.SecondaryTitleColor
+									}
+								}}
 							/>
 						</View>
 					</View>
@@ -64,7 +82,7 @@ class EMailReportPage extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'column',
-		backgroundColor: '#303030',
+		backgroundColor: Colors.AppBackgroundColor,
 		justifyContent: 'center'
 	},
 	date: {
@@ -73,21 +91,21 @@ const styles = StyleSheet.create({
 		marginBottom: Margins.DateItemBottomMargin
 	},
 	dateTitle: {
-		marginLeft: 35,
+		marginLeft: widthPercentageToDP('10%'),
 		color: Colors.BasicTitleColor
 	},
 	selection: {
 		flexDirection: 'row'
 	},
 	day: {
-		color: '#FBFBFB',
-		marginLeft: 10
+		color: Colors.SecondaryTitleColor,
+		marginLeft: widthPercentageToDP('3%')
 	},
 	button: {
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginTop: Margins.ButtonTopMargin,
-		backgroundColor: Colors.DrawerItemRippleColor
+		backgroundColor: Colors.TouchableColor
 	}
 });
 

@@ -9,7 +9,7 @@ const Colors = {
 	CockpitDataRowAnimatableBackgroundColor: '#616788',
 	DijitalClockTextColor: '#e7cbe8',
 	DrawerItemIconColor: '#FFB91D',
-	DrawerItemRippleColor: '#BF360C',
+	TouchableColor: '#BF360C',
 	CockpitPageBackgroundColor: '#4a5178',
 	BasicTitleColor: '#BCBCBC',
 	SecondaryTitleColor: '#FBFBFB'

@@ -9,7 +9,7 @@ import { CampaignSelection } from '../components/comparison/campaignComparison/C
 const { width, height } = Dimensions.get('window');
 class ComparisonPage extends Component {
 	state = {
-		value: 'first',
+		value: 'Kampanya Kıyasla',
 		viewComparison: 'campaign'
 	};
 
@@ -19,7 +19,7 @@ class ComparisonPage extends Component {
 				<View style={{ backgroundColor: '#333333', height: widthPercentageToDP('32%') }}>
 					<Text
 						style={{
-							color: '#BCBCBC',
+							color: Colors.BasicTitleColor,
 							paddingLeft: widthPercentageToDP('7%'),
 							paddingTop: widthPercentageToDP('3%'),
 							paddingBottom: widthPercentageToDP('3%')
@@ -31,18 +31,22 @@ class ComparisonPage extends Component {
 						<TouchableOpacity
 							style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('9%') }}
 							onPress={() => {
-								this.setState({ value: 'first', viewComparison: 'campaign' });
+								this.setState({ value: 'Kampanya Kıyasla', viewComparison: 'campaign' });
 
 								this.refs.myScrollView.scrollTo({ x: 0, y: 0, animated: true });
 							}}
 						>
-							<RadioButton value="first" uncheckedColor="#BCBCBC" color="#BF360C" />
+							<RadioButton
+								value="Kampanya Kıyasla"
+								uncheckedColor={Colors.BasicTitleColor}
+								color={Colors.TouchableColor}
+							/>
 							<Text
 								style={{
 									textAlignVertical: 'center',
-									color: '#BCBCBC',
+									color: Colors.BasicTitleColor,
 									paddingLeft: widthPercentageToDP('3%'),
-									fontSize: 12
+									fontSize: widthPercentageToDP('3%')
 								}}
 							>
 								Kampanya Kıyaslama
@@ -54,18 +58,22 @@ class ComparisonPage extends Component {
 								paddingLeft: widthPercentageToDP('9%')
 							}}
 							onPress={() => {
-								this.setState({ value: 'second', viewComparison: 'date' });
+								this.setState({ value: 'Tarih Kıyasla', viewComparison: 'date' });
 								this.refs.myScrollView.scrollTo({ x: width, y: 0, animated: true });
 							}}
 						>
-							<RadioButton value="second" uncheckedColor="#BCBCBC" color="#BF360C" />
+							<RadioButton
+								value="Tarih Kıyasla"
+								uncheckedColor={Colors.BasicTitleColor}
+								color={Colors.TouchableColor}
+							/>
 							<Text
 								style={{
 									textAlignVertical: 'center',
-									color: '#BCBCBC',
+									color: Colors.BasicTitleColor,
 									paddingLeft: widthPercentageToDP('3%'),
 
-									fontSize: 12
+									fontSize: widthPercentageToDP('3%')
 								}}
 							>
 								Tarih Kiyaslama
@@ -112,14 +120,9 @@ class ComparisonPage extends Component {
 					}}
 				>
 					<TouchableOpacity>
-						<Text style={{ color: '#FBFBFB' }}>Excel Raporu Al</Text>
+						<Text style={{ color: Colors.SecondaryTitleColor }}>Excel Raporu Al</Text>
 					</TouchableOpacity>
-					<Button
-						raised
-						onPress={() => {}}
-						dark={true}
-						style={{ backgroundColor: Colors.DrawerItemRippleColor }}
-					>
+					<Button raised onPress={() => {}} dark={true} style={{ backgroundColor: Colors.TouchableColor }}>
 						Kıyasla
 					</Button>
 				</View>

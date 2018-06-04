@@ -10,7 +10,7 @@ export const DrawerItems = ({ textTitle, iconName, onPress }) => {
 			onPress={() => {
 				onPress();
 			}}
-			rippleColor={Colors.DrawerItemRippleColor}
+			rippleColor={Colors.TouchableColor}
 		>
 			<View
 				style={{
@@ -20,8 +20,15 @@ export const DrawerItems = ({ textTitle, iconName, onPress }) => {
 					marginBottom: Margins.ListItemBottomMargin
 				}}
 			>
-				<Icons name={iconName} size={30} color={Colors.DrawerItemIconColor} />
-				<Text style={{ textAlignVertical: 'center', color: '#C1C1C1', paddingLeft: 20, fontSize: 13 }}>
+				<Icons name={iconName} size={widthPercentageToDP('8%')} color={Colors.DrawerItemIconColor} />
+				<Text
+					style={{
+						textAlignVertical: 'center',
+						color: '#C1C1C1',
+						paddingLeft: widthPercentageToDP('5%'),
+						fontSize: widthPercentageToDP('3%')
+					}}
+				>
 					{textTitle}
 				</Text>
 			</View>

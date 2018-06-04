@@ -22,7 +22,7 @@ class Selection extends Component {
 		const { sectionNumber, date1, date2, dateTitle1, dateTitle2 } = this.props;
 		return (
 			<View style={styles.container}>
-				<View style={{ flexDirection: 'row' }}>
+				<View style={{ flexDirection: 'row', backgroundColor: '#292929' }}>
 					<Text style={styles.sectionText}>{sectionNumber}</Text>
 
 					<View>
