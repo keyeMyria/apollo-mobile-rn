@@ -44,10 +44,14 @@ class CampaignSelection extends Component {
 												height: widthPercentageToDP('10%')
 											}}
 										>
-											<Icons name="store" size={15} style={{ alignSelf: 'center' }} />
+											<Icons
+												name="store"
+												size={widthPercentageToDP('5%')}
+												style={{ alignSelf: 'center' }}
+											/>
 											<Text
 												style={{
-													fontSize: 14,
+													fontSize: widthPercentageToDP('4%'),
 													color: '#000000',
 													paddingLeft: widthPercentageToDP('3%'),
 													textAlignVertical: 'center'
@@ -56,7 +60,7 @@ class CampaignSelection extends Component {
 												Avm Seç
 											</Text>
 										</View>
-										<Divider style={{ backgroundColor: '#BCBCBC' }} />
+										<Divider style={{ backgroundColor: Colors.BasicTitleColor }} />
 										<TouchableOpacity
 											onPress={() =>
 												this.setState({ mallCode: '14Burda', isMallCodeModalVisible: false })}
@@ -132,10 +136,14 @@ class CampaignSelection extends Component {
 								}}
 							>
 								<View style={{ flexDirection: 'row' }}>
-									<Icons name="store" size={widthPercentageToDP('8%')} color="#BCBCBC" />
+									<Icons
+										name="store"
+										size={widthPercentageToDP('8%')}
+										color={Colors.BasicTitleColor}
+									/>
 									<Text
 										style={{
-											color: '#BCBCBC',
+											color: Colors.BasicTitleColor,
 											paddingHorizontal: widthPercentageToDP('2%'),
 											textAlignVertical: 'center'
 										}}
@@ -143,7 +151,11 @@ class CampaignSelection extends Component {
 										{this.state.mallCode}
 									</Text>
 								</View>
-								<Icons name="arrow-drop-down" size={widthPercentageToDP('8%')} color="#BCBCBC" />
+								<Icons
+									name="arrow-drop-down"
+									size={widthPercentageToDP('8%')}
+									color={Colors.BasicTitleColor}
+								/>
 							</TouchableOpacity>
 							<TouchableOpacity
 								onPress={() => this.setState({ isCampaignModalVisible: true })}
@@ -154,17 +166,25 @@ class CampaignSelection extends Component {
 									// paddingTop: widthPercentageToDP('3%')
 								}}
 							>
-								<Icons name="local-play" size={widthPercentageToDP('8%')} color="#BCBCBC" />
+								<Icons
+									name="local-play"
+									size={widthPercentageToDP('8%')}
+									color={Colors.BasicTitleColor}
+								/>
 								<Text
 									style={{
-										color: '#BCBCBC',
+										color: Colors.BasicTitleColor,
 										paddingHorizontal: widthPercentageToDP('2%'),
 										textAlignVertical: 'center'
 									}}
 								>
 									{this.state.campaign}
 								</Text>
-								<Icons name="arrow-drop-down" size={widthPercentageToDP('8%')} color="#BCBCBC" />
+								<Icons
+									name="arrow-drop-down"
+									size={widthPercentageToDP('8%')}
+									color={Colors.BasicTitleColor}
+								/>
 							</TouchableOpacity>
 						</View>
 					</View>
@@ -176,7 +196,7 @@ class CampaignSelection extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'column',
-		backgroundColor: '#252525',
+		backgroundColor: Colors.AppBackgroundColor,
 		marginBottom: widthPercentageToDP('2%'),
 		height: widthPercentageToDP('38%')
 	},

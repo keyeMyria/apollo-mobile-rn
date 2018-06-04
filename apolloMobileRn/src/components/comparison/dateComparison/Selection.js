@@ -26,26 +26,24 @@ class Selection extends Component {
 					<Text style={styles.sectionText}>{sectionNumber}</Text>
 
 					<View>
-						<Dialog
-							style={{ padding: 0 }}
-							visible={this.state.visible}
-							onDismiss={() => this.setState({ visible: false })}
-						>
-							<DialogScrollArea style={{ padding: 0 }}>
-								<ScrollView contentContainerStyle={{ paddingHorizontal: 24 }}>
+						<Dialog visible={this.state.visible} onDismiss={() => this.setState({ visible: false })}>
+							<DialogScrollArea>
+								<ScrollView>
 									<View
 										style={{
 											flexDirection: 'row',
 											flex: 1,
-											paddingHorizontal: 0,
-											// width: widthPercentageToDP('100½'),
 											height: widthPercentageToDP('10%')
 										}}
 									>
-										<Icons name="store" size={15} style={{ alignSelf: 'center' }} />
+										<Icons
+											name="store"
+											size={widthPercentageToDP('5%')}
+											style={{ alignSelf: 'center' }}
+										/>
 										<Text
 											style={{
-												fontSize: 14,
+												fontSize: widthPercentageToDP('4%'),
 												color: '#000000',
 												paddingLeft: widthPercentageToDP('3%'),
 												textAlignVertical: 'center'
@@ -54,7 +52,7 @@ class Selection extends Component {
 											Avm Seç
 										</Text>
 									</View>
-									<Divider style={{ backgroundColor: '#BCBCBC', paddingHorizontal: 0 }} />
+									<Divider style={{ backgroundColor: Colors.BasicTitleColor }} />
 									<TouchableOpacity
 										mallCode={this.state.mallCode}
 										onPress={() => this.setState({ mallCode: '14Burda', visible: false })}
@@ -82,36 +80,48 @@ class Selection extends Component {
 								paddingVertical: widthPercentageToDP('2%')
 							}}
 						>
-							<Icons name="store" size={25} color="#BCBCBC" />
+							<Icons name="store" size={widthPercentageToDP('7%')} color={Colors.BasicTitleColor} />
 							<Text
 								style={{
-									color: '#BCBCBC',
+									color: Colors.BasicTitleColor,
 									paddingHorizontal: widthPercentageToDP('2%'),
 									textAlignVertical: 'center'
 								}}
 							>
 								{this.state.mallCode}
 							</Text>
-							<Icons name="arrow-drop-down" size={25} color="#BCBCBC" />
+							<Icons
+								name="arrow-drop-down"
+								size={widthPercentageToDP('7%')}
+								color={Colors.BasicTitleColor}
+							/>
 						</TouchableOpacity>
 
 						<View style={styles.sectionDate}>
 							<Text style={styles.sectionDateText}>{dateTitle1}</Text>
 
 							<TouchableOpacity style={{ flexDirection: 'row' }}>
-								<Icons name="date-range" size={25} color="#BCBCBC" />
+								<Icons
+									name="date-range"
+									size={widthPercentageToDP('7%')}
+									color={Colors.BasicTitleColor}
+								/>
 								<Text style={styles.dateTitleText}>{date1}</Text>
 							</TouchableOpacity>
-							<Divider style={{ marginLeft: 35 }} />
+							<Divider style={{ marginLeft: widthPercentageToDP('9%') }} />
 						</View>
 						<View style={styles.sectionDate}>
 							<Text style={styles.sectionDateText}>{dateTitle2}</Text>
 
 							<TouchableOpacity style={{ flexDirection: 'row' }}>
-								<Icons name="date-range" size={25} color="#BCBCBC" />
+								<Icons
+									name="date-range"
+									size={widthPercentageToDP('7%')}
+									color={Colors.BasicTitleColor}
+								/>
 								<Text style={styles.dateTitleText}>{date2}</Text>
 							</TouchableOpacity>
-							<Divider style={{ marginLeft: 35 }} />
+							<Divider style={{ marginLeft: widthPercentageToDP('9%') }} />
 						</View>
 					</View>
 				</View>
@@ -122,7 +132,7 @@ class Selection extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'column',
-		backgroundColor: '#252525',
+		backgroundColor: Colors.AppBackgroundColor,
 		marginBottom: widthPercentageToDP('2%'),
 		height: widthPercentageToDP('38%')
 	},
@@ -140,12 +150,12 @@ const styles = StyleSheet.create({
 	},
 	sectionDateText: {
 		marginLeft: widthPercentageToDP('9%'),
-		color: '#BCBCBC',
+		color: Colors.BasicTitleColor,
 		fontSize: widthPercentageToDP('3%')
 	},
 	dateTitleText: {
-		color: '#FBFBFB',
-		marginLeft: 10
+		color: Colors.SecondaryTitleColor,
+		marginLeft: widthPercentageToDP('2%')
 	}
 });
 export { Selection };

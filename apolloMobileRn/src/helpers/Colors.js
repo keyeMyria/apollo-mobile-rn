@@ -8,7 +8,8 @@ const Colors = {
 	DijitalClockTextColor: '#e7cbe8',
 	DrawerItemIconColor: '#FFB91D',
 	DrawerItemRippleColor: '#BF360C',
-	EmailReportIconColor: '#BCBCBC',
-	CockpitPageBackgroundColor: '#4a5178'
+	CockpitPageBackgroundColor: '#4a5178',
+	BasicTitleColor: '#BCBCBC',
+	SecondaryTitleColor: '#FBFBFB'
 };
 export { Colors };

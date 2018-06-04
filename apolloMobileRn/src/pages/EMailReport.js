@@ -21,7 +21,7 @@ class EMailReport extends Component {
 							<Text style={styles.dateTitle}>Başlangıç Tarihi</Text>
 
 							<TouchableOpacity style={styles.selection}>
-								<Icons name="date-range" size={25} color={Colors.EmailReportIconColor} />
+								<Icons name="date-range" size={25} color={Colors.BasicTitleColor} />
 								<Text style={styles.day}>22 Mayıs 2018</Text>
 							</TouchableOpacity>
 							<Divider style={{ marginHorizontal: 35 }} />
@@ -30,18 +30,13 @@ class EMailReport extends Component {
 							<Text style={styles.dateTitle}>Bitiş Tarihi</Text>
 
 							<TouchableOpacity style={styles.selection}>
-								<Icons name="date-range" size={25} color={Colors.EmailReportIconColor} />
+								<Icons name="date-range" size={25} color={Colors.BasicTitleColor} />
 								<Text style={styles.day}>22 Mayıs 2018</Text>
 							</TouchableOpacity>
 							<Divider style={{ marginHorizontal: 35 }} />
 						</View>
 						<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-							<Icons
-								name="mail"
-								size={25}
-								color={Colors.EmailReportIconColor}
-								style={{ marginLeft: 20 }}
-							/>
+							<Icons name="mail" size={25} color={Colors.BasicTitleColor} style={{ marginLeft: 20 }} />
 							<TextInput
 								label="E-Posta Adresleri"
 								onChangeText={text => this.setState({ text })}
@@ -79,7 +74,7 @@ const styles = StyleSheet.create({
 	},
 	dateTitle: {
 		marginLeft: 35,
-		color: Colors.EmailReportIconColor
+		color: Colors.BasicTitleColor
 	},
 	selection: {
 		flexDirection: 'row'
