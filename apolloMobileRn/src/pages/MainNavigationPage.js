@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NativeModules, Platform } from 'react-native';
 import { createSwitchNavigator, createDrawerNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import HomePage from './HomePage';
 import { BestOfPage } from './BestOfPage';

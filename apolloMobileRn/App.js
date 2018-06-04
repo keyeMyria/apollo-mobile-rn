@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NativeModules, Platform } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import myReducer from 'apollo-rn-redux-helper/src/reducers';
@@ -7,6 +8,7 @@ import HomePage from './src/pages/HomePage';
 import MainNavigationPage from './src/pages/MainNavigationPage';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Colors } from './src/helpers';
+import { setLocalization } from './src/helpers/Localization/Localization';
 
 const theme = {
 	...DefaultTheme,
@@ -19,6 +21,21 @@ const theme = {
 };
 
 export default class App extends Component {
+	getLanguageCode() {
+		let systemLanguage = 'tr';
+		if (Platform.OS === 'android') {
+			systemLanguage = NativeModules.I18nManager.localeIdentifier;
+		} else {
+			systemLanguage = NativeModules.SettingsManager.settings.AppleLocale;
+		}
+		const languageCode = systemLanguage.substring(0, 2);
+		return languageCode;
+	}
+
+	componentDidMount() {
+		setLocalization(this.getLanguageCode());
+	}
+
 	render() {
 		return (
 			<PaperProvider theme={theme}>
