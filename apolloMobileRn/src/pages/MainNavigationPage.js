@@ -48,7 +48,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'cockpit',
+					initialRouteName: 'managerSummary',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
