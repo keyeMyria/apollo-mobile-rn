@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NativeModules, Platform } from 'react-native';
 import { createSwitchNavigator, createDrawerNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import HomePage from './HomePage';
 import { BestOfPage } from './BestOfPage';
@@ -16,6 +17,7 @@ import CustomerValuePyramidPage from './CustomerValuePyramidPage';
 import BestShopsPage from './bestOfTabPages/BestShopsPage';
 import BestCountiesPage from './bestOfTabPages/BestCountiesPage';
 import BestCitiesPage from './bestOfTabPages/BestCitiesPage';
+import { localizedText } from '../helpers/Localization';
 
 const SwitchNavigation = createSwitchNavigator(
 	{

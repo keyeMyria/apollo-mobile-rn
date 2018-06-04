@@ -16,67 +16,68 @@ import BestHoursPage from './bestOfTabPages/BestHoursPage';
 import BestSectorsPage from './bestOfTabPages/BestSectorsPage';
 import BestVisitFrequenciesPage from './bestOfTabPages/BestVisitFrequenciesPage';
 import { heightPercentageToDP, Colors, widthPercentageToDP } from '../helpers';
+import { localizedText } from './../helpers/Localization';
 
 const BestOfTabPages = createMaterialTopTabNavigator(
 	{
 		bestShops: {
 			screen: BestShopsPage,
 			navigationOptions: {
-				title: 'Mağazalar'
+				title: localizedText.shops
 			}
 		},
 		bestSectors: {
 			screen: BestSectorsPage,
 			navigationOptions: {
-				title: 'Sektörler'
+				title: localizedText.sectors
 			}
 		},
 		bestCities: {
 			screen: BestCitiesPage,
 			navigationOptions: {
-				title: 'Şehirler'
+				title: localizedText.cities
 			}
 		},
 		bestCounties: {
 			screen: BestCountiesPage,
 			navigationOptions: {
-				title: 'İlçeler'
+				title: localizedText.counties
 			}
 		},
 		bestDistricts: {
 			screen: BestDistrictsPage,
 			navigationOptions: {
-				title: 'Semtler'
+				title: localizedText.districts
 			}
 		},
 		bestGenders: {
 			screen: BestGendersPage,
 			navigationOptions: {
-				title: 'Cinsiyetler'
+				title: localizedText.genders
 			}
 		},
 		bestDays: {
 			screen: BestDaysPage,
 			navigationOptions: {
-				title: 'Günler'
+				title: localizedText.days
 			}
 		},
 		bestHours: {
 			screen: BestHoursPage,
 			navigationOptions: {
-				title: 'Saatler'
+				title: localizedText.hours
 			}
 		},
 		bestAgeIntervals: {
 			screen: BestAgeIntervalsPage,
 			navigationOptions: {
-				title: 'Yaş Aralıkları'
+				title: localizedText.ageInterval
 			}
 		},
 		bestVisitFrequencies: {
 			screen: BestVisitFrequenciesPage,
 			navigationOptions: {
-				title: 'Ziyaret Frekansları'
+				title: localizedText.visitFrequencies
 			}
 		}
 	},
