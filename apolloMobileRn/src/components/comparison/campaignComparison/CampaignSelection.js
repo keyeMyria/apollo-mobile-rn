@@ -25,7 +25,7 @@ class CampaignSelection extends Component {
 		const { sectionNumber } = this.props;
 		return (
 			<View style={styles.container}>
-				<View style={{ flexDirection: 'row' }}>
+				<View style={{ flexDirection: 'row', backgroundColor: '#292929' }}>
 					<Text style={styles.sectionText}>{sectionNumber}</Text>
 
 					<View>
@@ -124,15 +124,19 @@ class CampaignSelection extends Component {
 							</Dialog>
 						</View>
 
-						<View style={{ flex: 1, justifyContent: 'center' }}>
+						<View
+							style={{
+								flex: 1,
+								justifyContent: 'center',
+								marginHorizontal: widthPercentageToDP('10%')
+							}}
+						>
 							<TouchableOpacity
 								onPress={() => this.setState({ isMallCodeModalVisible: true })}
 								style={{
 									flexDirection: 'row',
-									// paddingLeft: widthPercentageToDP('5%'),
-									// paddingVertical: widthPercentageToDP('2%'),
-									// paddingTop: widthPercentageToDP('3%'),
-									justifyContent: 'space-between'
+									justifyContent: 'space-between',
+									marginBottom: widthPercentageToDP('4%')
 								}}
 							>
 								<View style={{ flexDirection: 'row' }}>
