@@ -3,11 +3,13 @@ import { View, Text, ActivityIndicator, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from '../components/common';
+import BarChart from './../components/charts/BarChart';
 
 class CustomerValuePyramidPage extends Component {
 	render() {
 		return (
 			<Page navigation={this.props.navigation}>
+				<BarChart />
 				<Text>CustomerValuePyramidPage</Text>
 			</Page>
 		);

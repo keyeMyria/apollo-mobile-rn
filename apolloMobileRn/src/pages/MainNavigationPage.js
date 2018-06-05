@@ -49,7 +49,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'campaignDetails',
+					initialRouteName: 'customerValuePyramid',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
@@ -63,7 +63,7 @@ const SwitchNavigation = createSwitchNavigator(
 		}
 	},
 	{
-		initialRouteName: 'splash'
+		initialRouteName: 'app'
 	}
 );
 
