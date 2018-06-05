@@ -38,6 +38,7 @@ class SplashPage extends Component {
 		this.animateLogo();
 
 		var credentialInfo = await AsyncStorage.multiGet([USERNAME, PASSWORD, MALLCODE]);
+		console.log(credentialInfo);
 		if (credentialInfo != null && credentialInfo.length === 3) {
 			var username = credentialInfo[0][1];
 			var password = credentialInfo[1][1];

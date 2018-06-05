@@ -49,7 +49,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'managerSummary',
+					initialRouteName: 'campaignDetails',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
@@ -63,7 +63,7 @@ const SwitchNavigation = createSwitchNavigator(
 		}
 	},
 	{
-		initialRouteName: 'app'
+		initialRouteName: 'splash'
 	}
 );
 
