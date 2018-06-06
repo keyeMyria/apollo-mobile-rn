@@ -49,7 +49,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'customerValuePyramid',
+					initialRouteName: 'comparison',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
