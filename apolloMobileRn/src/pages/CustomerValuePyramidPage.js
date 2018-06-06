@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from '../components/common';
 import BarChart from './../components/charts/BarChart';
+import NewChart from './../components/charts/NewChart';
 
 class CustomerValuePyramidPage extends Component {
 	render() {
