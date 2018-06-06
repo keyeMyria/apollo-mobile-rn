@@ -49,7 +49,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'managerSummary',
+					initialRouteName: 'customerValuePyramid',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
