@@ -17,6 +17,7 @@ import CustomerValuePyramidPage from './CustomerValuePyramidPage';
 import BestShopsPage from './bestOfTabPages/BestShopsPage';
 import BestCountiesPage from './bestOfTabPages/BestCountiesPage';
 import BestCitiesPage from './bestOfTabPages/BestCitiesPage';
+import CompareResultPage from './CompareResultPage';
 
 const SwitchNavigation = createSwitchNavigator(
 	{
@@ -46,10 +47,13 @@ const SwitchNavigation = createSwitchNavigator(
 					},
 					eMailReport: {
 						screen: EMailReportPage
+					},
+					compareResult: {
+						screen: CompareResultPage
 					}
 				},
 				{
-					initialRouteName: 'comparison',
+					initialRouteName: 'compareResult',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
