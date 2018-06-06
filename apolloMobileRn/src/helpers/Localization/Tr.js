@@ -51,7 +51,7 @@ export const tr = {
 	LAST3MONTH: 'SON 3 AY',
 	LAST6MONTH: 'SON 6 AY',
 	LAST12MONTH: 'SON 12 AY',
-	ALLTİME: 'TÜM ZAMANLAR',
+	ALLTIME: 'TÜM ZAMANLAR',
 	TotalNumberOfCustomers: 'Üye Sayıları',
 	TotalNumberOfMember: 'Toplam Üye Sayısı',
 	TotalNumberOfMaleMember: 'Toplam Erkek Sayısı',

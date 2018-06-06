@@ -33,7 +33,7 @@ class CockpitPage extends Component {
 						<View
 							style={{
 								flexDirection: 'row',
-								backgroundColor: '#424242',
+								backgroundColor: Colors.CardBackgroundColor,
 								marginHorizontal: widthPercentageToDP('32%'),
 								height: widthPercentageToDP('6%')
 							}}

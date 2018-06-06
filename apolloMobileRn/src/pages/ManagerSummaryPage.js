@@ -8,100 +8,81 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { Colors, widthPercentageToDP } from '../helpers';
 import { localizedText } from './../helpers/Localization/Localization';
+import { ColoredCard } from './../components/managerSummary/ColoredCard';
+import { ColoredTabCard } from './../components/managerSummary/ColoredTabCard';
 
 class ManagerSummaryPage extends Component {
 	render() {
 		return (
 			<Page navigation={this.props.navigation}>
 				<ScrollView>
-					<View
-						style={{
-							backgroundColor: '#2F7D32',
-							marginHorizontal: widthPercentageToDP('4%'),
-							marginTop: widthPercentageToDP('2%')
-						}}
-					>
-						<Text
+					<ColoredCard title={localizedText.TotalNumberOfCustomers} backgroundColor="#2F7D32">
+						<View
 							style={{
-								color: Colors.BasicTitleColor,
-								paddingLeft: widthPercentageToDP('3%'),
-								paddingTop: widthPercentageToDP('3%')
+								flexDirection: 'row',
+								paddingTop: widthPercentageToDP('4%')
 							}}
 						>
-							{localizedText.TotalNumberOfCustomers}
-						</Text>
-						<View style={{ paddingLeft: widthPercentageToDP('5%') }}>
+							<MaterialIcons
+								name="supervisor-account"
+								color={Colors.BasicTitleColor}
+								size={widthPercentageToDP('7%')}
+							/>
 							<View
 								style={{
-									flexDirection: 'row',
-									paddingTop: widthPercentageToDP('4%')
+									flexDirection: 'column',
+									marginLeft: widthPercentageToDP('3%'),
+									marginBottom: widthPercentageToDP('2%')
 								}}
 							>
-								<MaterialIcons
-									name="supervisor-account"
-									color={Colors.BasicTitleColor}
-									size={widthPercentageToDP('7%')}
-								/>
-								<View
-									style={{
-										flexDirection: 'column',
-										marginLeft: widthPercentageToDP('3%'),
-										marginBottom: widthPercentageToDP('2%')
-									}}
-								>
-									<Text
-										style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}
-									>
-										Toplam Üye Sayısı
-									</Text>
-									<Text style={{ color: Colors.BasicTitleColor }}>544</Text>
-								</View>
-							</View>
-							<View style={{ flexDirection: 'row' }}>
-								<MaterialCommunityIcons
-									name="human-male"
-									color={Colors.BasicTitleColor}
-									size={widthPercentageToDP('7%')}
-								/>
-
-								<View
-									style={{
-										flexDirection: 'column',
-										marginLeft: widthPercentageToDP('3%'),
-										marginBottom: widthPercentageToDP('2%')
-									}}
-								>
-									<Text
-										style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}
-									>
-										Toplam Erkek Sayısı
-									</Text>
-									<Text style={{ color: Colors.BasicTitleColor }}>128</Text>
-								</View>
-							</View>
-							<View style={{ flexDirection: 'row' }}>
-								<MaterialCommunityIcons
-									name="human-female"
-									color={Colors.BasicTitleColor}
-									size={widthPercentageToDP('7%')}
-								/>
-								<View
-									style={{
-										flexDirection: 'column',
-										marginLeft: widthPercentageToDP('3%'),
-										paddingBottom: widthPercentageToDP('3%')
-									}}
-								>
-									<Text
-										style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}
-									>
-										Toplam Kadın Sayısı
-									</Text>
-									<Text style={{ color: Colors.BasicTitleColor }}>398</Text>
-								</View>
+								<Text style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}>
+									Toplam Üye Sayısı
+								</Text>
+								<Text style={{ color: Colors.BasicTitleColor }}>544</Text>
 							</View>
 						</View>
-					</View>
+						<View style={{ flexDirection: 'row' }}>
+							<MaterialCommunityIcons
+								name="human-male"
+								color={Colors.BasicTitleColor}
+								size={widthPercentageToDP('7%')}
+							/>
+
+							<View
+								style={{
+									flexDirection: 'column',
+									marginLeft: widthPercentageToDP('3%'),
+									marginBottom: widthPercentageToDP('2%')
+								}}
+							>
+								<Text style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}>
+									Toplam Erkek Sayısı
+								</Text>
+								<Text style={{ color: Colors.BasicTitleColor }}>128</Text>
+							</View>
+						</View>
+
+						<View style={{ flexDirection: 'row' }}>
+							<MaterialCommunityIcons
+								name="human-female"
+								color={Colors.BasicTitleColor}
+								size={widthPercentageToDP('7%')}
+							/>
+							<View
+								style={{
+									flexDirection: 'column',
+									marginLeft: widthPercentageToDP('3%'),
+									paddingBottom: widthPercentageToDP('3%')
+								}}
+							>
+								<Text style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}>
+									Toplam Kadın Sayısı
+								</Text>
+								<Text style={{ color: Colors.BasicTitleColor }}>398</Text>
+							</View>
+						</View>
+					</ColoredCard>
+
 					<View>
 						<View
 							style={{
@@ -212,6 +193,9 @@ class ManagerSummaryPage extends Component {
 							</View>
 						</View>
 					</View>
+					<ColoredTabCard backgroundColor="#C62829" title={localizedText.Top3StoresByTheTotalReceiptCount} />
+					<ColoredTabCard backgroundColor="#1565BE" title={localizedText.Top3StoresByTheTotalReceiptAmount} />
+
 					<View
 						style={{
 							backgroundColor: '#AD1457',

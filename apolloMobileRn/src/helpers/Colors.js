@@ -2,6 +2,7 @@ const Colors = {
 	PrimaryColor: '#D74315',
 	AccentColor: '#f1c40f',
 	AppBackgroundColor: '#303030',
+	CardBackgroundColor: '#424242',
 	PageTitleColor: '#00f',
 	DividerColor: '#fff',
 	CockpitDataViewBackgroundColor: '#f194b4',

@@ -165,7 +165,7 @@ export const en = {
 	ProcessedMemberInLast12Months: 'Members Who Take Action In Last 12 Months ',
 	NotProcessedMemberInLast12Months: "Members Who Didn't Take Action In Last 12 Months ",
 	TotalNumberOfCustomers: 'Number Of Members',
-	ALLTİME: 'ALL TIME',
+	ALLTIME: 'ALL TIME',
 	TryAgain: 'Try Again',
 	Top3CountiesByTheTotalSpendingAmount: 'Top 5 Counties By The Total Spending Amount',
 	Top3StoresByTheTotalReceiptAmount: 'Top 3 Stores By The Total Receipt Amount',
