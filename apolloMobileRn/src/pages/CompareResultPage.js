@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import GeneralSummaryItems from '../components/comparison/compareResult/generalSummary/GeneralSummaryItems';
-import GeneralSummary from './../components/comparison/compareResult/generalSummary/GeneralSummary';
+import GeneralSummary from './../components/comparison/compareResult/GeneralSummary';
+import { Colors, widthPercentageToDP } from '../helpers';
 class CompareResultPage extends Component {
 	render() {
-		return <GeneralSummary />;
+		return (
+			<ScrollView>
+				<View style={{ alignItems: 'center', backgroundColor: Colors.AppBackgroundColor, flex: 1 }}>
+					<GeneralSummary />
+				</View>
+			</ScrollView>
+		);
 	}
 }
 export default CompareResultPage;

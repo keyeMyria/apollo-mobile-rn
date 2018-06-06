@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { localizedText } from './../../../../helpers/Localization/Localization';
+import { localizedText } from '../../../helpers/Localization/Localization';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { Colors, widthPercentageToDP } from '../../../../helpers';
+import { Colors, widthPercentageToDP } from '../../../helpers';
 
-class GeneralSummaryItems extends Component {
+class CompareResultDataRow extends Component {
 	render() {
 		const { title, firstCampaign, secondCampaign, percentage } = this.props;
 		return (
@@ -12,7 +12,7 @@ class GeneralSummaryItems extends Component {
 				style={{
 					flexDirection: 'row',
 					justifyContent: 'space-between',
-
+					paddingLeft: widthPercentageToDP('2%'),
 					flex: 1
 				}}
 			>
@@ -21,8 +21,7 @@ class GeneralSummaryItems extends Component {
 					<View
 						style={{
 							flexDirection: 'row',
-							marginRight: widthPercentageToDP('5%'),
-							paddingRight: widthPercentageToDP('10%')
+							paddingRight: widthPercentageToDP('20%')
 						}}
 					>
 						<Text style={{ color: Colors.SecondaryTitleColor }}>{firstCampaign}</Text>
@@ -36,7 +35,7 @@ class GeneralSummaryItems extends Component {
 							{percentage}
 						</Text>
 					</View>
-					<Text style={{ color: Colors.SecondaryTitleColor, paddingRight: widthPercentageToDP('10%') }}>
+					<Text style={{ color: Colors.SecondaryTitleColor, paddingRight: widthPercentageToDP('4%') }}>
 						{secondCampaign}
 					</Text>
 				</View>
@@ -44,4 +43,4 @@ class GeneralSummaryItems extends Component {
 		);
 	}
 }
-export default GeneralSummaryItems;
+export default CompareResultDataRow;
