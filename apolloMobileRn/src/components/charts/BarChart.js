@@ -33,12 +33,12 @@ class BarChart extends Component {
 	}
 
 	animate() {
-		var values = [];
-		for (let index = 0; index < 10; index++) {
-			var width = Math.random() * 300;
-			values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width.toString()] }));
-		}
-		this.setState({ interpolateValues: values });
+		// var values = [];
+		// for (let index = 0; index < 10; index++) {
+		// 	var width = Math.random() * 300;
+		// 	values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width.toString()] }));
+		// }
+		// this.setState({ interpolateValues: values });
 
 		this.state.animValue.setValue(0);
 		Animated.timing(this.state.animValue, {
