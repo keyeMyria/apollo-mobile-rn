@@ -5,6 +5,7 @@ import { fetchCampaignSummary } from 'apollo-rn-redux-helper/src/actions';
 import { Page } from '../components/common';
 import BarChart from './../components/charts/BarChart';
 import NewChart from './../components/charts/NewChart';
+import InternetChart from './../components/charts/InternetChart';
 
 class CustomerValuePyramidPage extends Component {
 	render() {

@@ -18,8 +18,8 @@ import Svg, {
 } from 'react-native-svg';
 import { Colors } from 'react-native-paper';
 
-const AnimatedComp = Animated.createAnimatedComponent(G);
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
+const AnimatedRect = Animated.createAnimatedComponent(Rect);
 
 var dizi = [];
 
@@ -27,118 +27,129 @@ class BarChart extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			animatedValues: [],
-			scaleAnim: new Animated.Value(0),
-			dizi: ''
+			interpolateValues: [],
+			animValue: new Animated.Value(0)
 		};
-		// this.state.scaleAnim.addListener(newPos => {
-		// 	dizi.push(newPos.value.toString());
-		// 	this.refs.myPath0.setNativeProps({ width: newPos.value.toString() });
-		// });
 	}
 
 	animate() {
-		// this.state.animatedValues.forEach(value => {
-		// 	value.setValue(0);
-		// });
-		// var a = [];
-		// this.state.animatedValues.forEach(value => {
-		// 	var toValue = Math.random() * 300;
-		// 	a.push(
-		// 		Animated.timing(value, {
-		// 			toValue: toValue,
-		// 			duration: 2000,
-		// 			easing: Easing.linear
-		// 		})
-		// 	);
-		// });
+		var values = [];
+		for (let index = 0; index < 10; index++) {
+			var width = Math.random() * 300;
+			values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width.toString()] }));
+		}
+		this.setState({ interpolateValues: values });
 
-		// Animated.parallel(a).start();
-		Animated.timing(this.state.scaleAnim, {
+		this.state.animValue.setValue(0);
+		Animated.timing(this.state.animValue, {
 			toValue: 1,
-			duration: 2000,
-			easing: Easing.linear
-		}).start(() => {
-			// var str = dizi.join(',');
-			// this.setState({ dizi: str });
-		});
+			duration: 1000,
+			easing: Easing.bezier(0.4, 0.56, 0.26, 1)
+		}).start();
 	}
 
-	// componentDidMount() {
-	// 	var values = [];
-	// 	for (let index = 0; index < 10; index++) {
-	// 		values.push(new Animated.Value(0));
-
-	// 		values[index].addListener(newPos => {
-	// 			var pathName = 'myPath' + index;
-	// 			console.log(index, ' : ', newPos.value);
-	// 			this.refs[pathName].setNativeProps({
-	// 				width: newPos.value.toString()
-	// 			});
-	// 		});
-	// 	}
-	// 	this.setState({ animatedValues: values });
-	// }
-	interp(id, value) {
-		return this.state.scaleAnim.interpolate({ inputRange: [0, 1], outputRange: value });
+	componentDidMount() {
+		var values = [];
+		for (let index = 0; index < 10; index++) {
+			var width = Math.random() * 300;
+			values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width.toString()] }));
+		}
+		this.setState({ interpolateValues: values });
 	}
+
 	render() {
-		const scaleX = this.state.scaleAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 4] });
-		console.log('scaleX : ', scaleX);
 		return (
 			<View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 10 }}>
 				<AnimatedSvg height="310" width="300">
-					<AnimatedComp scaleX={scaleX}>
-						<Rect ref="myPath0" x="0" y="62" width="50" height="30" fill={Colors.brown300} />
-					</AnimatedComp>
-
-					{/* <AnimatedComp
+					<AnimatedRect
 						ref="myPath0"
 						x="0"
 						y="0"
-						style={{
-							matrix: [
-								{
-									scaleX: { scaleX }
-								}
-							]
-						}}
-						width="50"
+						width={this.state.interpolateValues[0]}
 						height="30"
-						fill={Colors.amber300}
-                    /> */}
-					{/* <AnimatedComp
-						ref="myPath0"
-						scaleX={scaleX._parent._value}
-						//style={{ scaleX: scaleX._parent._value }}
+						fill={Colors.brown300}
+					/>
+					<AnimatedRect
+						ref="myPath1"
 						x="0"
 						y="31"
-						width="50"
+						width={this.state.interpolateValues[1]}
 						height="30"
-						fill={Colors.blue300}
-                    /> */}
+						fill={Colors.brown300}
+					/>
 
-					{/* // <Rect ref="myPath3" x="0" y="93" width="0" height="30" fill={Colors.cyan300} />
-					// <Rect ref="myPath4" x="0" y="124" width="0" height="30" fill={Colors.deepOrange300} />
+					<AnimatedRect
+						ref="myPath2"
+						x="0"
+						y="62"
+						width={this.state.interpolateValues[2]}
+						height="30"
+						fill={Colors.cyan300}
+					/>
+					<AnimatedRect
+						ref="myPath3"
+						x="0"
+						y="93"
+						width={this.state.interpolateValues[3]}
+						height="30"
+						fill={Colors.cyan300}
+					/>
 
-					// <Rect ref="myPath5" x="0" y="155" width="0" height="30" fill={Colors.amber300} />
-					// <Rect ref="myPath6" x="0" y="186" width="0" height="30" fill={Colors.amber300} />
+					<AnimatedRect
+						ref="myPath4"
+						x="0"
+						y="124"
+						width={this.state.interpolateValues[4]}
+						height="30"
+						fill={Colors.deepOrange300}
+					/>
+					<AnimatedRect
+						ref="myPath5"
+						x="0"
+						y="155"
+						width={this.state.interpolateValues[5]}
+						height="30"
+						fill={Colors.amber300}
+					/>
 
-					// <Rect ref="myPath7" x="0" y="217" width="0" height="30" fill={Colors.amber300} />
-					// <Rect ref="myPath8" x="0" y="248" width="0" height="30" fill={Colors.amber300} />
+					<AnimatedRect
+						ref="myPath6"
+						x="0"
+						y="186"
+						width={this.state.interpolateValues[6]}
+						height="30"
+						fill={Colors.amber300}
+					/>
+					<AnimatedRect
+						ref="myPath7"
+						x="0"
+						y="217"
+						width={this.state.interpolateValues[7]}
+						height="30"
+						fill={Colors.amber300}
+					/>
 
-					// <Rect ref="myPath9" x="0" y="279" width="0" height="30" fill={Colors.amber300} />
-					// <Polyline points="0,0 0,310 300,310" fill="none" stroke="red" strokeWidth="3" /> */}
-					{/* <Animated.View
-						style={{ transform: [{ scaleX: scaleX }], backgroundColor: 'red', width: 100, height: 30 }}
-					/> */}
+					<AnimatedRect
+						ref="myPath8"
+						x="0"
+						y="248"
+						width={this.state.interpolateValues[8]}
+						height="30"
+						fill={Colors.amber300}
+					/>
+					<AnimatedRect
+						ref="myPath9"
+						x="0"
+						y="279"
+						width={this.state.interpolateValues[9]}
+						height="30"
+						fill={Colors.amber300}
+					/>
+					<Polyline points="0,0 0,310 300,310" fill="none" stroke="red" strokeWidth="3" />
 				</AnimatedSvg>
-				<Text style={{ color: 'white' }}>{this.state.dizi}</Text>
 				<Button
 					title="Start anim"
 					onPress={() => {
-						console.log('scaleX-button : ', scaleX);
-						console.log(scaleX._parent._value);
 						this.animate();
 					}}
 				/>
