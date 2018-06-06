@@ -4,15 +4,15 @@ import { widthPercentageToDP } from '../.././helpers';
 var imageWidth = widthPercentageToDP('5%');
 var imageHeight = widthPercentageToDP('5%');
 
-class CampaignTabPage extends Component {
+class GiftStockTabPage extends Component {
 	render() {
-		const { campaignDetails, style } = this.props;
+		const { campaign, style } = this.props;
 		return (
 			<View>
-				<Text style={{ color: 'white' }}>{campaignDetails.Name}</Text>
+				<Text style={{ color: 'white' }}>{campaign.Name}</Text>
 			</View>
 		);
 	}
 }
 
-export default CampaignTabPage;
+export default GiftStockTabPage;
