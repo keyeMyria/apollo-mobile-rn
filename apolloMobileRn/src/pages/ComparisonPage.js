@@ -5,7 +5,9 @@ import { Colors, Margins, widthPercentageToDP } from '../helpers';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Divider, Page } from './../components/common';
 import { Selection } from '../components/comparison/dateComparison/Selection';
+import { SelectionForOneAvm } from '../components/comparison/dateComparison/SelectionForOneAvm';
 import { CampaignSelection } from '../components/comparison/campaignComparison/CampaignSelection';
+import { CampaignSelectionForOneAvm } from '../components/comparison/campaignComparison/CampaignSelectionForOneAvm';
 const { width, height } = Dimensions.get('window');
 class ComparisonPage extends Component {
 	state = {
@@ -40,6 +42,10 @@ class ComparisonPage extends Component {
 								value="Kampanya Kıyasla"
 								uncheckedColor={Colors.BasicTitleColor}
 								color={Colors.TouchableColor}
+								onPress={() => {
+									this.setState({ value: 'Kampanya Kıyasla', viewComparison: 'campaign' });
+									this.refs.myScrollView.scrollTo({ x: 0, y: 0, animated: true });
+								}}
 							/>
 							<Text
 								style={{
@@ -66,6 +72,10 @@ class ComparisonPage extends Component {
 								value="Tarih Kıyasla"
 								uncheckedColor={Colors.BasicTitleColor}
 								color={Colors.TouchableColor}
+								onPress={() => {
+									this.setState({ value: 'Tarih Kıyasla', viewComparison: 'date' });
+									this.refs.myScrollView.scrollTo({ x: width, y: 0, animated: true });
+								}}
 							/>
 							<Text
 								style={{
@@ -89,19 +99,19 @@ class ComparisonPage extends Component {
 					scrollEnabled={false}
 					pagingEnabled={true}
 				>
-					<View style={{ width: width, height: height }}>
-						<CampaignSelection sectionNumber="1" />
-						<CampaignSelection sectionNumber="2" />
+					<View style={{ width: width, justifyContent: 'center' }}>
+						<CampaignSelectionForOneAvm />
+						{/* <CampaignSelectio sectionNumber="2" /> */}
 					</View>
 					<View style={{ width: width, height: height }}>
-						<Selection
+						<SelectionForOneAvm
 							sectionNumber="1"
 							dateTitle1="İlk Dönem Başlangıç Tarihi"
 							date1="31 Mayıs 2018"
 							dateTitle2="İlk Dönem Bitiş Tarihi"
 							date2="31 Mayıs 2018"
 						/>
-						<Selection
+						<SelectionForOneAvm
 							sectionNumber="2"
 							dateTitle1="İkinci Dönem Başlangıç Tarihi"
 							date1="31 Mayıs 2018"

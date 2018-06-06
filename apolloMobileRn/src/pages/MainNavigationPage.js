@@ -49,7 +49,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'giftStock',
+					initialRouteName: 'comparison',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}
