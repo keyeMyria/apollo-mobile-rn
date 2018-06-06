@@ -18,10 +18,12 @@ import Svg, {
 } from 'react-native-svg';
 import { Colors } from 'react-native-paper';
 
+const AnimatedG = Animated.createAnimatedComponent(G);
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
 
-var dizi = [];
+var colors = [Colors.amber800, Colors.cyan800, Colors.deepOrange800];
+var colorsSoft = ['#534040', '#3D4853', '#414B41'];
 
 class BarChart extends Component {
 	constructor(props) {
@@ -33,126 +35,88 @@ class BarChart extends Component {
 	}
 
 	animate() {
-		// var values = [];
-		// for (let index = 0; index < 10; index++) {
-		// 	var width = Math.random() * 300;
-		// 	values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width.toString()] }));
-		// }
-		// this.setState({ interpolateValues: values });
-
 		this.state.animValue.setValue(0);
-		Animated.timing(this.state.animValue, {
+		Animated.spring(this.state.animValue, {
 			toValue: 1,
-			duration: 1000,
-			easing: Easing.bezier(0.4, 0.56, 0.26, 1)
+			duration: 1000
+			// easing: Easing.bezier(0.4, 0.56, 0.26, 1)
 		}).start();
 	}
 
 	componentDidMount() {
 		var values = [];
-		for (let index = 0; index < 10; index++) {
-			var width = Math.random() * 300;
-			values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width.toString()] }));
+		const { data, chartWidth, chartHeight } = this.props;
+
+		for (let index = 0; index < data.length; index++) {
+			var width = (Math.random() * chartWidth).toString();
+			values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width] }));
 		}
 		this.setState({ interpolateValues: values });
+		this.animate();
+	}
+
+	renderLines(data, chartWidth, chartHeight, lineSpace) {
+		return data.map((item, index) => {
+			return (
+				<Polyline
+					key={index}
+					points={`${lineSpace * index},0 ${lineSpace * index},${chartHeight}`}
+					fill="none"
+					stroke="#ddd"
+					strokeWidth="1"
+				/>
+			);
+		});
+	}
+
+	renderBars(data, chartWidth, chartHeight, barHeight) {
+		// var barHeight = Math.floor((chartHeight - data.length) / data.length);
+
+		return data.map((item, index) => {
+			return (
+				<G key={index}>
+					<Rect
+						x="0"
+						y={barHeight * index + index}
+						height={barHeight}
+						width={chartWidth}
+						fill={colorsSoft[index % colorsSoft.length]}
+					/>
+					<AnimatedRect
+						x="0"
+						y={barHeight * index + index}
+						height={barHeight}
+						width={this.state.interpolateValues[index]}
+						fill="#aaa"
+					/>
+				</G>
+			);
+		});
 	}
 
 	render() {
+		const { data, chartWidth, chartHeight } = this.props;
+		var barHeight = Math.floor((chartHeight - data.length) / data.length);
+		var lineSpace = Math.floor(chartWidth / data.length);
+
+		var newChartWidth = lineSpace * data.length;
+		var newChartHeight = barHeight * data.length + data.length;
+
 		return (
-			<View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 10 }}>
-				<AnimatedSvg height="310" width="300">
-					<AnimatedRect
-						ref="myPath0"
-						x="0"
-						y="0"
-						width={this.state.interpolateValues[0]}
-						height="30"
-						fill={Colors.brown300}
-					/>
-					<AnimatedRect
-						ref="myPath1"
-						x="0"
-						y="31"
-						width={this.state.interpolateValues[1]}
-						height="30"
-						fill={Colors.brown300}
-					/>
-
-					<AnimatedRect
-						ref="myPath2"
-						x="0"
-						y="62"
-						width={this.state.interpolateValues[2]}
-						height="30"
-						fill={Colors.cyan300}
-					/>
-					<AnimatedRect
-						ref="myPath3"
-						x="0"
-						y="93"
-						width={this.state.interpolateValues[3]}
-						height="30"
-						fill={Colors.cyan300}
-					/>
-
-					<AnimatedRect
-						ref="myPath4"
-						x="0"
-						y="124"
-						width={this.state.interpolateValues[4]}
-						height="30"
-						fill={Colors.deepOrange300}
-					/>
-					<AnimatedRect
-						ref="myPath5"
-						x="0"
-						y="155"
-						width={this.state.interpolateValues[5]}
-						height="30"
-						fill={Colors.amber300}
-					/>
-
-					<AnimatedRect
-						ref="myPath6"
-						x="0"
-						y="186"
-						width={this.state.interpolateValues[6]}
-						height="30"
-						fill={Colors.amber300}
-					/>
-					<AnimatedRect
-						ref="myPath7"
-						x="0"
-						y="217"
-						width={this.state.interpolateValues[7]}
-						height="30"
-						fill={Colors.amber300}
-					/>
-
-					<AnimatedRect
-						ref="myPath8"
-						x="0"
-						y="248"
-						width={this.state.interpolateValues[8]}
-						height="30"
-						fill={Colors.amber300}
-					/>
-					<AnimatedRect
-						ref="myPath9"
-						x="0"
-						y="279"
-						width={this.state.interpolateValues[9]}
-						height="30"
-						fill={Colors.amber300}
-					/>
-					<Polyline points="0,0 0,310 300,310" fill="none" stroke="red" strokeWidth="3" />
+			<View style={{ paddingTop: 10 }}>
+				<AnimatedSvg style={{ backgroundColor: '#424242' }} height={newChartHeight} width={newChartWidth}>
+					{this.renderBars(data, newChartWidth, newChartHeight, barHeight)}
+					{this.renderLines(data, newChartWidth, chartHeight, lineSpace)}
 				</AnimatedSvg>
-				<Button
-					title="Start anim"
-					onPress={() => {
-						this.animate();
-					}}
-				/>
+
+				<View style={{ marginTop: 30 }}>
+					<Button
+						title="Start anim"
+						onPress={() => {
+							this.animate();
+						}}
+					/>
+				</View>
 			</View>
 		);
 	}
