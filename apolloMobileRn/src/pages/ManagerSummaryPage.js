@@ -212,6 +212,174 @@ class ManagerSummaryPage extends Component {
 							</View>
 						</View>
 					</View>
+					<View
+						style={{
+							backgroundColor: '#AD1457',
+							marginHorizontal: widthPercentageToDP('4%'),
+							marginTop: widthPercentageToDP('2%')
+						}}
+					>
+						<Text
+							style={{
+								color: Colors.BasicTitleColor,
+								paddingLeft: widthPercentageToDP('3%'),
+								paddingTop: widthPercentageToDP('3%')
+							}}
+						>
+							{localizedText.Top3CountiesByTheTotalSpendingAmount}
+						</Text>
+						<View>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('3%'),
+									paddingTop: widthPercentageToDP('4%'),
+									paddingLeft: widthPercentageToDP('4%')
+								}}
+							>
+								1. SANDIKLI / AFYONKARAHİSAR
+							</Text>
+							<View
+								style={{
+									flexDirection: 'row',
+									paddingLeft: widthPercentageToDP('8%')
+								}}
+							>
+								<Text style={{ color: Colors.BasicTitleColor }}>663.392</Text>
+								<Text
+									style={{
+										color: Colors.BasicTitleColor,
+										fontSize: widthPercentageToDP('2%'),
+										textAlignVertical: 'bottom',
+										marginLeft: widthPercentageToDP('1%')
+									}}
+								>
+									TL
+								</Text>
+							</View>
+						</View>
+						<View>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('3%'),
+									paddingTop: widthPercentageToDP('1%'),
+									paddingLeft: widthPercentageToDP('4%')
+								}}
+							>
+								2. ÇANKAYA / ANKARA
+							</Text>
+							<View
+								style={{
+									flexDirection: 'row',
+									paddingLeft: widthPercentageToDP('8%')
+								}}
+							>
+								<Text style={{ color: Colors.BasicTitleColor }}>579.322</Text>
+								<Text
+									style={{
+										color: Colors.BasicTitleColor,
+										fontSize: widthPercentageToDP('2%'),
+										textAlignVertical: 'bottom',
+										marginLeft: widthPercentageToDP('1%')
+									}}
+								>
+									TL
+								</Text>
+							</View>
+						</View>
+						<View>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('3%'),
+									paddingTop: widthPercentageToDP('1%'),
+									paddingLeft: widthPercentageToDP('4%')
+								}}
+							>
+								3. YENİMAHALLE / ANKARA
+							</Text>
+							<View
+								style={{
+									flexDirection: 'row',
+									paddingLeft: widthPercentageToDP('8%')
+								}}
+							>
+								<Text style={{ color: Colors.BasicTitleColor }}>120.099</Text>
+								<Text
+									style={{
+										color: Colors.BasicTitleColor,
+										fontSize: widthPercentageToDP('2%'),
+										textAlignVertical: 'bottom',
+										marginLeft: widthPercentageToDP('1%')
+									}}
+								>
+									TL
+								</Text>
+							</View>
+						</View>
+						<View>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('3%'),
+									paddingTop: widthPercentageToDP('1%'),
+									paddingLeft: widthPercentageToDP('4%')
+								}}
+							>
+								4. EDREMİT / BALIKESİR
+							</Text>
+							<View
+								style={{
+									flexDirection: 'row',
+									paddingLeft: widthPercentageToDP('8%')
+								}}
+							>
+								<Text style={{ color: Colors.BasicTitleColor }}>95.557</Text>
+								<Text
+									style={{
+										color: Colors.BasicTitleColor,
+										fontSize: widthPercentageToDP('2%'),
+										textAlignVertical: 'bottom',
+										marginLeft: widthPercentageToDP('1%')
+									}}
+								>
+									TL
+								</Text>
+							</View>
+						</View>
+						<View>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('3%'),
+									paddingTop: widthPercentageToDP('1%'),
+									paddingLeft: widthPercentageToDP('4%')
+								}}
+							>
+								5. ALADAĞ / ADANA
+							</Text>
+							<View
+								style={{
+									flexDirection: 'row',
+									paddingLeft: widthPercentageToDP('8%'),
+									paddingBottom: widthPercentageToDP('3%')
+								}}
+							>
+								<Text style={{ color: Colors.BasicTitleColor }}>84.677</Text>
+								<Text
+									style={{
+										color: Colors.BasicTitleColor,
+										fontSize: widthPercentageToDP('2%'),
+										textAlignVertical: 'bottom',
+										marginLeft: widthPercentageToDP('1%')
+									}}
+								>
+									TL
+								</Text>
+							</View>
+						</View>
+					</View>
 				</ScrollView>
 			</Page>
 		);
