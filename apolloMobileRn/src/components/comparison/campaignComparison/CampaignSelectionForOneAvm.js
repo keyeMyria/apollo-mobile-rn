@@ -61,49 +61,71 @@ class CampaignSelectionForOneAvm extends Component {
 					style={{
 						flex: 1,
 						justifyContent: 'center',
-						marginHorizontal: widthPercentageToDP('20%'),
-						alignItems: 'center',
-						paddingVertical: widthPercentageToDP('5%')
+						paddingHorizontal: widthPercentageToDP('20%'),
+						alignSelf: 'stretch',
+						paddingVertical: widthPercentageToDP('5%'),
+						backgroundColor: '#292929'
 					}}
 				>
-					<TouchableOpacity
-						onPress={() => this.setState({ isCampaignModalVisible: true })}
-						style={{
-							flexDirection: 'row'
-						}}
-					>
-						<Icons name="local-play" size={widthPercentageToDP('8%')} color={Colors.BasicTitleColor} />
-						<Text
+					<TouchableOpacity onPress={() => this.setState({ isCampaignModalVisible: true })}>
+						<View
 							style={{
-								color: Colors.BasicTitleColor,
-								paddingHorizontal: widthPercentageToDP('2%'),
-								textAlignVertical: 'center'
+								flexDirection: 'row'
 							}}
 						>
-							{this.state.campaign}
-						</Text>
-						<Icons name="arrow-drop-down" size={widthPercentageToDP('8%')} color={Colors.BasicTitleColor} />
+							<View style={{ flex: 1, flexDirection: 'row' }}>
+								<Icons
+									name="local-play"
+									size={widthPercentageToDP('8%')}
+									color={Colors.BasicTitleColor}
+								/>
+								<Text
+									style={{
+										color: Colors.BasicTitleColor,
+										paddingHorizontal: widthPercentageToDP('2%'),
+										textAlignVertical: 'center'
+									}}
+								>
+									{this.state.campaign}
+								</Text>
+							</View>
+							<Icons
+								name="arrow-drop-down"
+								size={widthPercentageToDP('8%')}
+								color={Colors.BasicTitleColor}
+							/>
+						</View>
 					</TouchableOpacity>
-					<Divider />
 
-					<TouchableOpacity
-						onPress={() => this.setState({ isCampaignModalVisible: true })}
-						style={{
-							flexDirection: 'row',
-							paddingTop: widthPercentageToDP('3%')
-						}}
-					>
-						<Icons name="local-play" size={widthPercentageToDP('8%')} color={Colors.BasicTitleColor} />
-						<Text
+					<TouchableOpacity onPress={() => this.setState({ isCampaignModalVisible: true })}>
+						<View
 							style={{
-								color: Colors.BasicTitleColor,
-								paddingHorizontal: widthPercentageToDP('2%'),
-								textAlignVertical: 'center'
+								flexDirection: 'row',
+								paddingTop: widthPercentageToDP('3%')
 							}}
 						>
-							{this.state.campaign}
-						</Text>
-						<Icons name="arrow-drop-down" size={widthPercentageToDP('8%')} color={Colors.BasicTitleColor} />
+							<View style={{ flex: 1, flexDirection: 'row' }}>
+								<Icons
+									name="local-play"
+									size={widthPercentageToDP('8%')}
+									color={Colors.BasicTitleColor}
+								/>
+								<Text
+									style={{
+										color: Colors.BasicTitleColor,
+										paddingHorizontal: widthPercentageToDP('2%'),
+										textAlignVertical: 'center'
+									}}
+								>
+									{this.state.campaign}
+								</Text>
+							</View>
+							<Icons
+								name="arrow-drop-down"
+								size={widthPercentageToDP('8%')}
+								color={Colors.BasicTitleColor}
+							/>
+						</View>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -115,15 +137,8 @@ const styles = StyleSheet.create({
 		height: widthPercentageToDP('38%'),
 		flexDirection: 'column',
 		backgroundColor: Colors.AppBackgroundColor,
-		marginBottom: widthPercentageToDP('2%'),
-		justifyContent: 'center'
-	},
-	sectionText: {
-		fontSize: widthPercentageToDP('23%'),
-		color: '#363636',
-		marginTop: widthPercentageToDP('5%'),
-		marginBottom: widthPercentageToDP('5%'),
-		marginLeft: widthPercentageToDP('5%')
+		marginBottom: widthPercentageToDP('2%')
+		// justifyContent: 'center'
 	}
 });
 export { CampaignSelectionForOneAvm };

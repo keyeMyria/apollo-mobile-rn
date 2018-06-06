@@ -8,6 +8,7 @@ import { Selection } from '../components/comparison/dateComparison/Selection';
 import { SelectionForOneAvm } from '../components/comparison/dateComparison/SelectionForOneAvm';
 import { CampaignSelection } from '../components/comparison/campaignComparison/CampaignSelection';
 import { CampaignSelectionForOneAvm } from '../components/comparison/campaignComparison/CampaignSelectionForOneAvm';
+import { localizedText } from './../helpers/Localization/Localization';
 const { width, height } = Dimensions.get('window');
 class ComparisonPage extends Component {
 	state = {
@@ -18,7 +19,12 @@ class ComparisonPage extends Component {
 	render() {
 		return (
 			<Page navigation={this.props.navigation} style={{ backgroundColor: Colors.AppBackgroundColor, flex: 1 }}>
-				<View style={{ backgroundColor: '#333333', height: widthPercentageToDP('32%') }}>
+				<View
+					style={{
+						backgroundColor: Colors.AppBackgroundColor,
+						height: widthPercentageToDP('32%')
+					}}
+				>
 					<Text
 						style={{
 							color: Colors.BasicTitleColor,
@@ -27,7 +33,7 @@ class ComparisonPage extends Component {
 							paddingBottom: widthPercentageToDP('3%')
 						}}
 					>
-						Kıyaslama Methodu
+						{localizedText.CompareMethod}
 					</Text>
 					<RadioButtonGroup onValueChange={value => this.setState({ value })} value={this.state.value}>
 						<TouchableOpacity
@@ -55,7 +61,7 @@ class ComparisonPage extends Component {
 									fontSize: widthPercentageToDP('3%')
 								}}
 							>
-								Kampanya Kıyaslama
+								{localizedText.CompareCampaign}
 							</Text>
 						</TouchableOpacity>
 						<TouchableOpacity
@@ -86,7 +92,7 @@ class ComparisonPage extends Component {
 									fontSize: widthPercentageToDP('3%')
 								}}
 							>
-								Tarih Kiyaslama
+								{localizedText.CompareDate}
 							</Text>
 						</TouchableOpacity>
 					</RadioButtonGroup>
@@ -130,49 +136,14 @@ class ComparisonPage extends Component {
 					}}
 				>
 					<TouchableOpacity>
-						<Text style={{ color: Colors.SecondaryTitleColor }}>Excel Raporu Al</Text>
+						<Text style={{ color: Colors.SecondaryTitleColor }}>{localizedText.GetExcelReport}</Text>
 					</TouchableOpacity>
 					<Button raised onPress={() => {}} dark={true} style={{ backgroundColor: Colors.TouchableColor }}>
-						Kıyasla
+						{localizedText.Compare}
 					</Button>
 				</View>
 			</Page>
 		);
 	}
-	// setDateComparison() {
-	// 	this.setState({ value: 'second', viewComparison: 'date' });
-	// }
-	// setCampaignComparison() {
-	// 	this.setState({ value: 'first', viewComparison: 'campaign' });
-	// }
-	// showComparison() {
-	// 	if (this.state.viewComparison === 'campaign') {
-	// 		return (
-	// 			<View>
-	// 				<CampaignSelection sectionNumber="1" />
-	// 				<CampaignSelection sectionNumber="2" />
-	// 			</View>
-	// 		);
-	// 	} else {
-	// 		return (
-	// 			<View>
-	// 				<Selection
-	// 					sectionNumber="1"
-	// 					dateTitle1="İlk Dönem Başlangıç Tarihi"
-	// 					date1="31 Mayıs 2018"
-	// 					dateTitle2="İlk Dönem Bitiş Tarihi"
-	// 					date2="31 Mayıs 2018"
-	// 				/>
-	// 				<Selection
-	// 					sectionNumber="2"
-	// 					dateTitle1="İkinci Dönem Başlangıç Tarihi"
-	// 					date1="31 Mayıs 2018"
-	// 					dateTitle2="İkinci Dönem Bitiş Tarihi"
-	// 					date2="31 Mayıs 2018"
-	// 				/>
-	// 			</View>
-	// 		);
-	// 	}
-	// }
 }
 export default ComparisonPage;
