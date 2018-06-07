@@ -6,6 +6,7 @@ import { Page } from '../components/common';
 import BarChart from './../components/charts/BarChart';
 import NewChart from './../components/charts/NewChart';
 import { widthPercentageToDP } from '../helpers';
+import PieChart from './../components/charts/PieChart';
 
 const data = [
 	{
@@ -54,11 +55,12 @@ class CustomerValuePyramidPage extends Component {
 	render() {
 		return (
 			<Page navigation={this.props.navigation} style={{ padding: widthPercentageToDP('5%') }}>
-				<BarChart
+				{/* <BarChart
 					data={data}
 					chartWidth={widthPercentageToDP('80%')}
 					chartHeight={widthPercentageToDP('80%')}
-				/>
+				/> */}
+				<PieChart />
 				<Text>CustomerValuePyramidPage</Text>
 			</Page>
 		);
