@@ -11,6 +11,9 @@ import { CampaignSelectionForOneAvm } from '../components/comparison/campaignCom
 import { localizedText } from './../helpers/Localization/Localization';
 const { width, height } = Dimensions.get('window');
 class ComparisonPage extends Component {
+	navigateToScreen(route) {
+		this.props.navigation.navigate(route);
+	}
 	state = {
 		value: 'Kampanya Kıyasla',
 		viewComparison: 'campaign'
@@ -138,7 +141,14 @@ class ComparisonPage extends Component {
 					<TouchableOpacity>
 						<Text style={{ color: Colors.SecondaryTitleColor }}>{localizedText.GetExcelReport}</Text>
 					</TouchableOpacity>
-					<Button raised onPress={() => {}} dark={true} style={{ backgroundColor: Colors.TouchableColor }}>
+					<Button
+						raised
+						onPress={() => {
+							this.navigateToScreen('compareResult');
+						}}
+						dark={true}
+						style={{ backgroundColor: Colors.TouchableColor }}
+					>
 						{localizedText.Compare}
 					</Button>
 				</View>
