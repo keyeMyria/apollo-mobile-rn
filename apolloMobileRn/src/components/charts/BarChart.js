@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Animated, Easing, Button, ART, Text } from 'react-native';
+import { _ } from 'lodash';
 import Svg, {
 	Circle,
 	Ellipse,
@@ -23,7 +24,24 @@ const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
 
 var colors = [Colors.amber800, Colors.cyan800, Colors.deepOrange800];
-var colorsSoft = ['#534040', '#3D4853', '#414B41'];
+var barBackgroundColors = [
+	'#534040',
+	'#513D45',
+	'#493E4E',
+	'#443F4E',
+	'#40424D',
+	'#3D4853',
+	'#3A4A53',
+	'#3A4C4E',
+	'#3A4947',
+	'#414B41'
+];
+
+var barHeight = 0;
+var lineSpace = 0;
+
+var newChartWidth = 0;
+var newChartHeight = 0;
 
 class BarChart extends Component {
 	constructor(props) {
@@ -44,13 +62,24 @@ class BarChart extends Component {
 	}
 
 	componentDidMount() {
-		var values = [];
 		const { data, chartWidth, chartHeight } = this.props;
 
+		barHeight = Math.floor((chartHeight - data.length) / data.length);
+		lineSpace = Math.floor((chartWidth - 5) / data.length);
+
+		newChartWidth = lineSpace * data.length;
+		newChartHeight = barHeight * data.length + data.length;
+
+		var values = [];
+
+		var maxValue = _.maxBy(data, x => x.value);
+
 		for (let index = 0; index < data.length; index++) {
-			var width = (Math.random() * chartWidth).toString();
+			// var width = (Math.random() * chartWidth).toString();
+			var width = (lineSpace * (data.length - 1) * data[index].value / maxValue.value).toString();
 			values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width] }));
 		}
+
 		this.setState({ interpolateValues: values });
 		this.animate();
 	}
@@ -60,10 +89,10 @@ class BarChart extends Component {
 			return (
 				<Polyline
 					key={index}
-					points={`${lineSpace * index},0 ${lineSpace * index},${chartHeight}`}
+					points={`${lineSpace * index + 5},0 ${lineSpace * index + 5},${chartHeight}`}
 					fill="none"
-					stroke="#ddd"
-					strokeWidth="1"
+					stroke={index === 0 ? '#bbbb' : '#bbb8'}
+					strokeWidth={index === 0 ? '2' : '1'}
 				/>
 			);
 		});
@@ -75,19 +104,27 @@ class BarChart extends Component {
 		return data.map((item, index) => {
 			return (
 				<G key={index}>
+					<Line
+						x1="0"
+						y1={barHeight * index + index}
+						x2="5"
+						y2={barHeight * index + index}
+						stroke="#797979"
+						strokeWidth={index === 0 ? '0' : '1'}
+					/>
 					<Rect
-						x="0"
+						x="5"
 						y={barHeight * index + index}
 						height={barHeight}
 						width={chartWidth}
-						fill={colorsSoft[index % colorsSoft.length]}
+						fill={barBackgroundColors[index % barBackgroundColors.length]}
 					/>
 					<AnimatedRect
-						x="0"
+						x="5"
 						y={barHeight * index + index}
 						height={barHeight}
 						width={this.state.interpolateValues[index]}
-						fill="#aaa"
+						fill="#797979"
 					/>
 				</G>
 			);
@@ -96,15 +133,10 @@ class BarChart extends Component {
 
 	render() {
 		const { data, chartWidth, chartHeight } = this.props;
-		var barHeight = Math.floor((chartHeight - data.length) / data.length);
-		var lineSpace = Math.floor(chartWidth / data.length);
-
-		var newChartWidth = lineSpace * data.length;
-		var newChartHeight = barHeight * data.length + data.length;
 
 		return (
 			<View style={{ paddingTop: 10 }}>
-				<AnimatedSvg style={{ backgroundColor: '#424242' }} height={newChartHeight} width={newChartWidth}>
+				<AnimatedSvg style={{ backgroundColor: 'transparent' }} height={newChartHeight} width={newChartWidth}>
 					{this.renderBars(data, newChartWidth, newChartHeight, barHeight)}
 					{this.renderLines(data, newChartWidth, chartHeight, lineSpace)}
 				</AnimatedSvg>
