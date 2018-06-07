@@ -10,43 +10,43 @@ import { widthPercentageToDP } from '../helpers';
 const data = [
 	{
 		text: 'sıfır',
-		value: 100
+		value: 190
 	},
 	{
 		text: 'bir',
-		value: 150
+		value: 50
 	},
 	{
 		text: 'iki',
-		value: 50
-	},
-	{
-		text: 'uc',
 		value: 100
 	},
 	{
+		text: 'uc',
+		value: 70
+	},
+	{
 		text: 'dort',
-		value: 150
+		value: 180
 	},
 	{
 		text: 'bes',
-		value: 50
+		value: 250
 	},
 	{
 		text: 'alti',
-		value: 150
+		value: 320
 	},
 	{
 		text: 'yedi',
-		value: 50
+		value: 350
 	},
 	{
 		text: 'sekiz',
-		value: 50
+		value: 280
 	},
 	{
 		text: 'dokuz',
-		value: 50
+		value: 100
 	}
 ];
 

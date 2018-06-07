@@ -37,6 +37,12 @@ var barBackgroundColors = [
 	'#414B41'
 ];
 
+var barHeight = 0;
+var lineSpace = 0;
+
+var newChartWidth = 0;
+var newChartHeight = 0;
+
 class BarChart extends Component {
 	constructor(props) {
 		super(props);
@@ -56,13 +62,24 @@ class BarChart extends Component {
 	}
 
 	componentDidMount() {
-		var values = [];
 		const { data, chartWidth, chartHeight } = this.props;
 
+		barHeight = Math.floor((chartHeight - data.length) / data.length);
+		lineSpace = Math.floor((chartWidth - 5) / data.length);
+
+		newChartWidth = lineSpace * data.length;
+		newChartHeight = barHeight * data.length + data.length;
+
+		var values = [];
+
+		var maxValue = _.maxBy(data, x => x.value);
+
 		for (let index = 0; index < data.length; index++) {
-			var width = (Math.random() * chartWidth).toString();
+			// var width = (Math.random() * chartWidth).toString();
+			var width = (lineSpace * (data.length - 1) * data[index].value / maxValue.value).toString();
 			values.push(this.state.animValue.interpolate({ inputRange: [0, 1], outputRange: ['0', width] }));
 		}
+
 		this.setState({ interpolateValues: values });
 		this.animate();
 	}
@@ -116,11 +133,6 @@ class BarChart extends Component {
 
 	render() {
 		const { data, chartWidth, chartHeight } = this.props;
-		var barHeight = Math.floor((chartHeight - data.length) / data.length);
-		var lineSpace = Math.floor((chartWidth - 5) / data.length);
-
-		var newChartWidth = lineSpace * data.length;
-		var newChartHeight = barHeight * data.length + data.length;
 
 		return (
 			<View style={{ paddingTop: 10 }}>
