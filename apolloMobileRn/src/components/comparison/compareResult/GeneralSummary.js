@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import CompareResultDataRow from './CompareResultDataRow';
+import CompareResultDataRowForCampaign from './CompareResultDataRowForCampaign';
 import { localizedText } from '../../../helpers/Localization/Localization';
 import { widthPercentageToDP, Colors, heightPercentageToDP } from '../../../helpers';
 
@@ -9,7 +10,7 @@ class GeneralSummary extends Component {
 		return (
 			<View
 				style={{
-					backgroundColor: '#6A1B9A',
+					backgroundColor: Colors.GeneralSummaryBackgroundColor,
 					height: heightPercentageToDP('40%'),
 					width: widthPercentageToDP('90%'),
 					paddingBottom: widthPercentageToDP('2%'),
@@ -26,27 +27,11 @@ class GeneralSummary extends Component {
 				>
 					{localizedText.GeneralSummary}
 				</Text>
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'flex-end',
-						paddingRight: widthPercentageToDP('3%')
-					}}
-				>
-					<Text style={{ fontSize: widthPercentageToDP('2%'), color: Colors.BasicTitleColor }}>
-						xx Kota Kampanya
-					</Text>
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('2%'),
-							color: Colors.BasicTitleColor,
-							paddingLeft: widthPercentageToDP('5%'),
-							paddingBottom: widthPercentageToDP('4%')
-						}}
-					>
-						xx Kota Kampanya
-					</Text>
-				</View>
+				<CompareResultDataRowForCampaign
+					firstCampaignTitle="xxKota Kampanya"
+					secondCampaignTitle="xxKota Kampanya"
+				/>
+
 				<CompareResultDataRow
 					title={localizedText.NumberOfMembersWhoTakeAction}
 					firstCampaign="3"

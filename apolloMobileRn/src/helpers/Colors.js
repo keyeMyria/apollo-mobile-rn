@@ -13,6 +13,11 @@ const Colors = {
 	TouchableColor: '#BF360C',
 	CockpitPageBackgroundColor: '#4a5178',
 	BasicTitleColor: '#BCBCBC',
-	SecondaryTitleColor: '#FBFBFB'
+	SecondaryTitleColor: '#FBFBFB',
+	GeneralSummaryBackgroundColor: '#6A1B9A',
+	ShopTotalSpendingBackgroundColor: '#45289F',
+	ShopNumberOfMemberBackgroundColor: '#2A3495',
+	CountyTotalSpendingBackgroundColor: '#1564C0',
+	DistrictTotalSpendingBackgroundColor: '#00695B'
 };
 export { Colors };
