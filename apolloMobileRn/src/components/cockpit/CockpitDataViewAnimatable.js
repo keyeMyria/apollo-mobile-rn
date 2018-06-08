@@ -12,6 +12,19 @@ class CockpitDataViewAnimatable extends Component {
 		super(props);
 		this.state = {
 			animVal: new Animated.Value(0),
+			textPositionValues: [
+				new Animated.Value(-200),
+				new Animated.Value(-200),
+				new Animated.Value(-200),
+				new Animated.Value(-200)
+			],
+			valuePositionValues: [
+				new Animated.Value(-200),
+				new Animated.Value(-200),
+				new Animated.Value(-200),
+				new Animated.Value(-200)
+			],
+
 			isOpened: false
 		};
 	}
@@ -29,6 +42,49 @@ class CockpitDataViewAnimatable extends Component {
 			duration: animationDuration,
 			easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
 		}).start(() => {});
+
+		Animated.stagger(50, [
+			Animated.timing(this.state.textPositionValues[0], {
+				toValue: 0,
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			}),
+			Animated.timing(this.state.textPositionValues[1], {
+				toValue: 0,
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			}),
+			Animated.timing(this.state.textPositionValues[2], {
+				toValue: 0,
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			}),
+			Animated.timing(this.state.textPositionValues[3], {
+				toValue: 0,
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			}),
+			Animated.timing(this.state.valuePositionValues[0], {
+				toValue: widthPercentageToDP('4%'),
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			}),
+			Animated.timing(this.state.valuePositionValues[1], {
+				toValue: widthPercentageToDP('4%'),
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			}),
+			Animated.timing(this.state.valuePositionValues[2], {
+				toValue: widthPercentageToDP('4%'),
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			}),
+			Animated.timing(this.state.valuePositionValues[3], {
+				toValue: widthPercentageToDP('4%'),
+				duration: animationDuration,
+				easing: Easing.bezier(0.175, 0.885, 0.32, 1.275)
+			})
+		]).start();
 	}
 
 	render() {
@@ -42,6 +98,10 @@ class CockpitDataViewAnimatable extends Component {
 			outputRange: [position.y, height / 2 - (width - 20) / 2]
 		});
 		const animSize = this.state.animVal.interpolate({ inputRange: [0, 1], outputRange: [size, width - 20] });
+		const titleFontSize = this.state.animVal.interpolate({
+			inputRange: [0, 1],
+			outputRange: [widthPercentageToDP('3.8%'), widthPercentageToDP('5%')]
+		});
 
 		return (
 			<Animated.View
@@ -51,31 +111,32 @@ class CockpitDataViewAnimatable extends Component {
 					width: animSize,
 					height: animSize,
 					marginBottom: heightPercentageToDP('2%'),
-					justifyContent: 'space-between',
 					transform: [{ translateX: translatePositionX }, { translateY: translatePositionY }]
 				}}
 			>
-				<View style={{ flex: 1, justifyContent: 'center' }}>
+				<View style={{ flex: 1, justifyContent: 'flex-start' }}>
 					<View
 						style={{
 							alignItems: this.state.isOpened ? 'center' : 'flex-start'
 						}}
 					>
-						<Text
+						<Animated.Text
 							style={{
-								fontSize: widthPercentageToDP('3.8%'),
+								fontSize: titleFontSize,
 								color: Colors.BasicTitleColor,
-								marginTop: widthPercentageToDP('3%'),
-								marginLeft: widthPercentageToDP('3%'),
-								marginRight: widthPercentageToDP('3%')
+								margin: widthPercentageToDP('3%')
 							}}
 						>
 							{title}
-						</Text>
+						</Animated.Text>
 					</View>
 
 					<View
-						style={{ paddingHorizontal: widthPercentageToDP('4%'), marginTop: heightPercentageToDP('5%') }}
+						style={{
+							paddingHorizontal: widthPercentageToDP('4%'),
+							flex: 1,
+							justifyContent: 'center'
+						}}
 					>
 						<View
 							style={{
@@ -85,25 +146,27 @@ class CockpitDataViewAnimatable extends Component {
 								marginBottom: heightPercentageToDP('3%')
 							}}
 						>
-							<Text
+							<Animated.Text
 								style={{
 									color: Colors.BasicTitleColor,
 									fontSize: widthPercentageToDP('4%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									transform: [{ translateX: this.state.textPositionValues[0] }]
 								}}
 							>
 								Seçili Gün
-							</Text>
-							<Text
+							</Animated.Text>
+							<Animated.Text
 								style={{
 									fontSize: widthPercentageToDP('8%'),
 									color: Colors.SecondaryTitleColor,
 									paddingLeft: widthPercentageToDP('2%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									right: this.state.valuePositionValues[0]
 								}}
 							>
 								0
-							</Text>
+							</Animated.Text>
 						</View>
 						<View
 							style={{
@@ -113,25 +176,27 @@ class CockpitDataViewAnimatable extends Component {
 								marginBottom: heightPercentageToDP('3%')
 							}}
 						>
-							<Text
+							<Animated.Text
 								style={{
 									color: Colors.BasicTitleColor,
 									fontSize: widthPercentageToDP('4%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									transform: [{ translateX: this.state.textPositionValues[1] }]
 								}}
 							>
 								Bir Önceki Gün
-							</Text>
-							<Text
+							</Animated.Text>
+							<Animated.Text
 								style={{
 									fontSize: widthPercentageToDP('8%'),
 									color: Colors.SecondaryTitleColor,
 									paddingLeft: widthPercentageToDP('2%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									right: this.state.valuePositionValues[1]
 								}}
 							>
 								0
-							</Text>
+							</Animated.Text>
 						</View>
 						<View
 							style={{
@@ -141,25 +206,27 @@ class CockpitDataViewAnimatable extends Component {
 								marginBottom: heightPercentageToDP('3%')
 							}}
 						>
-							<Text
+							<Animated.Text
 								style={{
 									color: Colors.BasicTitleColor,
 									fontSize: widthPercentageToDP('4%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									transform: [{ translateX: this.state.textPositionValues[2] }]
 								}}
 							>
 								Bir Önceki Hafta
-							</Text>
-							<Text
+							</Animated.Text>
+							<Animated.Text
 								style={{
 									fontSize: widthPercentageToDP('8%'),
 									color: Colors.SecondaryTitleColor,
 									paddingLeft: widthPercentageToDP('2%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									right: this.state.valuePositionValues[2]
 								}}
 							>
 								0
-							</Text>
+							</Animated.Text>
 						</View>
 						<View
 							style={{
@@ -169,25 +236,27 @@ class CockpitDataViewAnimatable extends Component {
 								marginBottom: heightPercentageToDP('3%')
 							}}
 						>
-							<Text
+							<Animated.Text
 								style={{
 									color: Colors.BasicTitleColor,
 									fontSize: widthPercentageToDP('4%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									transform: [{ translateX: this.state.textPositionValues[3] }]
 								}}
 							>
 								Bir Önceki Ay
-							</Text>
-							<Text
+							</Animated.Text>
+							<Animated.Text
 								style={{
 									fontSize: widthPercentageToDP('8%'),
 									color: Colors.SecondaryTitleColor,
 									paddingLeft: widthPercentageToDP('2%'),
-									textAlignVertical: 'center'
+									textAlignVertical: 'center',
+									right: this.state.valuePositionValues[3]
 								}}
 							>
 								0
-							</Text>
+							</Animated.Text>
 						</View>
 					</View>
 				</View>
