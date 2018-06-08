@@ -12,6 +12,14 @@ import { CockpitDataViewAnimatable } from '../components/cockpit/CockpitDataView
 import { CockpitData } from './../helpers/DummyData';
 
 // const { width, height } = Dimensions.get('window');
+
+const selectedCockpitView = {
+	title: 'asdasd',
+	data: {},
+	value: '',
+	backgroundColor: ''
+};
+
 var cockpitSize = 0;
 class CockpitPage extends Component {
 	state = {
@@ -70,6 +78,7 @@ class CockpitPage extends Component {
 							title={localizedText.NumberOfReceipts}
 							backgroundColor="#45289F"
 							position={this.state.position}
+							selectedCockpitView={selectedCockpitView}
 						/>
 					</Animated.View>
 					<Button
@@ -134,6 +143,12 @@ class CockpitPage extends Component {
 								backgroundColor="#2F7D32"
 								onPress={position => {
 									this.handleOnPress(position, 0);
+									selectedCockpitView = {
+										title: localizedText.NumberOfNewMembers,
+										data: CockpitData,
+										value: 'NumberOfNewMembers',
+										backgroundColor: '#2F7D32'
+									};
 								}}
 							/>
 							<CockpitDataView
@@ -144,6 +159,12 @@ class CockpitPage extends Component {
 								backgroundColor="#45289F"
 								onPress={position => {
 									this.handleOnPress(position, 2);
+									selectedCockpitView = {
+										title: localizedText.NumberOfReceipts,
+										data: CockpitData,
+										value: 'NumberOfReceipts',
+										backgroundColor: '#45289F'
+									};
 								}}
 							/>
 							<CockpitDataView
@@ -154,6 +175,12 @@ class CockpitPage extends Component {
 								value="NumberOfCoupons"
 								onPress={position => {
 									this.handleOnPress(position, 4);
+									selectedCockpitView = {
+										title: localizedText.NumberOfCoupons,
+										data: CockpitData,
+										value: 'NumberOfCoupons',
+										backgroundColor: '#C62829'
+									};
 								}}
 							/>
 						</View>
@@ -166,6 +193,12 @@ class CockpitPage extends Component {
 								value="NumberOfShoppers"
 								onPress={position => {
 									this.handleOnPress(position, 1);
+									selectedCockpitView = {
+										title: localizedText.NumberOfShoppers,
+										data: CockpitData,
+										value: 'NumberOfShoppers',
+										backgroundColor: '#0176BC'
+									};
 								}}
 							/>
 							<CockpitDataView
@@ -176,6 +209,12 @@ class CockpitPage extends Component {
 								value="TotalRecordedReceiptAmount"
 								onPress={position => {
 									this.handleOnPress(position, 3);
+									selectedCockpitView = {
+										title: localizedText.TotalRecordedReceiptAmount,
+										data: CockpitData,
+										value: 'TotalRecordedReceiptAmount',
+										backgroundColor: '#548B2E'
+									};
 								}}
 							/>
 							<CockpitDataView
@@ -186,6 +225,12 @@ class CockpitPage extends Component {
 								value="NumberOfMembers"
 								onPress={position => {
 									this.handleOnPress(position, 5);
+									selectedCockpitView = {
+										title: localizedText.NumberOfMembersWithCoupon,
+										data: CockpitData,
+										value: 'NumberOfMembers',
+										backgroundColor: '#2A3495'
+									};
 								}}
 							/>
 						</View>

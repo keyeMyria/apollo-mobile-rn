@@ -88,7 +88,8 @@ class CockpitDataViewAnimatable extends Component {
 	}
 
 	render() {
-		const { size, backgroundColor, icon, title, position, onPress } = this.props;
+		const { size, icon, position, onPress, selectedCockpitView } = this.props;
+
 		const translatePositionX = this.state.animVal.interpolate({
 			inputRange: [0, 1],
 			outputRange: [position.x, width / 2 - (width - 20) / 2]
@@ -107,7 +108,7 @@ class CockpitDataViewAnimatable extends Component {
 			<Animated.View
 				style={{
 					position: 'absolute',
-					backgroundColor: backgroundColor,
+					backgroundColor: selectedCockpitView.backgroundColor,
 					width: animSize,
 					height: animSize,
 					marginBottom: heightPercentageToDP('2%'),
@@ -127,7 +128,7 @@ class CockpitDataViewAnimatable extends Component {
 								margin: widthPercentageToDP('3%')
 							}}
 						>
-							{title}
+							{selectedCockpitView.title}
 						</Animated.Text>
 					</View>
 
@@ -165,7 +166,7 @@ class CockpitDataViewAnimatable extends Component {
 									right: this.state.valuePositionValues[0]
 								}}
 							>
-								0
+								{selectedCockpitView.data[0][selectedCockpitView.value]}
 							</Animated.Text>
 						</View>
 						<View
@@ -195,7 +196,7 @@ class CockpitDataViewAnimatable extends Component {
 									right: this.state.valuePositionValues[1]
 								}}
 							>
-								0
+								{selectedCockpitView.data[1][selectedCockpitView.value]}
 							</Animated.Text>
 						</View>
 						<View
@@ -225,7 +226,7 @@ class CockpitDataViewAnimatable extends Component {
 									right: this.state.valuePositionValues[2]
 								}}
 							>
-								0
+								{selectedCockpitView.data[2][selectedCockpitView.value]}
 							</Animated.Text>
 						</View>
 						<View
@@ -255,7 +256,7 @@ class CockpitDataViewAnimatable extends Component {
 									right: this.state.valuePositionValues[3]
 								}}
 							>
-								0
+								{selectedCockpitView.data[3][selectedCockpitView.value]}
 							</Animated.Text>
 						</View>
 					</View>
