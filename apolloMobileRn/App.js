@@ -33,7 +33,8 @@ export default class App extends Component {
 	}
 
 	componentDidMount() {
-		setLocalization(this.getLanguageCode());
+		// setLocalization(this.getLanguageCode());
+		setLocalization('tr');
 	}
 
 	render() {

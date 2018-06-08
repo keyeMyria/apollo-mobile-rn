@@ -1,5 +1,16 @@
 import React from 'react';
-import { Text, Image, View, TouchableOpacity, Animated, Easing, Dimensions } from 'react-native';
+import {
+	Text,
+	Image,
+	View,
+	TouchableOpacity,
+	Animated,
+	Easing,
+	Dimensions,
+	UIManager,
+	Platform,
+	LayoutAnimation
+} from 'react-native';
 import { Colors } from './../../helpers';
 
 const { width, height } = Dimensions.get('window');

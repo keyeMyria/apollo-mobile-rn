@@ -1,46 +1,74 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../helpers/Colors';
 import { widthPercentageToDP, heightPercentageToDP } from '../../helpers';
 class CockpitDataView extends Component {
+	position = { x: 0, y: 0 };
+
+	componentDidMount() {
+		setTimeout(() => this.measureProgressBar(), 100);
+	}
+
+	measureProgressBar() {
+		this.refs.containerView.measure((a, b, width, height, px, py) => {
+			this.position = { x: px, y: py };
+		});
+	}
+
 	render() {
+		const { size, backgroundColor, title, onPress } = this.props;
 		return (
-			<View>
+			<TouchableOpacity
+				ref="containerView"
+				onPress={() => {
+					onPress(this.position);
+				}}
+				// style={{
+				// 	marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin,
+				// 	marginBottom: Margins.CockpitScreenItemsBottomMargin
+				// }}
+			>
 				<View
 					style={{
-						backgroundColor: '#2F7D32',
-						width: heightPercentageToDP('23.5%'),
-						height: heightPercentageToDP('23.5%'),
-						marginLeft: widthPercentageToDP('4%'),
-						marginTop: widthPercentageToDP('4%')
+						backgroundColor: backgroundColor,
+						width: size,
+						height: size,
+						marginBottom: heightPercentageToDP('2%'),
+						justifyContent: 'space-between'
 					}}
 				>
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('3%'),
-							color: Colors.BasicTitleColor,
-							alignSelf: 'center',
-							paddingTop: widthPercentageToDP('3%')
-						}}
-					>
-						Yeni Müşteri Sayısı
-					</Text>
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('9%'),
-							color: Colors.SecondaryTitleColor,
-							paddingLeft: widthPercentageToDP('2%'),
-							paddingTop: widthPercentageToDP('2%')
-						}}
-					>
-						0
-					</Text>
+					<View>
+						<Text
+							style={{
+								fontSize: widthPercentageToDP('3.8%'),
+								color: Colors.BasicTitleColor,
+								marginTop: widthPercentageToDP('3%'),
+								marginLeft: widthPercentageToDP('3%'),
+								textAlign: 'left'
+							}}
+						>
+							{title}
+						</Text>
+						<Text
+							style={{
+								position: 'absolute',
+								top: heightPercentageToDP('6%'),
+								fontSize: widthPercentageToDP('10%'),
+								color: Colors.SecondaryTitleColor,
+								paddingLeft: widthPercentageToDP('2%')
+							}}
+						>
+							0
+						</Text>
+					</View>
 					<View
 						style={{
 							flexDirection: 'row',
 							justifyContent: 'flex-end',
-							paddingRight: widthPercentageToDP('2%')
+							alignItems: 'center',
+							paddingRight: widthPercentageToDP('2%'),
+							paddingBottom: widthPercentageToDP('2%')
 						}}
 					>
 						<Icons
@@ -50,118 +78,16 @@ class CockpitDataView extends Component {
 						/>
 						<Text
 							style={{
-								fontSize: widthPercentageToDP('5%'),
+								fontSize: widthPercentageToDP('6%'),
 								color: Colors.SecondaryTitleColor,
 								paddingLeft: widthPercentageToDP('2%')
 							}}
 						>
-							--%
+							100 %
 						</Text>
 					</View>
 				</View>
-
-				<View
-					style={{
-						backgroundColor: '#44289F',
-						width: heightPercentageToDP('23.5%'),
-						height: heightPercentageToDP('23.5%'),
-						marginLeft: widthPercentageToDP('4%'),
-						marginTop: widthPercentageToDP('4%')
-					}}
-				>
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('3%'),
-							color: Colors.BasicTitleColor,
-							alignSelf: 'center',
-							paddingTop: widthPercentageToDP('3%')
-						}}
-					>
-						İşletilen Fatura Sayısı
-					</Text>
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('9%'),
-							color: Colors.SecondaryTitleColor,
-							paddingLeft: widthPercentageToDP('2%'),
-							paddingTop: widthPercentageToDP('2%')
-						}}
-					>
-						0
-					</Text>
-					<View
-						style={{
-							flexDirection: 'row',
-							justifyContent: 'flex-end',
-							paddingRight: widthPercentageToDP('2%')
-						}}
-					>
-						<Icons name="trending-down" size={widthPercentageToDP('6%')} color="#C78AB4" />
-						<Text
-							style={{
-								fontSize: widthPercentageToDP('5%'),
-								color: '#C78AB4',
-								paddingLeft: widthPercentageToDP('2%')
-							}}
-						>
-							100%
-						</Text>
-					</View>
-				</View>
-
-				<View
-					style={{
-						backgroundColor: '#C62829',
-						width: heightPercentageToDP('23.5%'),
-						height: heightPercentageToDP('23.5%'),
-						marginLeft: widthPercentageToDP('4%'),
-						marginTop: widthPercentageToDP('4%')
-					}}
-				>
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('3%'),
-							color: Colors.BasicTitleColor,
-							alignSelf: 'center',
-							paddingTop: widthPercentageToDP('3%')
-						}}
-					>
-						Kupon Adedi
-					</Text>
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('9%'),
-							color: Colors.SecondaryTitleColor,
-							paddingLeft: widthPercentageToDP('2%'),
-							paddingTop: widthPercentageToDP('2%')
-						}}
-					>
-						0
-					</Text>
-					<View
-						style={{
-							flexDirection: 'row',
-							justifyContent: 'flex-end',
-							paddingRight: widthPercentageToDP('2%')
-						}}
-					>
-						<Icons
-							name="trending-flat"
-							size={widthPercentageToDP('6%')}
-							color={Colors.SecondaryTitleColor}
-						/>
-						<Text
-							style={{
-								fontSize: widthPercentageToDP('5%'),
-								color: Colors.SecondaryTitleColor,
-								paddingLeft: widthPercentageToDP('2%')
-							}}
-						>
-							--%
-						</Text>
-					</View>
-				</View>
-			</View>
+			</TouchableOpacity>
 		);
 	}
 }

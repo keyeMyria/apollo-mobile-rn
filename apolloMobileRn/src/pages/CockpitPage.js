@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Dimensions, Modal, Button, Animated } from 'react-native';
 import { connect } from 'react-redux';
 import { Page } from '../components/common';
 import { fetchDailySummary } from 'apollo-rn-redux-helper/src/actions';
-import { Button } from 'react-native-paper';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../helpers/Colors';
-import { widthPercentageToDP } from '../helpers';
+import { widthPercentageToDP, heightPercentageToDP } from '../helpers';
 import { CockpitDataView } from '../components/cockpit/CockpitDataView';
+import { localizedText } from './../helpers/Localization/Localization';
+import { CockpitDataViewAnimatable } from '../components/cockpit/CockpitDataViewAnimatable';
 
+// const { width, height } = Dimensions.get('window');
+var cockpitSize = 0;
 class CockpitPage extends Component {
+	state = {
+		cockpitSize: 0,
+		modalIsVisible: false,
+		position: { x: 0, y: 0 }
+	};
+
 	componentDidMount() {
 		// return ReportDailySummary array with 4 elements
 		// 0 => today or selected date
@@ -18,11 +27,57 @@ class CockpitPage extends Component {
 		// 3 => last month
 		// this.props.fetchDailySummary('portus', new Date(2018, 5, 27, 22, 0, 0), 15, 30, true, true);
 	}
+
+	handleOnPress(position, index) {
+		this.setState({ position: position, selectedItemIndex: index });
+		setTimeout(() => {
+			this.setState({ modalIsVisible: true });
+		}, 100);
+	}
+
+	handleLayout(event) {
+		const { height, width } = event.nativeEvent.layout;
+		var cockpitPanelHeigt = height - heightPercentageToDP('8%'); //%8 padding
+		var cockpitPanelWidth = width - heightPercentageToDP('6%');
+
+		if (cockpitPanelHeigt / cockpitPanelWidth > 3 / 2) {
+			var curSize = cockpitPanelWidth / 2;
+			cockpitSize = curSize;
+			this.setState({ cockpitSize: cockpitSize });
+		} else {
+			curSize = cockpitPanelHeigt / 3;
+			cockpitSize = curSize;
+			this.setState({ cockpitSize: cockpitSize });
+		}
+	}
+
 	render() {
-		// console.log(this.props.dailySummary);
 		return (
 			<Page navigation={this.props.navigation}>
-				<View>
+				<Modal
+					animationType="none"
+					transparent={true}
+					visible={this.state.modalIsVisible}
+					onRequestClose={() => {
+						alert('Modal has been closed.');
+					}}
+				>
+					<Animated.View style={{ backgroundColor: '#000a', flex: 1 }}>
+						<CockpitDataViewAnimatable
+							size={cockpitSize}
+							title={localizedText.NumberOfReceipts}
+							backgroundColor="#45289F"
+							position={this.state.position}
+						/>
+					</Animated.View>
+					<Button
+						title="kapat"
+						onPress={() => {
+							this.setState({ modalIsVisible: false });
+						}}
+					/>
+				</Modal>
+				<View style={{ flex: 1 }}>
 					<View
 						style={{
 							backgroundColor: '#212121',
@@ -57,9 +112,69 @@ class CockpitPage extends Component {
 							</Text>
 						</View>
 					</View>
-					<View style={{ flexDirection: 'row' }}>
-						<CockpitDataView />
-						<CockpitDataView />
+
+					<View
+						onLayout={event => this.handleLayout(event)}
+						style={{
+							flexDirection: 'row',
+							alignItems: 'center',
+							justifyContent: 'center',
+							paddingTop: heightPercentageToDP('2%'),
+							flex: 1
+						}}
+					>
+						<View style={{ marginRight: heightPercentageToDP('2%') }}>
+							<CockpitDataView
+								size={cockpitSize}
+								title={localizedText.NumberOfNewMembers}
+								backgroundColor="#2F7D32"
+								onPress={position => {
+									this.handleOnPress(position, 0);
+								}}
+							/>
+							<CockpitDataView
+								size={cockpitSize}
+								title={localizedText.NumberOfReceipts}
+								backgroundColor="#45289F"
+								onPress={position => {
+									this.handleOnPress(position, 2);
+								}}
+							/>
+							<CockpitDataView
+								size={cockpitSize}
+								backgroundColor="#C62829"
+								title={localizedText.NumberOfCoupons}
+								onPress={position => {
+									this.handleOnPress(position, 4);
+								}}
+							/>
+						</View>
+						<View>
+							<CockpitDataView
+								size={cockpitSize}
+								backgroundColor="#0176BC"
+								title={localizedText.NumberOfMembersWhoTakeAction}
+								onPress={position => {
+									this.handleOnPress(position, 1);
+								}}
+							/>
+							<CockpitDataView
+								size={cockpitSize}
+								backgroundColor="#548B2E"
+								title={localizedText.TotalRecordedReceiptAmount}
+								onPress={position => {
+									this.handleOnPress(position, 3);
+								}}
+							/>
+							<CockpitDataView
+								size={cockpitSize}
+								backgroundColor="#2A3495"
+								title={localizedText.NumberOfMembersWithCoupon}
+								onPress={position => {
+									this.handleOnPress(position, 5);
+								}}
+							/>
+						</View>
 					</View>
 				</View>
 			</Page>
