@@ -125,16 +125,15 @@ class OrderCriteria extends Component {
 				<View
 					style={{
 						flex: 1,
-						justifyContent: 'center',
-						marginHorizontal: widthPercentageToDP('10%')
+						justifyContent: 'center'
 					}}
 				>
 					<TouchableOpacity
 						onPress={() => this.setState({ isCriteriaModalVisible: true })}
 						style={{
 							flexDirection: 'row',
-							justifyContent: 'space-between',
-							marginBottom: widthPercentageToDP('4%')
+							justifyContent: 'center'
+							// marginBottom: widthPercentageToDP('4%')
 						}}
 					>
 						<View style={{ flexDirection: 'row' }}>

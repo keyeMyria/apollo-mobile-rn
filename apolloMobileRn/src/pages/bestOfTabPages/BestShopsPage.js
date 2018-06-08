@@ -5,8 +5,9 @@ import { getPing, fetchReportTop } from 'apollo-rn-redux-helper/src/actions';
 import LinearGradient from 'react-native-linear-gradient';
 import { localizedText } from './../../helpers/Localization/Localization';
 import BarChart from './../../components/charts/BarChart';
-import { widthPercentageToDP } from '../../helpers';
+import { widthPercentageToDP, heightPercentageToDP, Colors } from '../../helpers';
 import OrderCriteria from './bestOfTabPagesComponents/OrderCriteria';
+
 const shops = [
 	{
 		text: 'Teknosa',
@@ -50,14 +51,119 @@ class BestShopsPage extends Component {
 	render() {
 		console.log('best shops: ', localizedText.STORE);
 		return (
-			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-				<OrderCriteria />
+			<View
+				style={{
+					flex: 1,
+					alignItems: 'center',
+					justifyContent: 'center'
+				}}
+			>
+				<View
+					style={{
+						backgroundColor: Colors.CardBackgroundColor,
+						width: widthPercentageToDP('90%'),
+						height: heightPercentageToDP('50%')
+					}}
+				>
+					<OrderCriteria />
+					<View
+						style={{
+							flexDirection: 'row',
+							paddingHorizontal: widthPercentageToDP('4%')
+						}}
+					>
+						<View>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								Teknosa
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								big
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								{' '}
+								English Home
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								Macrocenter
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								MADO
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								Atasun Optik
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								başkent doğangaz
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								PEPERONCINO
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('2%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								a1066
+							</Text>
+						</View>
 
-				<BarChart
-					data={shops}
-					chartWidth={widthPercentageToDP('80%')}
-					chartHeight={widthPercentageToDP('80%')}
-				/>
+						<BarChart
+							data={shops}
+							chartWidth={widthPercentageToDP('50%')}
+							chartHeight={widthPercentageToDP('50%')}
+						/>
+					</View>
+				</View>
 			</View>
 		);
 	}
