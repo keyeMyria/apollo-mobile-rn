@@ -14,7 +14,6 @@ import {
 import { connect } from 'react-redux';
 import { DigitalClock, CockpitDataRow, CockpitDataRowAnimatable, CockpitHeader } from '../components/cockpit';
 import { Margins, Colors } from '../helpers';
-import LinearGradient from 'react-native-linear-gradient';
 import { CockpitData } from './../helpers/DummyData';
 import { fetchDailySummary } from 'apollo-rn-redux-helper/src/actions';
 

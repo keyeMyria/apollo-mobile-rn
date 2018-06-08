@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { getPing, fetchReportTop } from 'apollo-rn-redux-helper/src/actions';
-import LinearGradient from 'react-native-linear-gradient';
 
 class BestDaysPage extends Component {
 	render() {
@@ -15,11 +14,6 @@ class BestDaysPage extends Component {
 }
 
 var styles = StyleSheet.create({
-	linearGradient: {
-		paddingLeft: 15,
-		paddingRight: 15,
-		borderRadius: 5
-	},
 	buttonText: {
 		fontSize: 18,
 		fontFamily: 'Gill Sans',

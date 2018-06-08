@@ -140,7 +140,8 @@ class CockpitPage extends Component {
 								title={localizedText.NumberOfNewMembers}
 								data={CockpitData}
 								value="NumberOfNewMembers"
-								backgroundColor="#2F7D32"
+								gradient1color="#43A047"
+								gradient2color="#2F7D32"
 								onPress={position => {
 									this.handleOnPress(position, 0);
 									selectedCockpitView = {
@@ -156,7 +157,8 @@ class CockpitPage extends Component {
 								title={localizedText.NumberOfReceipts}
 								data={CockpitData}
 								value="NumberOfReceipts"
-								backgroundColor="#45289F"
+								gradient1color="#5E35B1"
+								gradient2color="#45289F"
 								onPress={position => {
 									this.handleOnPress(position, 2);
 									selectedCockpitView = {
@@ -169,7 +171,8 @@ class CockpitPage extends Component {
 							/>
 							<CockpitDataView
 								size={cockpitSize}
-								backgroundColor="#C62829"
+								gradient1color="#E53935"
+								gradient2color="#C62829"
 								title={localizedText.NumberOfCoupons}
 								data={CockpitData}
 								value="NumberOfCoupons"
@@ -187,7 +190,8 @@ class CockpitPage extends Component {
 						<View>
 							<CockpitDataView
 								size={cockpitSize}
-								backgroundColor="#0176BC"
+								gradient1color="#039BE5"
+								gradient2color="#0176BC"
 								title={localizedText.NumberOfShoppers}
 								data={CockpitData}
 								value="NumberOfShoppers"
@@ -203,7 +207,8 @@ class CockpitPage extends Component {
 							/>
 							<CockpitDataView
 								size={cockpitSize}
-								backgroundColor="#548B2E"
+								gradient1color="#7CB342"
+								gradient2color="#548B2E"
 								title={localizedText.TotalRecordedReceiptAmount}
 								data={CockpitData}
 								value="TotalRecordedReceiptAmount"
@@ -219,7 +224,8 @@ class CockpitPage extends Component {
 							/>
 							<CockpitDataView
 								size={cockpitSize}
-								backgroundColor="#2A3495"
+								gradient1color="#3949AB"
+								gradient2color="#2A3495"
 								title={localizedText.NumberOfMembersWithCoupon}
 								data={CockpitData}
 								value="NumberOfMembers"

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { getPing, fetchReportTop } from 'apollo-rn-redux-helper/src/actions';
-import LinearGradient from 'react-native-linear-gradient';
 import { createMaterialTopTabNavigator } from 'react-navigation';
 import BestShopsPage from './bestOfTabPages/BestShopsPage';
 import BestCitiesPage from './bestOfTabPages/BestCitiesPage';

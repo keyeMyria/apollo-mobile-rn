@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../helpers/Colors';
 import { widthPercentageToDP, heightPercentageToDP } from '../../helpers';
+import LinearGradient from 'react-native-linear-gradient';
 class CockpitDataView extends Component {
 	position = { x: 0, y: 0 };
 
@@ -17,7 +18,7 @@ class CockpitDataView extends Component {
 	}
 
 	render() {
-		const { data, value, size, backgroundColor, title, onPress } = this.props;
+		const { data, value, size, gradient1color, gradient2color, title, onPress } = this.props;
 		return (
 			<TouchableOpacity
 				ref="containerView"
@@ -25,14 +26,16 @@ class CockpitDataView extends Component {
 					onPress(this.position);
 				}}
 			>
-				<View
+				<LinearGradient
+					start={{ x: 0.0, y: 0.0 }}
+					end={{ x: 1.0, y: 1.0 }}
 					style={{
-						backgroundColor: backgroundColor,
 						width: size,
 						height: size,
 						marginBottom: heightPercentageToDP('2%'),
 						justifyContent: 'space-between'
 					}}
+					colors={[gradient2color, gradient1color]}
 				>
 					<View>
 						<Text
@@ -82,7 +85,7 @@ class CockpitDataView extends Component {
 							100 %
 						</Text>
 					</View>
-				</View>
+				</LinearGradient>
 			</TouchableOpacity>
 		);
 	}

@@ -81,7 +81,9 @@ class BarChart extends Component {
 		}
 
 		this.setState({ interpolateValues: values });
-		this.animate();
+		setTimeout(() => {
+			this.animate();
+		}, 600);
 	}
 
 	renderLines(data, chartWidth, chartHeight, lineSpace) {
