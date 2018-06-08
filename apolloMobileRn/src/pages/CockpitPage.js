@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions } from 'react-native';
+import { View, Text, Image, Dimensions, Modal, Button, Animated } from 'react-native';
 import { connect } from 'react-redux';
 import { Page } from '../components/common';
 import { fetchDailySummary } from 'apollo-rn-redux-helper/src/actions';
-import { Button } from 'react-native-paper';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../helpers/Colors';
 import { widthPercentageToDP, heightPercentageToDP } from '../helpers';
 import { CockpitDataView } from '../components/cockpit/CockpitDataView';
 import { localizedText } from './../helpers/Localization/Localization';
+import { CockpitDataViewAnimatable } from '../components/cockpit/CockpitDataViewAnimatable';
 
 const { width, height } = Dimensions.get('window');
 var cockpitSize = 0;
 class CockpitPage extends Component {
 	state = {
-		cockpitSize: 0
+		cockpitSize: 0,
+		modalIsVisible: false,
+		position: { x: 0, y: 0 }
 	};
 
 	componentDidMount() {
@@ -38,10 +40,46 @@ class CockpitPage extends Component {
 		// 3 => last month
 		// this.props.fetchDailySummary('portus', new Date(2018, 5, 27, 22, 0, 0), 15, 30, true, true);
 	}
+
+	handleOnPress(position, index) {
+		this.setState({ position: position, selectedItemIndex: index });
+		setTimeout(() => {
+			this.setState({ modalIsVisible: true });
+			// this.animateModal();
+		}, 100);
+	}
+
 	render() {
-		// console.log(this.props.dailySummary);
 		return (
 			<Page navigation={this.props.navigation}>
+				<Modal
+					animationType="none"
+					transparent={true}
+					visible={this.state.modalIsVisible}
+					onRequestClose={() => {
+						alert('Modal has been closed.');
+					}}
+				>
+					<Animated.View style={{ backgroundColor: '#f004', flex: 1 }}>
+						<CockpitDataViewAnimatable
+							size={cockpitSize}
+							title={localizedText.NumberOfReceipts}
+							backgroundColor="#45289F"
+							position={this.state.position}
+						/>
+						{/* <CockpitDataRowAnimatable
+							data={data[this.state.selectedItemIndex]}
+							yPos={this.state.yPos}
+							onPress={() => this.setState({ modalIsVisible: false })}
+						/> */}
+					</Animated.View>
+					<Button
+						title="kapat"
+						onPress={() => {
+							this.setState({ modalIsVisible: false });
+						}}
+					/>
+				</Modal>
 				<View>
 					<View
 						style={{
@@ -66,6 +104,9 @@ class CockpitPage extends Component {
 									marginLeft: widthPercentageToDP('2%')
 								}}
 							/>
+							<Text>
+								{this.state.position.x}-{this.state.position.y}
+							</Text>
 							<Text
 								style={{
 									color: Colors.BasicTitleColor,
@@ -91,16 +132,25 @@ class CockpitPage extends Component {
 								size={cockpitSize}
 								title={localizedText.NumberOfNewMembers}
 								backgroundColor="#2F7D32"
+								onPress={position => {
+									this.handleOnPress(position, 0);
+								}}
 							/>
 							<CockpitDataView
 								size={cockpitSize}
 								title={localizedText.NumberOfReceipts}
 								backgroundColor="#45289F"
+								onPress={position => {
+									this.handleOnPress(position, 2);
+								}}
 							/>
 							<CockpitDataView
 								size={cockpitSize}
 								backgroundColor="#C62829"
 								title={localizedText.NumberOfCoupons}
+								onPress={position => {
+									this.handleOnPress(position, 4);
+								}}
 							/>
 						</View>
 						<View>
@@ -108,16 +158,25 @@ class CockpitPage extends Component {
 								size={cockpitSize}
 								backgroundColor="#0176BC"
 								title={localizedText.NumberOfMembersWhoTakeAction}
+								onPress={position => {
+									this.handleOnPress(position, 1);
+								}}
 							/>
 							<CockpitDataView
 								size={cockpitSize}
 								backgroundColor="#548B2E"
 								title={localizedText.TotalRecordedReceiptAmount}
+								onPress={position => {
+									this.handleOnPress(position, 3);
+								}}
 							/>
 							<CockpitDataView
 								size={cockpitSize}
 								backgroundColor="#2A3495"
 								title={localizedText.NumberOfMembersWithCoupon}
+								onPress={position => {
+									this.handleOnPress(position, 5);
+								}}
 							/>
 						</View>
 					</View>
