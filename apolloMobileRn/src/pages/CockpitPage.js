@@ -60,7 +60,7 @@ class CockpitPage extends Component {
 						alert('Modal has been closed.');
 					}}
 				>
-					<Animated.View style={{ backgroundColor: '#f004', flex: 1 }}>
+					<Animated.View style={{ backgroundColor: '#000a', flex: 1 }}>
 						<CockpitDataViewAnimatable
 							size={cockpitSize}
 							title={localizedText.NumberOfReceipts}
