@@ -142,12 +142,12 @@ class BarChart extends Component {
 				</AnimatedSvg>
 
 				<View style={{ marginTop: 30 }}>
-					<Button
+					{/* <Button
 						title="Start anim"
 						onPress={() => {
 							this.animate();
 						}}
-					/>
+					/> */}
 				</View>
 			</View>
 		);
