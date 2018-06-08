@@ -11,6 +11,77 @@ import { localizedText } from './../helpers/Localization/Localization';
 import { ColoredCard } from './../components/managerSummary/ColoredCard';
 import { ColoredTabCard } from './../components/managerSummary/ColoredTabCard';
 
+const TopShops = [
+	{
+		name: 'LastThreeMonths',
+		values: [
+			{
+				firstShops: 'LCW',
+				value: 1000
+			},
+			{
+				firstShops: 'Boyner',
+				value: 1000
+			},
+			{
+				firstShops: 'Migros',
+				value: 1000
+			}
+		]
+	},
+	{
+		name: 'LastSixMonths',
+		values: [
+			{
+				firstShops: 'LCW 2',
+				value: 1000
+			},
+			{
+				firstShops: 'Boyner 2',
+				value: 1000
+			},
+			{
+				firstShops: 'Migros 2',
+				value: 1000
+			}
+		]
+	},
+	{
+		name: 'LastTwelveMonths',
+		values: [
+			{
+				firstShops: 'LCW3 ',
+				value: 1000
+			},
+			{
+				firstShops: 'Boyner3',
+				value: 1000
+			},
+			{
+				firstShops: 'Migros3',
+				value: 1000
+			}
+		]
+	},
+	{
+		name: 'AllTimes',
+		values: [
+			{
+				firstShops: 'LCW4',
+				value: 1000
+			},
+			{
+				firstShops: 'Boyner4',
+				value: 1000
+			},
+			{
+				firstShops: 'Migros4',
+				value: 1000
+			}
+		]
+	}
+];
+
 class ManagerSummaryPage extends Component {
 	render() {
 		return (
@@ -36,7 +107,7 @@ class ManagerSummaryPage extends Component {
 								}}
 							>
 								<Text style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}>
-									Toplam Üye Sayısı
+									{localizedText.TotalNumberOfMember}
 								</Text>
 								<Text style={{ color: Colors.BasicTitleColor }}>544</Text>
 							</View>
@@ -56,7 +127,7 @@ class ManagerSummaryPage extends Component {
 								}}
 							>
 								<Text style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}>
-									Toplam Erkek Sayısı
+									{localizedText.TotalNumberOfMaleMember}
 								</Text>
 								<Text style={{ color: Colors.BasicTitleColor }}>128</Text>
 							</View>
@@ -76,7 +147,7 @@ class ManagerSummaryPage extends Component {
 								}}
 							>
 								<Text style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}>
-									Toplam Kadın Sayısı
+									{localizedText.TotalNumberOfFemaleMember}
 								</Text>
 								<Text style={{ color: Colors.BasicTitleColor }}>398</Text>
 							</View>
@@ -110,7 +181,7 @@ class ManagerSummaryPage extends Component {
 									<Text
 										style={{ color: Colors.BasicTitleColor, fontSize: widthPercentageToDP('2.5%') }}
 									>
-										Son 3 Ayda İşlem Yaptıran Üye Sayısı
+										{localizedText.ProcessedMemberInLast3Months}
 									</Text>
 									<View style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('4%') }}>
 										<Text style={{ color: Colors.BasicTitleColor }}>69</Text>
@@ -140,7 +211,7 @@ class ManagerSummaryPage extends Component {
 												fontSize: widthPercentageToDP('2.5%')
 											}}
 										>
-											Son 6 Ayda İşlem Yaptıran Üye Sayısı
+											{localizedText.ProcessedMemberInLast6Months}
 										</Text>
 										<View style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('4%') }}>
 											<Text style={{ color: Colors.BasicTitleColor }}>100</Text>
@@ -172,7 +243,7 @@ class ManagerSummaryPage extends Component {
 												fontSize: widthPercentageToDP('2.5%')
 											}}
 										>
-											Son 12 Ayda İşlem Yaptıran Üye Sayısı
+											{localizedText.ProcessedMemberInLast12Months}
 										</Text>
 										<View style={{ flexDirection: 'row', paddingLeft: widthPercentageToDP('4%') }}>
 											<Text style={{ color: Colors.BasicTitleColor }}>134</Text>
@@ -193,8 +264,16 @@ class ManagerSummaryPage extends Component {
 							</View>
 						</View>
 					</View>
-					<ColoredTabCard backgroundColor="#C62829" title={localizedText.Top3StoresByTheTotalReceiptCount} />
-					<ColoredTabCard backgroundColor="#1565BE" title={localizedText.Top3StoresByTheTotalReceiptAmount} />
+					<ColoredTabCard
+						backgroundColor="#C62829"
+						title={localizedText.Top3StoresByTheTotalReceiptCount}
+						data={TopShops}
+					/>
+					<ColoredTabCard
+						backgroundColor="#1565BE"
+						title={localizedText.Top3StoresByTheTotalReceiptAmount}
+						data={TopShops}
+					/>
 
 					<View
 						style={{

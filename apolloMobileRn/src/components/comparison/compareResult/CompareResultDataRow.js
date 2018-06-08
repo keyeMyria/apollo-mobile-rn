@@ -6,7 +6,7 @@ import { Colors, widthPercentageToDP } from '../../../helpers';
 
 class CompareResultDataRow extends Component {
 	render() {
-		const { title, firstCampaign, secondCampaign, percentage } = this.props;
+		const { title, firstCampaign, secondCampaign, percentage, fontSize } = this.props;
 		return (
 			<View
 				style={{
@@ -24,7 +24,7 @@ class CompareResultDataRow extends Component {
 							paddingRight: widthPercentageToDP('20%')
 						}}
 					>
-						<Text style={{ color: Colors.SecondaryTitleColor }}>{firstCampaign}</Text>
+						<Text style={{ color: Colors.SecondaryTitleColor, fontSize: fontSize }}>{firstCampaign}</Text>
 						<Icons name="trending-flat" color={Colors.SecondaryTitleColor} />
 						<Text
 							style={{

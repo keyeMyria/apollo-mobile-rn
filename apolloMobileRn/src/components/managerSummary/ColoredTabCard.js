@@ -5,8 +5,9 @@ import { createMaterialTopTabNavigator } from 'react-navigation';
 import { localizedText } from './../../helpers/Localization/Localization';
 import { TabCardData } from './TabCardData';
 
-export const ColoredTabCard = ({ backgroundColor, title, children }) => {
-	var Tabs = PeriodTabs(localizedText, backgroundColor);
+export const ColoredTabCard = ({ data, backgroundColor, title, children }) => {
+	console.log('colortab , ', data);
+	var Tabs = PeriodTabs(localizedText, backgroundColor, data);
 	return (
 		<View
 			style={{
@@ -33,29 +34,30 @@ export const ColoredTabCard = ({ backgroundColor, title, children }) => {
 	);
 };
 
-const PeriodTabs = (localizedText, backgroundColor) => {
+const PeriodTabs = (localizedText, backgroundColor, data) => {
+	console.log('PeriodTabs : ', data);
 	return createMaterialTopTabNavigator(
 		{
 			last3Months: {
-				screen: props => <TabCardData {...props} />,
+				screen: props => <TabCardData data={data[0].values} {...props} />,
 				navigationOptions: {
 					title: localizedText.LAST3MONTH
 				}
 			},
 			last6Months: {
-				screen: props => <TabCardData {...props} />,
+				screen: props => <TabCardData data={data[1].values} {...props} />,
 				navigationOptions: {
 					title: localizedText.LAST6MONTH
 				}
 			},
 			last12Months: {
-				screen: props => <TabCardData {...props} />,
+				screen: props => <TabCardData data={data[2].values} {...props} />,
 				navigationOptions: {
 					title: localizedText.LAST12MONTH
 				}
 			},
 			allTimes: {
-				screen: props => <TabCardData {...props} />,
+				screen: props => <TabCardData data={data[3].values} {...props} />,
 				navigationOptions: {
 					title: localizedText.ALLTIME
 				}
