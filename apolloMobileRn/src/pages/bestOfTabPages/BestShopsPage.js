@@ -180,6 +180,176 @@ class BestShopsPage extends Component {
 						<OrderCriteria />
 					</View>
 					<Divider />
+					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+						<View style={{ marginRight: widthPercentageToDP('8%') }}>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								Teknosa
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								big
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								{' '}
+								English Home
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								Macrocenter
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								MADO
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								Atasun Optik
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								başkent doğangaz
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								PEPERONCINO
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('2%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								a1066
+							</Text>
+						</View>
+						<View style={{ marginRight: widthPercentageToDP('8%') }}>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								22.700
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								2.555
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								{' '}
+								1.000
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								400
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								250
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								222
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								150
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('1%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								120
+							</Text>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									paddingTop: widthPercentageToDP('2%'),
+									fontSize: widthPercentageToDP('3%')
+								}}
+							>
+								22
+							</Text>
+						</View>
+					</View>
 				</View>
 			</View>
 		);
