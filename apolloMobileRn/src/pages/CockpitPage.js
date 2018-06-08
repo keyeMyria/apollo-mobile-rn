@@ -10,7 +10,7 @@ import { CockpitDataView } from '../components/cockpit/CockpitDataView';
 import { localizedText } from './../helpers/Localization/Localization';
 import { CockpitDataViewAnimatable } from '../components/cockpit/CockpitDataViewAnimatable';
 
-const { width, height } = Dimensions.get('window');
+// const { width, height } = Dimensions.get('window');
 var cockpitSize = 0;
 class CockpitPage extends Component {
 	state = {
@@ -20,19 +20,6 @@ class CockpitPage extends Component {
 	};
 
 	componentDidMount() {
-		var cockpitPanelHeigt = heightPercentageToDP('77%'); //%8 padding, %15 top comp
-		var cockpitPanelWidth = widthPercentageToDP('100%') - heightPercentageToDP('6%');
-
-		if (cockpitPanelHeigt / cockpitPanelWidth > 3 / 2) {
-			var curSize = cockpitPanelWidth / 2;
-			cockpitSize = curSize;
-			this.setState({ cockpitSize: cockpitSize });
-		} else {
-			curSize = cockpitPanelHeigt / 3;
-			cockpitSize = curSize;
-			this.setState({ cockpitSize: cockpitSize });
-		}
-
 		// return ReportDailySummary array with 4 elements
 		// 0 => today or selected date
 		// 1 => yesterday
@@ -45,8 +32,23 @@ class CockpitPage extends Component {
 		this.setState({ position: position, selectedItemIndex: index });
 		setTimeout(() => {
 			this.setState({ modalIsVisible: true });
-			// this.animateModal();
 		}, 100);
+	}
+
+	handleLayout(event) {
+		const { height, width } = event.nativeEvent.layout;
+		var cockpitPanelHeigt = height - heightPercentageToDP('8%'); //%8 padding
+		var cockpitPanelWidth = width - heightPercentageToDP('6%');
+
+		if (cockpitPanelHeigt / cockpitPanelWidth > 3 / 2) {
+			var curSize = cockpitPanelWidth / 2;
+			cockpitSize = curSize;
+			this.setState({ cockpitSize: cockpitSize });
+		} else {
+			curSize = cockpitPanelHeigt / 3;
+			cockpitSize = curSize;
+			this.setState({ cockpitSize: cockpitSize });
+		}
 	}
 
 	render() {
@@ -67,11 +69,6 @@ class CockpitPage extends Component {
 							backgroundColor="#45289F"
 							position={this.state.position}
 						/>
-						{/* <CockpitDataRowAnimatable
-							data={data[this.state.selectedItemIndex]}
-							yPos={this.state.yPos}
-							onPress={() => this.setState({ modalIsVisible: false })}
-						/> */}
 					</Animated.View>
 					<Button
 						title="kapat"
@@ -80,7 +77,7 @@ class CockpitPage extends Component {
 						}}
 					/>
 				</Modal>
-				<View>
+				<View style={{ flex: 1 }}>
 					<View
 						style={{
 							backgroundColor: '#212121',
@@ -104,9 +101,6 @@ class CockpitPage extends Component {
 									marginLeft: widthPercentageToDP('2%')
 								}}
 							/>
-							<Text>
-								{this.state.position.x}-{this.state.position.y}
-							</Text>
 							<Text
 								style={{
 									color: Colors.BasicTitleColor,
@@ -120,11 +114,13 @@ class CockpitPage extends Component {
 					</View>
 
 					<View
+						onLayout={event => this.handleLayout(event)}
 						style={{
 							flexDirection: 'row',
 							alignItems: 'center',
 							justifyContent: 'center',
-							paddingTop: heightPercentageToDP('2%')
+							paddingTop: heightPercentageToDP('2%'),
+							flex: 1
 						}}
 					>
 						<View style={{ marginRight: heightPercentageToDP('2%') }}>
