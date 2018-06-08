@@ -7,6 +7,7 @@ import { localizedText } from './../../helpers/Localization/Localization';
 import BarChart from './../../components/charts/BarChart';
 import { widthPercentageToDP, heightPercentageToDP, Colors } from '../../helpers';
 import OrderCriteria from './bestOfTabPagesComponents/OrderCriteria';
+import { Divider } from 'react-native-paper';
 
 const shops = [
 	{
@@ -58,11 +59,12 @@ class BestShopsPage extends Component {
 					justifyContent: 'center'
 				}}
 			>
+				{/* Store tab'ı için ilk bölüm */}
 				<View
 					style={{
 						backgroundColor: Colors.CardBackgroundColor,
 						width: widthPercentageToDP('90%'),
-						height: heightPercentageToDP('50%')
+						height: heightPercentageToDP('35%')
 					}}
 				>
 					<OrderCriteria />
@@ -72,7 +74,7 @@ class BestShopsPage extends Component {
 							paddingHorizontal: widthPercentageToDP('4%')
 						}}
 					>
-						<View>
+						<View style={{ marginRight: widthPercentageToDP('8%') }}>
 							<Text
 								style={{
 									color: Colors.BasicTitleColor,
@@ -160,9 +162,24 @@ class BestShopsPage extends Component {
 						<BarChart
 							data={shops}
 							chartWidth={widthPercentageToDP('50%')}
-							chartHeight={widthPercentageToDP('50%')}
+							chartHeight={widthPercentageToDP('40%')}
 						/>
 					</View>
+				</View>
+				{/* Store tab'ı için ikinci bölüm */}
+				<View
+					style={{
+						backgroundColor: Colors.CardBackgroundColor,
+						width: widthPercentageToDP('90%'),
+						height: heightPercentageToDP('35%'),
+						marginTop: widthPercentageToDP('3%')
+					}}
+				>
+					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+						<Text style={{ color: Colors.BasicTitleColor }}>{localizedText.StoreName}</Text>
+						<OrderCriteria />
+					</View>
+					<Divider />
 				</View>
 			</View>
 		);
