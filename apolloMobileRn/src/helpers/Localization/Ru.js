@@ -120,7 +120,7 @@ export const ru = {
 	NumberOfCoupons: '# Купонов',
 	NumberOfDifferentStore: '# Разных магазинов',
 	NumberOfMembers: '# Участников',
-	NumberOfMembersWhoTakeAction: '# Зарегистрированных участников, не получивших купоны',
+	NumberOfShoppers: '# Зарегистрированных участников, не получивших купоны',
 	NumberOfMembersWithCoupon: '# Участников, получивших купоны',
 	NumberOfNewMember: '# Новых участников',
 	NumberOfNewMembers: '# Новых участников',

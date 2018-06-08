@@ -17,17 +17,13 @@ class CockpitDataView extends Component {
 	}
 
 	render() {
-		const { size, backgroundColor, title, onPress } = this.props;
+		const { data, value, size, backgroundColor, title, onPress } = this.props;
 		return (
 			<TouchableOpacity
 				ref="containerView"
 				onPress={() => {
 					onPress(this.position);
 				}}
-				// style={{
-				// 	marginHorizontal: Margins.CockpitScreenItemsHorizontalMargin,
-				// 	marginBottom: Margins.CockpitScreenItemsBottomMargin
-				// }}
 			>
 				<View
 					style={{
@@ -54,12 +50,12 @@ class CockpitDataView extends Component {
 							style={{
 								position: 'absolute',
 								top: heightPercentageToDP('6%'),
-								fontSize: widthPercentageToDP('10%'),
+								fontSize: widthPercentageToDP('8%'),
 								color: Colors.SecondaryTitleColor,
 								paddingLeft: widthPercentageToDP('2%')
 							}}
 						>
-							0
+							{data[0][value]}
 						</Text>
 					</View>
 					<View

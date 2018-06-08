@@ -9,6 +9,7 @@ import { widthPercentageToDP, heightPercentageToDP } from '../helpers';
 import { CockpitDataView } from '../components/cockpit/CockpitDataView';
 import { localizedText } from './../helpers/Localization/Localization';
 import { CockpitDataViewAnimatable } from '../components/cockpit/CockpitDataViewAnimatable';
+import { CockpitData } from './../helpers/DummyData';
 
 // const { width, height } = Dimensions.get('window');
 var cockpitSize = 0;
@@ -52,6 +53,7 @@ class CockpitPage extends Component {
 	}
 
 	render() {
+		console.log(CockpitData);
 		return (
 			<Page navigation={this.props.navigation}>
 				<Modal
@@ -127,6 +129,8 @@ class CockpitPage extends Component {
 							<CockpitDataView
 								size={cockpitSize}
 								title={localizedText.NumberOfNewMembers}
+								data={CockpitData}
+								value="NumberOfNewMembers"
 								backgroundColor="#2F7D32"
 								onPress={position => {
 									this.handleOnPress(position, 0);
@@ -135,6 +139,8 @@ class CockpitPage extends Component {
 							<CockpitDataView
 								size={cockpitSize}
 								title={localizedText.NumberOfReceipts}
+								data={CockpitData}
+								value="NumberOfReceipts"
 								backgroundColor="#45289F"
 								onPress={position => {
 									this.handleOnPress(position, 2);
@@ -144,6 +150,8 @@ class CockpitPage extends Component {
 								size={cockpitSize}
 								backgroundColor="#C62829"
 								title={localizedText.NumberOfCoupons}
+								data={CockpitData}
+								value="NumberOfCoupons"
 								onPress={position => {
 									this.handleOnPress(position, 4);
 								}}
@@ -153,7 +161,9 @@ class CockpitPage extends Component {
 							<CockpitDataView
 								size={cockpitSize}
 								backgroundColor="#0176BC"
-								title={localizedText.NumberOfMembersWhoTakeAction}
+								title={localizedText.NumberOfShoppers}
+								data={CockpitData}
+								value="NumberOfShoppers"
 								onPress={position => {
 									this.handleOnPress(position, 1);
 								}}
@@ -162,6 +172,8 @@ class CockpitPage extends Component {
 								size={cockpitSize}
 								backgroundColor="#548B2E"
 								title={localizedText.TotalRecordedReceiptAmount}
+								data={CockpitData}
+								value="TotalRecordedReceiptAmount"
 								onPress={position => {
 									this.handleOnPress(position, 3);
 								}}
@@ -170,6 +182,8 @@ class CockpitPage extends Component {
 								size={cockpitSize}
 								backgroundColor="#2A3495"
 								title={localizedText.NumberOfMembersWithCoupon}
+								data={CockpitData}
+								value="NumberOfMembers"
 								onPress={position => {
 									this.handleOnPress(position, 5);
 								}}

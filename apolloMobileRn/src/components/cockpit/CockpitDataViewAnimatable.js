@@ -55,8 +55,12 @@ class CockpitDataViewAnimatable extends Component {
 					transform: [{ translateX: translatePositionX }, { translateY: translatePositionY }]
 				}}
 			>
-				<View>
-					<View style={{ alignItems: this.state.isOpened ? 'center' : 'flex-start' }}>
+				<View style={{ flex: 1, justifyContent: 'center' }}>
+					<View
+						style={{
+							alignItems: this.state.isOpened ? 'center' : 'flex-start'
+						}}
+					>
 						<Text
 							style={{
 								fontSize: widthPercentageToDP('3.8%'),
@@ -64,44 +68,128 @@ class CockpitDataViewAnimatable extends Component {
 								marginTop: widthPercentageToDP('3%'),
 								marginLeft: widthPercentageToDP('3%'),
 								marginRight: widthPercentageToDP('3%')
-								// textAlign: 'left'
 							}}
 						>
 							{title}
 						</Text>
 					</View>
 
-					<Text
-						style={{
-							position: 'absolute',
-							top: heightPercentageToDP('6%'),
-							fontSize: widthPercentageToDP('10%'),
-							color: Colors.SecondaryTitleColor,
-							paddingLeft: widthPercentageToDP('2%')
-						}}
+					<View
+						style={{ paddingHorizontal: widthPercentageToDP('4%'), marginTop: heightPercentageToDP('5%') }}
 					>
-						0
-					</Text>
-				</View>
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'flex-end',
-						alignItems: 'center',
-						paddingRight: widthPercentageToDP('2%'),
-						paddingBottom: widthPercentageToDP('2%')
-					}}
-				>
-					<Icons name="trending-flat" size={widthPercentageToDP('6%')} color={Colors.SecondaryTitleColor} />
-					<Text
-						style={{
-							fontSize: widthPercentageToDP('6%'),
-							color: Colors.SecondaryTitleColor,
-							paddingLeft: widthPercentageToDP('2%')
-						}}
-					>
-						100 %
-					</Text>
+						<View
+							style={{
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								alignItems: 'center',
+								marginBottom: heightPercentageToDP('3%')
+							}}
+						>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('4%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								Seçili Gün
+							</Text>
+							<Text
+								style={{
+									fontSize: widthPercentageToDP('8%'),
+									color: Colors.SecondaryTitleColor,
+									paddingLeft: widthPercentageToDP('2%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								0
+							</Text>
+						</View>
+						<View
+							style={{
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								alignItems: 'center',
+								marginBottom: heightPercentageToDP('3%')
+							}}
+						>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('4%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								Bir Önceki Gün
+							</Text>
+							<Text
+								style={{
+									fontSize: widthPercentageToDP('8%'),
+									color: Colors.SecondaryTitleColor,
+									paddingLeft: widthPercentageToDP('2%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								0
+							</Text>
+						</View>
+						<View
+							style={{
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								alignItems: 'center',
+								marginBottom: heightPercentageToDP('3%')
+							}}
+						>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('4%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								Bir Önceki Hafta
+							</Text>
+							<Text
+								style={{
+									fontSize: widthPercentageToDP('8%'),
+									color: Colors.SecondaryTitleColor,
+									paddingLeft: widthPercentageToDP('2%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								0
+							</Text>
+						</View>
+						<View
+							style={{
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								alignItems: 'center',
+								marginBottom: heightPercentageToDP('3%')
+							}}
+						>
+							<Text
+								style={{
+									color: Colors.BasicTitleColor,
+									fontSize: widthPercentageToDP('4%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								Bir Önceki Ay
+							</Text>
+							<Text
+								style={{
+									fontSize: widthPercentageToDP('8%'),
+									color: Colors.SecondaryTitleColor,
+									paddingLeft: widthPercentageToDP('2%'),
+									textAlignVertical: 'center'
+								}}
+							>
+								0
+							</Text>
+						</View>
+					</View>
 				</View>
 			</Animated.View>
 		);

@@ -184,7 +184,7 @@ export const en = {
 	SecondPeriodEndDate: 'Second Period End Date',
 	GeneralSummary: 'General Summary',
 	TotalCouponNumber: 'Total Coupon Number',
-	NumberOfMembersWhoTakeAction: '# Of Member Who Take Action',
+	NumberOfShoppers: '# Of Member Who Take Action',
 	PercentOfMale: 'Percent Of Male',
 	PercentOfFemale: 'Percent Of Female',
 	NumberOfNewMember: '# Of New Member',

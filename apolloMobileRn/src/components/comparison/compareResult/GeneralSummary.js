@@ -33,7 +33,7 @@ class GeneralSummary extends Component {
 				/>
 
 				<CompareResultDataRow
-					title={localizedText.NumberOfMembersWhoTakeAction}
+					title={localizedText.NumberOfShoppers}
 					firstCampaign="3"
 					percentage="0"
 					secondCampaign="4"
