@@ -32,7 +32,7 @@ export const tr = {
 	TotalNumberOfReceipts: 'Fatura Sayısı',
 	Sector: 'Sektör',
 	SECTOR: 'Sektörler',
-	NumberOfMembersWhoTakeAction: 'İşlem Yaptıran Üye Sayısı',
+	NumberOfShoppers: 'İşlem Yaptıran Üye Sayısı',
 	NumberOfReceiptPerMember: 'Kişi Başı Fatura Sayısı',
 	NumberOfVisitPerMember: 'Kişi Başı Ziyaret Sayısı',
 	NumberOfDifferentStore: 'Farklı Mağaza Sayısı',

@@ -117,7 +117,7 @@ export const fr = {
 	NumberOfCoupons: 'Nb de bons de rduction',
 	NumberOfDifferentStore: 'Nb de magasins diffrents',
 	NumberOfMembers: 'Nb de membres',
-	NumberOfMembersWhoTakeAction: 'Nb de membres actifs',
+	NumberOfShoppers: 'Nb de membres actifs',
 	NumberOfMembersWithCoupon: 'Nb de membres qui prennent des bons de rduction',
 	NumberOfNewMember: 'Nb de nouveaux membres',
 	NumberOfNewMembers: 'Nb de nouveaux membres',
