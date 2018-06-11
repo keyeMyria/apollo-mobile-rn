@@ -8,7 +8,7 @@ import { widthPercentageToDP, heightPercentageToDP, Colors } from '../../helpers
 import OrderCriteria from './bestOfTabPagesComponents/OrderCriteria';
 import { Divider } from '../../components/common/Divider';
 import { DefinationRow } from './bestOfTabPagesComponents/DefinationRow';
-import { Stores } from './bestOfTabPagesComponents/Stores';
+import { Items } from './bestOfTabPagesComponents/Items';
 
 const shops = [
 	{
@@ -77,15 +77,15 @@ class BestShopsPage extends Component {
 						}}
 					>
 						<View>
-							<Stores store="Teknosa" />
-							<Stores store="big" />
-							<Stores store="English Home" />
-							<Stores store="Macrocenter" />
-							<Stores store="Mado" />
-							<Stores store="Atasun Optik" />
-							<Stores store="başkent doğangaz" />
-							<Stores store="PEPERONCINO" />
-							<Stores store="a1066" />
+							<Items store="Teknosa" />
+							<Items store="big" />
+							<Items store="English Home" />
+							<Items store="Macrocenter" />
+							<Items store="Mado" />
+							<Items store="Atasun Optik" />
+							<Items store="başkent doğangaz" />
+							<Items store="PEPERONCINO" />
+							<Items store="a1066" />
 						</View>
 						<BarChart
 							data={shops}

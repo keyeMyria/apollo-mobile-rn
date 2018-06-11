@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { widthPercentageToDP, Colors } from '../../../helpers';
-export const Stores = ({ store }) => {
+export const Items = ({ store }) => {
 	return (
 		<View
 			style={{
