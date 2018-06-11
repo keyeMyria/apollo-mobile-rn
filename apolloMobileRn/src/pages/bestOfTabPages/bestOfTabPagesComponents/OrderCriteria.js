@@ -125,15 +125,14 @@ class OrderCriteria extends Component {
 				<View
 					style={{
 						flex: 1,
-						justifyContent: 'center'
+						flexDirection: 'row',
+						justifyContent: 'flex-end'
 					}}
 				>
 					<TouchableOpacity
 						onPress={() => this.setState({ isCriteriaModalVisible: true })}
 						style={{
-							flexDirection: 'row',
-							justifyContent: 'center'
-							// marginBottom: widthPercentageToDP('4%')
+							flexDirection: 'row'
 						}}
 					>
 						<View style={{ flexDirection: 'row' }}>
@@ -148,7 +147,12 @@ class OrderCriteria extends Component {
 								{this.state.criteria}
 							</Text>
 						</View>
-						<Icons name="arrow-drop-down" size={widthPercentageToDP('8%')} color={Colors.AccentColor} />
+						<Icons
+							name="arrow-drop-down"
+							size={widthPercentageToDP('8%')}
+							color={Colors.AccentColor}
+							style={{ alignSelf: 'center' }}
+						/>
 					</TouchableOpacity>
 				</View>
 			</View>

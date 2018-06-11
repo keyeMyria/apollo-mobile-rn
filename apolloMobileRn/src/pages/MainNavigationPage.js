@@ -53,7 +53,7 @@ const SwitchNavigation = createSwitchNavigator(
 					}
 				},
 				{
-					initialRouteName: 'cockpit',
+					initialRouteName: 'bestOf',
 					contentComponent: SideMenu,
 					drawerWidth: Sizes.DrawerWidth
 				}

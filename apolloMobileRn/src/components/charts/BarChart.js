@@ -18,6 +18,7 @@ import Svg, {
 	Stop
 } from 'react-native-svg';
 import { Colors } from 'react-native-paper';
+import { widthPercentageToDP } from '../../helpers';
 
 const AnimatedG = Animated.createAnimatedComponent(G);
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
@@ -137,7 +138,7 @@ class BarChart extends Component {
 		const { data, chartWidth, chartHeight } = this.props;
 
 		return (
-			<View style={{ paddingTop: 10 }}>
+			<View>
 				<AnimatedSvg style={{ backgroundColor: 'transparent' }} height={newChartHeight} width={newChartWidth}>
 					{this.renderBars(data, newChartWidth, newChartHeight, barHeight)}
 					{this.renderLines(data, newChartWidth, chartHeight, lineSpace)}

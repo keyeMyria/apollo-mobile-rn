@@ -6,7 +6,9 @@ import { localizedText } from './../../helpers/Localization/Localization';
 import BarChart from './../../components/charts/BarChart';
 import { widthPercentageToDP, heightPercentageToDP, Colors } from '../../helpers';
 import OrderCriteria from './bestOfTabPagesComponents/OrderCriteria';
-import { Divider } from 'react-native-paper';
+import { Divider } from '../../components/common/Divider';
+import { DefinationRow } from './bestOfTabPagesComponents/DefinationRow';
+import { Stores } from './bestOfTabPagesComponents/Stores';
 
 const shops = [
 	{
@@ -63,101 +65,28 @@ class BestShopsPage extends Component {
 					style={{
 						backgroundColor: Colors.CardBackgroundColor,
 						width: widthPercentageToDP('90%'),
-						height: heightPercentageToDP('35%')
+						height: heightPercentageToDP('35%'),
+						justifyContent: 'space-around'
 					}}
 				>
 					<OrderCriteria />
 					<View
 						style={{
 							flexDirection: 'row',
-							paddingHorizontal: widthPercentageToDP('4%')
+							justifyContent: 'space-around'
 						}}
 					>
-						<View style={{ marginRight: widthPercentageToDP('8%') }}>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								Teknosa
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								big
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								{' '}
-								English Home
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								Macrocenter
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								MADO
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								Atasun Optik
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								başkent doğangaz
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								PEPERONCINO
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('2%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								a1066
-							</Text>
+						<View>
+							<Stores store="Teknosa" />
+							<Stores store="big" />
+							<Stores store="English Home" />
+							<Stores store="Macrocenter" />
+							<Stores store="Mado" />
+							<Stores store="Atasun Optik" />
+							<Stores store="başkent doğangaz" />
+							<Stores store="PEPERONCINO" />
+							<Stores store="a1066" />
 						</View>
-
 						<BarChart
 							data={shops}
 							chartWidth={widthPercentageToDP('50%')}
@@ -174,181 +103,33 @@ class BestShopsPage extends Component {
 						marginTop: widthPercentageToDP('3%')
 					}}
 				>
-					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+					<View
+						style={{
+							flexDirection: 'row',
+							justifyContent: 'space-between',
+							paddingHorizontal: widthPercentageToDP('3%')
+						}}
+					>
 						<Text style={{ color: Colors.BasicTitleColor }}>{localizedText.StoreName}</Text>
 						<OrderCriteria />
 					</View>
-					<Divider />
-					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-						<View style={{ marginRight: widthPercentageToDP('8%') }}>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								Teknosa
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								big
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								{' '}
-								English Home
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								Macrocenter
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								MADO
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								Atasun Optik
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								başkent doğangaz
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								PEPERONCINO
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('2%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								a1066
-							</Text>
-						</View>
-						<View style={{ marginRight: widthPercentageToDP('8%') }}>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								22.700
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								2.555
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								{' '}
-								1.000
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								400
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								250
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								222
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								150
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('1%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								120
-							</Text>
-							<Text
-								style={{
-									color: Colors.BasicTitleColor,
-									paddingTop: widthPercentageToDP('2%'),
-									fontSize: widthPercentageToDP('3%')
-								}}
-							>
-								22
-							</Text>
-						</View>
-					</View>
+					<Divider
+						style={{
+							backgroundColor: '#585858',
+							marginHorizontal: widthPercentageToDP('3%'),
+							marginTop: widthPercentageToDP('1%')
+						}}
+					/>
+
+					<DefinationRow title="Teknosa" number="22.700" />
+					<DefinationRow title="big" number="2.555" />
+					<DefinationRow title="English Home" number="1.00" />
+					<DefinationRow title="Macrocenter" number="400" />
+					<DefinationRow title="Mado" number="250" />
+					<DefinationRow title="Atasun Optik" number="222" />
+					<DefinationRow title="başkent doğangaz" number="150" />
+					<DefinationRow title="PEPERONCINO" number="120" />
+					<DefinationRow title="a1066" number="22" />
 				</View>
 			</View>
 		);
